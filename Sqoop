@@ -1,0 +1,54 @@
+Sqoop导数至Oracle踩坑记录
+
+业务场景简介：
+   客户方为Oracle数仓，需通过Sqoop建立大数据数据集市与传统数仓的传输通道
+
+踩坑记录如下：
+<1>Sqoop方面：
+1.须在Sqoop /lib目录下存放RDMS驱动包，否则会报无法连接错误
+2.在导出数据前可使用sqoop命令进行连接测试
+   2.1 sqoop测试连接命令：sqoop list-tables --connect jdbc:oracle:thin:@ip:1521:sid --username ***--password ****
+         需注意：Oracle共提供三种JDBC连接方式如下：
+                       格式一：jdbc:oracle:thin:@//<host>:<port>/<service_name>  
+                       格式二：jdbc:oracle:thin:@<host>:<port>:<SID> 
+                       格式三：jdbc:oracle:thin:@<TNSName>
+3.需清楚Hive底层存储格式 ORC/TextFile
+   3.1 查询命令如下：hadoop fs -cat /user/hive/warehouse/wcl_dwh.db/dws_card_mpur_b_d/000000_0 | head -n 10 | cat -A
+4.导数脚本如下：
+    4.1 textfile全量版 分区推送export-dir指定相应文件即可；增量导数可见此链接: https://blog.csdn.net/helloxiaozhe/article/details/100176862
+        sqoop export \
+        --connect jdbc:oracle:thin:@ip:1521:sid\
+        --username ***\
+        --password ***\
+        --export-dir /user/hive/warehouse/wcl_dwh.db/dws_card_mpur_b_d \
+        --table DWS_CARD_MPUR_B_D \
+        --input-null-string '\\N' \
+        --input-null-non-string '\\N' \
+        --input-fields-terminated-by '\001' \
+        --lines-terminated-by '\n'
+    4.2 orc全量版 增量导数可见此链接: https://www.cnblogs.com/lenmom/p/11281536.html
+        sqoop export \
+        --connect jdbc:oracle:thin:@ip:1521:sid\
+        --username ***\
+        --password ***\
+        --table DWS_CARD_MPUR_B_D \
+        --hcatalog-database wcl_dwh \
+        --hcatalog-table dws_card_mpur_b_d \
+
+<2> Oracle方面： 
+   1. Oracle的服务名(ServiceName)查询
+       show parameter service_name;
+   2. Oracle的SID查询命令：
+       select instance_name from v$instance;
+   3. 查看Oracle版本
+       select version from v$instance
+
+<3>优化方面
+   1.Oracle并发写入如何加快同步速度？
+   2.如何容错（失败重试）？
+   3.待前宽表如何实现保留近三天数据-->shell脚本优化
+   4.脚本如何更好的支持动态更改表结构-->shell脚本优化
+
+附：
+    通过YARN命令查看Job日志
+    yarn logs -applicationId application_1592932322109_5986
