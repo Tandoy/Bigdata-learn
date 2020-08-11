@@ -1,0 +1,237 @@
+业务需求：梳理数据集市中间层表级血缘关系
+
+shell如下：
+job_file="$1"
+
+str_table=""
+
+valid_str=""
+
+declare -A tables=()
+
+last_key_str=""
+
+num=0
+
+is_sql_table=0
+
+while read line
+
+do
+
+num=$((num+1))
+
+line=`echo "${line}" | tr '[A-Z]' '[a-z]' | sed 's/*//g'`
+
+if [ "${is_sql_table}" -eq "0" ]; then
+
+is_sql_table=1
+
+valid_str="${line}"
+
+while :
+
+do
+
+ind_select=`echo "${valid_str}" | grep -w "select" | wc -l`
+
+if [ "${ind_select}" -gt "0" ]; then
+
+last_key_str="select"
+
+valid_str="${valid_str#*select} "
+
+break
+
+else
+
+read next_line
+
+num=$((num+1))
+
+next_line=`echo "${next_line}" | tr '[A-Z]' '[a-z]' | sed 's/*//g'`
+
+valid_str="${valid_str} ${next_line}"
+
+fi
+
+done
+
+continue
+
+fi
+
+valid_str_len=`echo "${valid_str}" | wc -L` ### 上次循环也没有字符串遗留字符串长度
+
+valid_str="${valid_str} ${line}" ###
+
+find_from=`echo "${valid_str}" | grep -w "from" | wc -l`
+
+valid_str=`echo "${valid_str}" | sed 's/^ \{1,\}//g'` ### 去掉valid_str最左边的无效空格
+
+is_end_sql=`echo "${valid_str}" | grep "[;|\"]" | wc -l ` ### 以",;作为sql的结束标识
+
+if [ "${is_end_sql}" -gt "0" ]; then
+
+if [ "${last_key_str}" == "where" ]; then
+
+ind_join_on=`echo "${valid_str}" | grep -w "on" | awk -F" on" '{print $1}' | wc -L`
+
+if [ "${ind_join_on}" -gt "0" ]; then
+
+valid_str=${valid_str:0:${ind_join_on}}
+
+fi
+
+fi
+
+for tb in ${valid_str}
+
+do
+
+is_tb=`echo "${tb}" | grep "[a-z]\.[a-z|_]\{4,\}" | grep -v "\.sh$" | grep -v "\.log$" | grep -v "\.txt$" | grep -v "\.py$" | wc -l`
+
+if [ "${is_tb}" -gt "0" ]; then
+
+tables[${#tables[*]}]=`echo "${tb}"| sed 's/,//g'`
+
+fsource_table="${fsource_table}${tb},"
+
+fi
+
+done
+
+is_sql_table=0
+
+continue
+
+fi
+
+if [ "${find_from}" -eq "0" -a "${valid_str_len}" -eq "0" ]; then
+
+continue ### 还没有找到from行，并且上次循环也没有字符串遗留；则继续下一行
+
+fi
+
+while :
+
+do
+
+if [ "${last_key_str}" == "select" ]; then ### select之后的关键字，只认from
+
+ind_from=`echo "${valid_str}" | grep -w "from" | wc -l`
+
+if [ "${ind_from}" -eq "0" ]; then
+
+valid_str="get_f "
+
+break
+
+else
+
+last_key_str="from"
+
+fi
+
+fi
+
+valid_str_len=`echo "${valid_str}" | wc -L` ### from后的有效字符长度。
+
+if [ "${valid_str_len}" -eq "0" ]; then ### 确保有有效字符才处理
+
+break
+
+fi
+
+ind_where=`echo "${valid_str}" | grep -w "where" | awk -F"where" '{print $1}' | wc -L`
+
+ind_join=`echo "${valid_str}" | grep -w "join" | awk -F"join" '{print $1}' | wc -L`
+
+ind_union=`echo "${valid_str}" | grep -w "union" | awk -F"union" '{print $1}' | wc -L`
+
+ind_comma=`echo "${valid_str}" | grep -w "," | awk -F"," '{print $1}' | wc -L`
+
+ind_from=`echo "${valid_str}" | grep -w "from" | awk -F"from" '{print $1}' | wc -L`
+
+min_ind=`echo "${valid_str}" | wc -L`
+
+for i in "${ind_where}" "${ind_join}" "${ind_union}" "${ind_comma}" "${ind_from}" ### 取五者最小值
+
+do
+
+if [ "${min_ind}" -gt "$i" -a "$i" -gt "0" ]; then
+
+min_ind=$i
+
+fi
+
+done
+
+if [ "${min_ind}" -ne "${valid_str_len}" ]; then ### 关键字位置不在有效字符串末尾，表示找到了表名所在位置
+
+if [ "${last_key_str}" == "where" ]; then ### 上一次关键字为where
+
+valid_str=${valid_str:$((min_ind+1))}" get_f "
+
+elif [ "${min_ind}" == "ind_from" ]; then ### 本次关键字为from
+
+valid_str=${valid_str:$((min_ind+1))}" get_f "
+
+else
+
+str_table=${valid_str:0:${min_ind}}
+
+valid_str=${valid_str:$((min_ind+1))}" get_f "
+
+for tb in ${str_table}
+
+do
+
+is_tb=`echo "${tb}" | grep "[a-z]\.[a-z|_]\{4,\}" | grep -v "\.sh$" | grep -v "\.log$" | grep -v "\.txt$" | grep -v "\.py$" | wc -l`
+
+if [ "${is_tb}" -gt "0" ]; then
+
+tables[${#tables[*]}]=`echo "${tb}"| sed 's/,//g'`
+
+fsource_table="${fsource_table}${tb},"
+
+fi
+
+done
+
+fi
+
+if [ "${ind_comma}" -eq "${min_ind}" ]; then ### 本次关键字为逗号,
+
+last_key_str="comma" ### 逗号不需要处理
+
+elif [ "${ind_where}" -eq "${min_ind}" ]; then
+
+last_key_str="where"
+
+elif [ "${ind_join}" -eq "${min_ind}" ]; then
+
+last_key_str="join"
+
+elif [ "${ind_union}" -eq "${min_ind}" ]; then
+
+last_key_str="union"
+
+elif [ "${ind_from}" -eq "${min_ind}" ]; then
+
+last_key_str="from"
+
+fi
+
+else ### 没找到关键字
+
+break
+
+fi
+
+done
+
+done <${job_file}
+echo "${fsource_table}"
+
+附：sql脚本必须为tb.db后缀格式
