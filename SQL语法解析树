@@ -1,0 +1,61 @@
+业务需求：梳理数据集市中间层表级血缘关系
+
+代码如下：
+import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import net.sf.jsqlparser.JSQLParserException;
+import net.sf.jsqlparser.parser.CCJSqlParserManager;
+import net.sf.jsqlparser.statement.Statement;
+import net.sf.jsqlparser.statement.select.Select;
+import net.sf.jsqlparser.util.TablesNamesFinder;
+/**
+* @ClassName: JsqlparserDemo
+* @Description: 解析SQL语法树
+* @author tzhi
+* @date   20200811
+*/
+public class JsqlparserDemo {
+
+
+    public static void main(String[] args) throws JSQLParserException {
+        String sql = ""; //在此输入查询SQL脚本
+        List result = getTableNameBySql(sql);
+        System.out.println(result.toString()); //打印即为血缘表
+    }
+    /**
+     * 获得where条件字段中列名，以及对应的操作符
+     * @Title: getColumnName
+     * @Description: TODO(这里用一句话描述这个方法的作用)
+     * @param @param expression
+     * @param @param allColumnNames
+     * @param @return 设定文件
+     * @return StringBuffer 返回类型
+     * @throws
+     */
+    public static List<String> getTableNameBySql(String sql) throws JSQLParserException{
+        CCJSqlParserManager parser=new CCJSqlParserManager();
+        StringReader reader = new StringReader(sql);
+        List<String> list=new ArrayList<String>();
+        Statement stmt=parser.parse(new StringReader(sql));
+        if (stmt instanceof Select) {
+            Select selectStatement = (Select) stmt;
+            TablesNamesFinder tablesNamesFinder = new TablesNamesFinder();
+            List tableList = tablesNamesFinder.getTableList(selectStatement);
+            for (Iterator iter = tableList.iterator(); iter.hasNext();) {
+                String tableName =iter.next().toString();
+                list.add(tableName);
+            }
+        }
+        return list;
+    }
+}
+
+附maven依赖:
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+            <version>1.4</version>
+        </dependency>
