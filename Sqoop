@@ -41,17 +41,42 @@ Sqoop导数至Oracle踩坑记录
    2. Oracle的SID查询命令：
        select instance_name from v$instance;
    3. 查看Oracle版本
-       select version from v$instance
+       select version from v$instance;
 
 <3>优化方面
    1.Oracle并发写入如何加快同步速度？
       添加以下参数 --batch \
-                           --Dsqoop.export.records.per.statement=10 \
+                           --Dsqoop.export.records.per.statement=10 \    --批量提交，每隔10条提交一次
    2.如何容错（失败重试）？
       添加以下参数  --staging-table <table-name> \
-由于Sqoop将导出过程切分成了多个，那么就会有可能某个导出任务失败而导致只有部分数据提交到了导出数据库中。当失败job重试时，就有可能会出现数据重复，或者导出数据            冲突等情况发生。这时可以指定一个--staging-table参数来避免这种情况的发生。导出的数据首先会缓存在该表中，最后等job执行成功后会将该表中的数据移动到最终目标表中。
+      由于Sqoop将导出过程切分成了多个，那么就会有可能某个导出任务失败而导致只有部分数据提交到了导出数据库中。当失败job重试时，就有可能会出现数据重复，或者导出数据            冲突等情况发生。这时可以指定一个--staging-table参数来避免这种情况的发生。导出的数据首先会缓存在该表中，最后等job执行成功后会将该表中的数据移动到最终目标表中。
    3.贷前宽表如何实现保留近三天数据-->shell脚本优化
    4.脚本如何更好的支持动态更改表结构-->shell脚本优化
+      脚本如下:
+            #!/bin/bash
+            UN="system"
+            PW="m89kPoF4"
+            WH="orl11g"
+            tableName=$1  #表名
+            PT=`date -d "${4} +1 day " +%Y%m%d`  #分区值
+            sqlplus ${UN}/${PW}@${WH}<<EOF
+            alter table ${tableName}  add  partition part_${4}  values less than('${PT}');
+            exit;
+            EOF
+            echo "${PT}"
+            #传递表名,主键,分区字段,分区值
+            tableName=$1
+            sqoop export \
+            --connect jdbc:oracle:thin:@172.19.53.145:1521:orl11g \
+            --username system \
+            --password m89kPoF4 \
+            --table ${tableName^^} \
+            --hcatalog-database wcl_dwh \
+            --hcatalog-table ${tableName^^}  \
+            --hcatalog-partition-keys ${3}  \
+            --hcatalog-partition-values ${4} \
+            --update-key ${2^^} \
+            --update-mode allowinsert
 
 附：
     通过YARN命令查看Job日志
