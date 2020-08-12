@@ -59,3 +59,4 @@ public class JsqlparserDemo {
             <artifactId>jsqlparser</artifactId>
             <version>1.4</version>
         </dependency>
+备注:部分子查询复杂SQL解析存在问题待优化
