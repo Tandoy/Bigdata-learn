@@ -1,0 +1,24 @@
+      #!/bin/bash
+      UN="system"
+      PW="m89kPoF4"
+      WH="orl11g"
+      tableName=$1  #表名
+      PT=`date -d "${4} +1 day " +%Y%m%d`  #分区值
+      sqlplus ${UN}/${PW}@${WH}<<EOF
+      alter table ${tableName}  add  partition part_${4}  values less than('${PT}');
+      exit;
+      EOF
+      echo "${PT}"
+      #传递表名,主键,分区字段,分区值
+      tableName=$1
+      sqoop export \
+      --connect jdbc:oracle:thin:@172.19.53.145:1521:orl11g \
+      --username system \
+      --password m89kPoF4 \
+      --table ${tableName^^} \
+      --hcatalog-database wcl_dwh \
+      --hcatalog-table ${tableName^^}  \
+      --hcatalog-partition-keys ${3}  \
+      --hcatalog-partition-values ${4} \
+      --update-key ${2^^} \
+      --update-mode allowinsert
