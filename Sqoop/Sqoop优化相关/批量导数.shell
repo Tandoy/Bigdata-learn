@@ -1,0 +1,22 @@
+ a=0;
+ b=1;
+ # have_data_table_name是一个文件，里面存为所要迁移的hive表名。
+ # cat file_name，for 开始循环表名。
+ for table_name in `cat ./hive_data_table_name`
+ do
+ a=`expr $a + $b`
+ echo "表名：$table_name,计数：$a";
+ echo  "开始导入数据！"
+ ##取出一张表的所有列名，每个列名后加个逗号，然后去掉最后一个逗号，存在col这个变量中。
+ ##col=`hive -e "desc wcl_dwh.${table_name}"|sed '1d'|awk '{printf $1","}'|sed 's/,$/\n/g'`
+ sqoop export \
+ -Dsqoop.export.records.per.statement=10 \
+ --connect jdbc:oracle:thin:@172.19.53.145:1521:orl11g \
+ --username system \
+ --password m89kPoF4 \
+ --table ${table_name} \
+ --hcatalog-database wcl_dwh \
+ --hcatalog-table ${table_name} \
+ --batch  
+ echo "第${a}张表导入完毕！";
+ done
