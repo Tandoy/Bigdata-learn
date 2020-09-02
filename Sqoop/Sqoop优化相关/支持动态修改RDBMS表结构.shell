@@ -12,9 +12,9 @@
       #传递表名,主键,分区字段,分区值
       tableName=$1
       sqoop export \
-      --connect jdbc:oracle:thin:@172.19.53.145:1521:orl11g \
-      --username system \
-      --password m89kPoF4 \
+      --connect jdbc:oracle:thin:@ip:1521:orl11g \
+      --username *** \
+      --password **** \
       --table ${tableName^^} \
       --hcatalog-database wcl_dwh \
       --hcatalog-table ${tableName^^}  \
