@@ -1,0 +1,12 @@
+textfile全量版 分区推送export-dir指定相应文件即可；
+        sqoop export \
+        --connect jdbc:oracle:thin:@ip:1521:sid\
+        --username ***\
+        --password ***\
+        --export-dir /user/hive/warehouse/wcl_dwh.db/dws_card_mpur_b_d \
+        --table DWS_CARD_MPUR_B_D \
+        --input-null-string '\\N' \
+        --input-null-non-string '\\N' \
+        --input-fields-terminated-by '\001' \
+        --lines-terminated-by '\n'
+增量导数可见此链接: https://blog.csdn.net/helloxiaozhe/article/details/100176862
