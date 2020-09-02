@@ -20,9 +20,9 @@
         #tableName=${ARRAY[${sum}]
         sqoop export \
         -Dsqoop.export.records.per.statement=100 \
-        --connect jdbc:oracle:thin:@172.19.53.145:1521:orl11g \
-        --username system \
-        --password m89kPoF4 \
+        --connect jdbc:oracle:thin:@ip:1521:orl11g \
+        --username *** \
+        --password **** \
         --table ${ARRAY[${sum}]} \
         --hcatalog-database wcl_dwh \
         --hcatalog-table ${ARRAY[$sum]} \
