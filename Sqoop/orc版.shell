@@ -1,0 +1,9 @@
+orc全量版 
+        sqoop export \
+        --connect jdbc:oracle:thin:@ip:1521:sid\
+        --username ***\
+        --password ***\
+        --table DWS_CARD_MPUR_B_D \
+        --hcatalog-database wcl_dwh \
+        --hcatalog-table dws_card_mpur_b_d \
+增量导数可见此链接: https://www.cnblogs.com/lenmom/p/11281536.html
