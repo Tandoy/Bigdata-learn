@@ -49,7 +49,7 @@ dag = DAG(
 date_operator = BashOperator( 
     task_id='date_task',
     bash_command='date',
-    dag=dag)
+    dag=dag) # 指定归属的dag
     
  # second operator
  
@@ -67,9 +67,11 @@ def print_hello():
 hello_operator = PythonOperator(
     task_id='hello_task',
     python_callable=print_hello,
-    dag=dag)
+    dag=dag) # 指定归属的dag
  
 #-------------------------------------------------------------------------------
 # dependencies
-sleep_operator.set_upstream(date_operator)
+sleep_operator.set_upstream(date_operator) 
 hello_operator.set_upstream(date_operator)
+# sleep_operator依赖于date_operator;等价于 date_operator.set_downstream(sleep_operator);同时等价于 dag.set_dependency('date_operator', 'sleep_operator')# 表示t2这个任务只有在t1这个任务执行成功时才执行，# 或者
+date_operator >> sleep_operator
