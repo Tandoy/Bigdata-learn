@@ -1,0 +1,11 @@
+Oozie是一个管理 Apache Hadoop 作业的工作流调度系统。
+Oozie的 workflow jobs 是由 actions 组成的 有向无环图(DAG)。
+Oozie的 coordinator jobs 是由时间 (频率)和数据可用性触发的重复的 workflow jobs 。
+Oozie与Hadoop生态圈的其他部分集成在一起，支持多种类型的Hadoop作业（如Java map-reduce、流式map-reduce、Pig、Hive、Sqoop和Distcp）以及特定于系统的工作（如Java程序和shell脚本）。
+Oozie是一个可伸缩、可靠和可扩展的系统。
+
+oozie包含四大服务组件:
+workflow: 用于支持动作有向无环图(DAG)的设计和执行,可以按照特定的顺序执行mr,hive和shell等节点.
+coordinator: 用于定时调度特定的 workflow 进行执行,可以基于事件,资源存在,传递参数等自动执行.
+bundle: 批量设定一组coordinator执行.
+SLA(Service Level Agreement, oozie服务器等级协定): 用于程序执行过程的日志跟踪.
