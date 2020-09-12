@@ -1,0 +1,5 @@
+ kafka创建主题:bin/kafka-topics.sh --create --zookeeper 192.168.25.136:2181 --replication-factor 1 --partitions 1 --topic weblogs
+ kafka删除主题:bin/kafka-topics.sh --delete --zookeeper 192.168.25.136:2181 --topic weblogs
+ kafka控制台消费topic的数据:bin/kafka-console-consumer.sh --zookeeper 192.168.25.136:2181 --topic weblogs  --from-beginning
+ kafka控制台生产数据:bin/kafka-console-producer.sh --broker-list 192.168.25.136:9092 --topic weblogs
+ kafka查看主题具体信息:bin/kafka-topics.sh --zookeeper 192.168.25.136:2181 --describe --topic weblogs
