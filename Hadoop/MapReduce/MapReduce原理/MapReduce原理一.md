@@ -31,7 +31,7 @@ Mapreduce核心功能是将用户编写的业务逻辑代码和自带默认组�
 
 1.2.2 MR程序运行流程
 1.2.2.1 流程示意图
-![image](D:\Downloads\github\Bigdata-learn\Hadoop\MapReduce\images\流程示意图.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/MapReduce/images/%E6%B5%81%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 1.2.2.2 流程解析
 1、	一个mr程序启动的时候，最先启动的是MRAppMaster，MRAppMaster启动后根据本次job的描述信息，计算出需要的maptask实例数量，然后向集群申请机器启动相应数量的maptask进程
@@ -55,7 +55,7 @@ maptask的并行度决定map阶段的任务处理并发度，进而影响到整�
 将待处理数据执行逻辑切片（即按照一个特定切片大小，将待处理数据划分成逻辑上的多个split），然后每一个split分配一个mapTask并行实例处理
 
 这段逻辑及形成的切片规划描述文件，由FileInputFormat实现类的getSplits()方法完成，其过程如下图：
-![image](D:\Downloads\github\Bigdata-learn\Hadoop\MapReduce\images\逻辑切片示意图.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/MapReduce/images/%E9%80%BB%E8%BE%91%E5%88%87%E7%89%87%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 
 1.3.2 FileInputFormat切片机制
 1、切片定义在InputFormat类中的getSplit()方法
