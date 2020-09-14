@@ -11,4 +11,4 @@ Yarn是一个资源调度平台，负责为运算程序提供服务器运算资�
 
 3.3.3 Yarn中运行运算程序的示例
 mapreduce程序的调度过程，如下图
-![image](Hadoop/Yarn/images/MR调度过程.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/Yarn/images/MR%E8%B0%83%E5%BA%A6%E8%BF%87%E7%A8%8B.png)
