@@ -15,7 +15,7 @@
 4.2.1 概述
 客户端要向HDFS写数据，首先要跟namenode通信以确认可以写文件并获得接收文件block的datanode，然后，客户端按顺序将文件逐个block传递给相应datanode，并由接收到block的datanode负责向其他datanode复制block的副本
 4.2.2 详细步骤图
-![avator](D:\Downloads\github\Bigdata-learn\Hadoop\HDFS\images\hdfs写数据流程示意图.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/HDFS/images/hdfs%E5%86%99%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 4.2.3 详细步骤解析
 1、根namenode通信请求上传文件，namenode检查目标文件是否已存在，父目录是否存在
 2、namenode返回是否可以上传
@@ -29,7 +29,7 @@
 客户端将要读取的文件路径发送给namenode，namenode获取文件的元信息（主要是block的存放位置信息）返回给客户端，客户端根据返回的信息找到相应datanode逐个获取文件的block并在客户端本地进行数据追加合并从而获得整个文件
 
 4.3.2 详细步骤图
-![avator](D:\Downloads\github\Bigdata-learn\Hadoop\HDFS\images\hdfs读数据流程示意图.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/HDFS/images/hdfs%E8%AF%BB%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
 4.3.3 详细步骤解析
 1、跟namenode通信查询元数据，找到文件块所在的datanode服务器
 2、挑选一台datanode（就近原则，然后随机）服务器，请求建立socket流
@@ -68,7 +68,7 @@ bin/hdfs oiv -i fsimage_0000000000000000087 -p XML -o fsimage.xml
 每隔一段时间，会由secondary namenode将namenode上积累的所有edits和一个最新的fsimage下载到本地，并加载到内存进行merge（这个过程称为checkpoint）
 
 checkpoint的详细过程
-![avator](D:\Downloads\github\Bigdata-learn\Hadoop\HDFS\images\secondarynamenode元数据checkpoint机制.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/HDFS/images/secondarynamenode%E5%85%83%E6%95%B0%E6%8D%AEcheckpoint%E6%9C%BA%E5%88%B6.png)
 checkpoint操作的触发条件配置参数
 dfs.namenode.checkpoint.check.period=60  #检查触发条件是否满足的频率，60秒
 dfs.namenode.checkpoint.dir=file://${hadoop.tmp.dir}/dfs/namesecondary
