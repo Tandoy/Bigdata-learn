@@ -6,7 +6,7 @@ mapreduce的shuffle机制
 
 3.1.2 主要流程：
 Shuffle缓存流程：
-![image](Bigdata-learn/Hadoop/MapReduce/images/shuffle缓存流程.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/MapReduce/images/shuffle%E7%BC%93%E5%AD%98%E6%B5%81%E7%A8%8B.png)
 
 shuffle是MR处理流程中的一个过程，它的每一个处理步骤是分散在各个map task和reduce task节点上完成的，整体来看，分为3个操作：
 1、分区partition
@@ -26,4 +26,4 @@ Shuffle中的缓冲区大小会影响到mapreduce程序的执行效率，原则�
 缓冲区的大小可以通过参数调整,  参数：io.sort.mb  默认100M
 
 3.1.4 详细流程示意图
-![image](Hadoop/MapReduce/images/详细流程示意图.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Hadoop/MapReduce/images/%E8%AF%A6%E7%BB%86%E6%B5%81%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png)
