@@ -149,6 +149,27 @@ apt_card_txn_cu = HiveOperator(
       dag = dag
 	)
 
+apt_card_cardoper_cu = HiveOperator(
+      task_id = "apt_card_cardoper_cu",
+      hql = sqlapt.sqlapt_card_cardoper_cu,
+      hive_cli_conn_id = 'hive',
+      dag = dag
+      )
+
+apt_pboc_queryinfo = HiveOperator(
+      task_id = "apt_pboc_queryinfo",
+      hql = sqlapt.sqlapt_pboc_queryinfo,
+      hive_cli_conn_id = 'hive',
+      dag = dag
+      )
+
+apt_pboc_idvcrrprtnum = HiveOperator(
+      task_id = "apt_pboc_idvcrrprtnum",
+      hql = sqlapt.sqlapt_pboc_idvcrrprtnum,
+      hive_cli_conn_id = 'hive',
+      dag = dag
+      )
+
 # stg账户表
 sqlacct = SQL_stg_card_acct_cu()
 stg_card_acct_cu = HiveOperator(
@@ -249,7 +270,7 @@ dwd_card_card_mth = HiveOperator(
 
 # dwd卡维护历史比表
 dwd_card_cardoper_hs = SQL_dwd_card_cardoper_hs()
-dwd_card_card_mth = HiveOperator(
+dwd_card_cardoper_hs = HiveOperator(
       task_id = "dwd_card_cardoper_hs",
       hql = dwd_card_cardoper_hs.sqldwd_card_cardoper_hs,
       hive_cli_conn_id = 'hive',
@@ -323,7 +344,7 @@ dwd_card_mpur_cu = HiveOperator(
 	)
 
 #变更历史
-dwd_card_mpur_cu = HiveOperator(
+dwd_card_posnor_hs = HiveOperator(
       task_id = "dwd_card_posnor_hs",
       hql = dwd_card_other.sqldwd_card_posnor_hs,
       hive_cli_conn_id = 'hive',
@@ -345,6 +366,14 @@ dwd_card_txn_hs = HiveOperator(
       hive_cli_conn_id = 'hive',
       dag = dag
 	)
+
+#申请
+dwd_card_appr_cu = HiveOperator(
+      task_id = "dwd_card_appr_cu",
+      hql = dwd_card_other.sqldwd_card_appr_cu,
+      hive_cli_conn_id = 'hive',
+      dag = dag
+      )
 
 #收入
 dwd_card_income = SQL_dws_card_income()
@@ -438,15 +467,15 @@ ads_bi_risk_card_m = HiveOperator(
       dag = dag
 	)
 
-ads_bi_risk_card_vtg_tem_d = HiveOperator(
-      task_id = "ads_bi_risk_card_vtg_tem_d",
+ads_bi_risk_card_vtg_d = HiveOperator(
+      task_id = "ads_bi_risk_card_vtg_d",
       hql = ads_bi_risk.sqlads_bi_risk_card_vtg_d,
       hive_cli_conn_id = 'hive',
       dag = dag
 	)
 
-ads_bi_risk_card_vtg_tem_m = HiveOperator(
-      task_id = "ads_bi_risk_card_vtg_tem_m",
+ads_bi_risk_card_vtg_m = HiveOperator(
+      task_id = "ads_bi_risk_card_vtg_m",
       hql = ads_bi_risk.sqlads_bi_risk_card_vtg_m,
       hive_cli_conn_id = 'hive',
       dag = dag
@@ -482,8 +511,8 @@ ads_bi_risk_summary = HiveOperator(
 
 #运营报表
 ads_bi_umkt = SQL_ads_bi_umkt()
-ads_bi_umkt_activate_tmp = HiveOperator(
-      task_id = "ads_bi_umkt_activate_tmp",
+ads_bi_umkt_activate = HiveOperator(
+      task_id = "ads_bi_umkt_activate",
       hql = ads_bi_umkt.sqlads_bi_umkt_activate,
       hive_cli_conn_id = 'hive',
       dag = dag
@@ -589,19 +618,19 @@ ads_umkt_mpur = HiveOperator(
       dag = dag
 	)
 
-ads_umkt_para_card_accttype = HiveOperator(
-      task_id = "ads_umkt_para_card_accttype",
-      hql = ads_umkt.sqlads_umkt_para_card_accttype,
-      hive_cli_conn_id = 'hive',
-      dag = dag
-	)
+#ads_umkt_para_card_accttype = HiveOperator(
+#      task_id = "ads_umkt_para_card_accttype",
+#      hql = ads_umkt.sqlads_umkt_para_card_accttype,
+#      hive_cli_conn_id = 'hive',
+#      dag = dag
+#	)
 
-ads_umkt_para_card_cardproduct = HiveOperator(
-      task_id = "ads_umkt_para_card_cardproduct",
-      hql = ads_umkt.sqlads_umkt_para_card_cardproduct,
-      hive_cli_conn_id = 'hive',
-      dag = dag
-	)
+#ads_umkt_para_card_cardproduct = HiveOperator(
+#      task_id = "ads_umkt_para_card_cardproduct",
+#      hql = ads_umkt.sqlads_umkt_para_card_cardproduct,
+#      hive_cli_conn_id = 'hive',
+#      dag = dag
+#	)
 
 ads_umkt_stmt = HiveOperator(
       task_id = "ads_umkt_stmt",
@@ -640,4 +669,241 @@ ads_bi_risk_acct_c_zy = HiveOperator(
 	)
 
 
+ods_data_check = BashOperator(
+    task_id='ods_data_check',
+    bash_command='date',
+    dag=dag)
+
+
 #设置依赖关系
+#先跑数据层，并在跑批前检查当天ods跑数情况
+apt_card_txn_cu.set_upstream(ods_data_check)
+apt_card_stmt_cu.set_upstream(ods_data_check)
+apt_card_mpur_cu.set_upstream(ods_data_check)
+apt_card_jorj_cu.set_upstream(ods_data_check)
+apt_card_commtxn_cu.set_upstream(ods_data_check)
+apt_card_cnta_cu.set_upstream(ods_data_check)
+apt_card_chgs_cu.set_upstream(ods_data_check)
+apt_card_ccdcust_cu.set_upstream(ods_data_check)
+apt_card_card_cu.set_upstream(ods_data_check)
+apt_card_appr_cu.set_upstream(ods_data_check)
+apt_card_apma_cu.set_upstream(ods_data_check)
+apt_card_acct_cu.set_upstream(ods_data_check)
+
+#stg层
+stg_card_acct_cu.set_upstream(apt_card_acct_cu)
+stg_card_acct_cu.set_upstream(dwd_card_stmt_hs)
+stg_card_acct_cu.set_upstream(dws_card_mpur_a_d)
+stg_card_acct_cu.set_upstream(dws_card_txn_a_c)
+stg_card_acct_cu.set_upstream(dws_card_txn_a_c_temp)
+stg_card_acct_cu.set_upstream(dws_card_txn_a_d)
+#stg_card_acct_cu.set_upstream(stg_card_acct_cu)
+stg_card_acct_cu.set_upstream(stg_card_card_cu)
+
+stg_card_card_cu.set_upstream(apt_card_acct_cu)
+stg_card_card_cu.set_upstream(apt_card_apma_cu)
+stg_card_card_cu.set_upstream(apt_card_card_cu)
+
+stg_card_ccdbiz_cu.set_upstream(stg_card_acct_cu)
+
+stg_card_mpur_cu.set_upstream(apt_card_acct_cu)
+stg_card_mpur_cu.set_upstream(apt_card_mpur_cu)
+
+#dwd层
+dwd_card_stmt_hs.set_upstream(apt_card_stmt_cu)
+
+dwd_card_commtxn_hs.set_upstream(apt_card_commtxn_cu)
+dwd_card_commtxn_hs.set_upstream(stg_card_card_cu)
+
+dwd_card_txn_hs.set_upstream(apt_card_txn_cu)
+
+
+dwd_card_cardoper_hs.set_upstream(apt_card_card_cu)
+dwd_card_cardoper_hs.set_upstream(apt_card_cardoper_cu)
+
+dwd_card_ccdcust_cu.set_upstream(apt_card_card_cu)
+dwd_card_ccdcust_cu.set_upstream(apt_card_ccdcust_cu)
+dwd_card_ccdcust_cu.set_upstream(dwd_card_cardoper_hs)
+dwd_card_ccdcust_cu.set_upstream(stg_card_acct_cu)
+dwd_card_ccdcust_cu.set_upstream(stg_card_card_cu)
+
+
+#dwd_card_acctbal_hs.set_upstream(dwd_card_acctbal_hs)
+dwd_card_acctbal_hs.set_upstream(stg_card_acct_cu)
+
+dwd_card_acct_cu.set_upstream(stg_card_acct_cu)
+
+dwd_card_acct_cyc.set_upstream(stg_card_acct_cu)
+
+dwd_card_mpur_cu.set_upstream(stg_card_mpur_cu)
+
+dwd_card_card_cu.set_upstream(stg_card_card_cu)
+
+dwd_card_posnor_hs.set_upstream(dwd_card_txn_hs)
+
+dwd_card_chgs_hs.set_upstream(apt_card_chgs_cu)
+
+dwd_card_apma_cu.set_upstream(apt_card_acct_cu)
+dwd_card_apma_cu.set_upstream(apt_card_apma_cu)
+dwd_card_apma_cu.set_upstream(stg_card_acct_cu)
+
+dwd_card_ccdbiz_cyc.set_upstream(dwd_card_stmt_hs)
+dwd_card_ccdbiz_cyc.set_upstream(stg_card_acct_cu)
+
+dwd_card_ccdbiz_cu.set_upstream(stg_card_ccdbiz_cu)
+
+dwd_card_ccdbiz_mth.set_upstream(stg_card_ccdbiz_cu)
+
+dwd_card_ccdcust_mth.set_upstream(dwd_card_ccdcust_cu)
+
+dwd_card_acct_mth.set_upstream(stg_card_acct_cu)
+
+dwd_card_card_mth.set_upstream(stg_card_card_cu)
+
+#dws层
+dws_card_income_b_m.set_upstream(apt_card_acct_cu)
+dws_card_income_b_m.set_upstream(dwd_card_commtxn_hs)
+dws_card_income_b_m.set_upstream(dwd_card_stmt_hs)
+dws_card_income_b_m.set_upstream(dwd_card_txn_hs)
+#dws_card_income_b_m.set_upstream(dws_card_income_b_m)
+dws_card_income_b_m.set_upstream(stg_card_acct_cu)
+dws_card_income_b_m.set_upstream(stg_card_ccdbiz_cu)
+
+dws_card_income_a_c.set_upstream(apt_card_acct_cu)
+dws_card_income_a_c.set_upstream(dwd_card_commtxn_hs)
+dws_card_income_a_c.set_upstream(dwd_card_stmt_hs)
+dws_card_income_a_c.set_upstream(dwd_card_txn_hs)
+#dws_card_income_a_c.set_upstream(dws_card_income_a_c)
+
+dws_card_txn_a_c_temp.set_upstream(apt_card_acct_cu)
+dws_card_txn_a_c_temp.set_upstream(dwd_card_txn_hs)
+
+dws_card_income_a_m.set_upstream(apt_card_acct_cu)
+dws_card_income_a_m.set_upstream(dwd_card_commtxn_hs)
+dws_card_income_a_m.set_upstream(dwd_card_stmt_hs)
+dws_card_income_a_m.set_upstream(dwd_card_txn_hs)
+#dws_card_income_a_m.set_upstream(dws_card_income_a_m)
+
+dws_card_txn_b_m.set_upstream(dwd_card_txn_hs)
+dws_card_txn_b_m.set_upstream(stg_card_acct_cu)
+dws_card_txn_b_m.set_upstream(stg_card_ccdbiz_cu)
+
+dws_card_txn_a_c.set_upstream(dws_card_txn_a_c_temp)
+
+dws_card_txn_a_m.set_upstream(apt_card_acct_cu)
+dws_card_txn_a_m.set_upstream(dwd_card_txn_hs)
+
+dws_card_mpur_a_d.set_upstream(apt_card_acct_cu)
+dws_card_mpur_a_d.set_upstream(stg_card_mpur_cu)
+
+dws_card_txn_a_d.set_upstream(apt_card_acct_cu)
+dws_card_txn_a_d.set_upstream(dwd_card_txn_hs)
+
+#ad_umkt
+ads_umkt_acct.set_upstream(dwd_card_acct_cu)
+ads_umkt_acct.set_upstream(dwd_card_card_cu)
+
+ads_umkt_ccdcust.set_upstream(dwd_card_ccdcust_cu)
+
+ads_umkt_ccdcust_tag.set_upstream(ads_umkt_inapprcustr)
+ads_umkt_ccdcust_tag.set_upstream(apt_card_ccdcust_cu)
+ads_umkt_ccdcust_tag.set_upstream(dwd_card_card_cu)
+ads_umkt_ccdcust_tag.set_upstream(dwd_card_acct_cu)
+ads_umkt_ccdcust_tag.set_upstream(dwd_card_ccdcust_cu)
+
+ads_umkt_chgs.set_upstream(dwd_card_chgs_hs)
+ads_umkt_chgs.set_upstream(dwd_card_acct_cu)
+
+ads_umkt_inapprcustr.set_upstream(dwd_card_appr_cu)
+
+ads_umkt_limit.set_upstream(dwd_card_acctbal_hs)
+ads_umkt_limit.set_upstream(dwd_card_acct_cu)
+
+ads_umkt_merchant.set_upstream(ads_umkt_txn)
+
+ads_umkt_mpur.set_upstream(dwd_card_card_cu)
+ads_umkt_mpur.set_upstream(dwd_card_mpur_cu)
+
+ads_umkt_stmt.set_upstream(dwd_card_acct_cyc)
+ads_umkt_stmt.set_upstream(dwd_card_stmt_hs)
+
+ads_umkt_tagcal.set_upstream(ads_umkt_ccdcust_tag)
+
+ads_umkt_txn.set_upstream(dwd_card_txn_hs)
+ads_umkt_txn.set_upstream(dwd_card_posnor_hs)
+ads_umkt_txn.set_upstream(dwd_card_acct_cu)
+ads_umkt_txn.set_upstream(dwd_card_card_cu)
+
+ads_umkt_txnchl.set_upstream(ads_umkt_txn)
+
+
+#ads_bi_umkt
+ads_bi_umkt_activate.set_upstream(dwd_card_apma_cu)
+ads_bi_umkt_activate.set_upstream(dwd_card_card_cu)
+
+ads_bi_umkt_apma.set_upstream(dwd_card_apma_cu)
+
+ads_bi_umkt_leftact.set_upstream(dwd_card_acct_cyc)
+ads_bi_umkt_leftact.set_upstream(dwd_card_ccdbiz_cyc)
+ads_bi_umkt_leftact.set_upstream(dws_card_income_b_m)
+ads_bi_umkt_leftact.set_upstream(dws_card_txn_b_m)
+
+ads_bi_umkt_leftact_income.set_upstream(dwd_card_ccdbiz_cu)
+ads_bi_umkt_leftact_income.set_upstream(dwd_card_ccdbiz_cyc)
+ads_bi_umkt_leftact_income.set_upstream(dws_card_income_b_m)
+
+ads_bi_umkt_leftact_vtg.set_upstream(dwd_card_acct_cyc)
+ads_bi_umkt_leftact_vtg.set_upstream(dwd_card_ccdbiz_cu)
+ads_bi_umkt_leftact_vtg.set_upstream(dwd_card_ccdbiz_cyc)
+ads_bi_umkt_leftact_vtg.set_upstream(dws_card_txn_b_m)
+ads_bi_umkt_leftact_vtg.set_upstream(dws_card_income_b_m)
+
+
+ads_bi_umkt_leftact_vtg_income.set_upstream(dwd_card_ccdbiz_cu)
+ads_bi_umkt_leftact_vtg_income.set_upstream(dwd_card_ccdbiz_cyc)
+ads_bi_umkt_leftact_vtg_income.set_upstream(dws_card_income_b_m)
+
+ads_bi_umkt_userana.set_upstream(dwd_card_ccdbiz_mth)
+ads_bi_umkt_userana.set_upstream(dwd_card_ccdcust_mth)
+
+#ads_bi_risk
+ads_bi_risk_acct_c.set_upstream(dwd_card_acct_cyc)
+ads_bi_risk_acct_c.set_upstream(dws_card_income_a_c)
+ads_bi_risk_acct_c.set_upstream(dws_card_txn_a_c)
+
+ads_bi_risk_acct_m.set_upstream(dws_card_txn_a_m)
+ads_bi_risk_acct_m.set_upstream(dws_card_income_a_m)
+ads_bi_risk_acct_m.set_upstream(dwd_card_acct_mth)
+
+ads_bi_risk_card_m.set_upstream(dwd_card_card_mth)
+
+ads_bi_risk_card_vtg_d.set_upstream(dwd_card_card_cu)
+ads_bi_risk_card_vtg_d.set_upstream(dwd_card_apma_cu)
+
+ads_bi_risk_card_vtg_m.set_upstream(dwd_card_card_cu)
+ads_bi_risk_card_vtg_m.set_upstream(dwd_card_apma_cu)
+
+ads_bi_risk_grant_m.set_upstream(dwd_card_card_cu)
+ads_bi_risk_grant_m.set_upstream(dwd_card_apma_cu)
+
+ads_bi_risk_scocnt_m.set_upstream(apt_pboc_queryinfo)
+ads_bi_risk_scocnt_m.set_upstream(apt_pboc_idvcrrprtnum)
+ads_bi_risk_scocnt_m.set_upstream(dwd_card_acct_cu)
+
+ads_bi_risk_scodis_m.set_upstream(apt_pboc_queryinfo)
+ads_bi_risk_scodis_m.set_upstream(apt_pboc_idvcrrprtnum)
+ads_bi_risk_scodis_m.set_upstream(dwd_card_acct_cu)
+
+ads_bi_risk_summary.set_upstream(dwd_card_card_cu)
+ads_bi_risk_summary.set_upstream(dwd_card_acct_cyc)
+ads_bi_risk_summary.set_upstream(dws_card_txn_a_m)
+ads_bi_risk_summary.set_upstream(dws_card_income_a_m)
+ads_bi_risk_summary.set_upstream(dwd_card_acct_mth)
+ads_bi_risk_summary.set_upstream(dwd_card_card_mth)
+ads_bi_risk_summary.set_upstream(dwd_card_acct_cu)
+
+#摘要
+ads_bi_risk_acct_c_zy.set_upstream(dwd_card_acct_cyc)
+ads_bi_risk_acct_c_zy.set_upstream(dwd_card_stmt_hs)
+ads_bi_risk_acct_c_zy.set_upstream(dws_card_income_a_c)
+ads_bi_risk_acct_c_zy.set_upstream(dws_card_txn_a_c)
