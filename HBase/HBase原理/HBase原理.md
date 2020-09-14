@@ -1,4 +1,5 @@
 7.	hbase原理
+
 7.1.	体系图
 ![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/HBase/images/HBase%E4%BD%93%E7%B3%BB%E5%9B%BE.png)
 
