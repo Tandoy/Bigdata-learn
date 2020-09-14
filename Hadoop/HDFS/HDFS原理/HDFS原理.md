@@ -29,7 +29,7 @@
 客户端将要读取的文件路径发送给namenode，namenode获取文件的元信息（主要是block的存放位置信息）返回给客户端，客户端根据返回的信息找到相应datanode逐个获取文件的block并在客户端本地进行数据追加合并从而获得整个文件
 
 4.3.2 详细步骤图
-![avator](D:\Downloads\github\Bigdata-learn\Hadoop\HDFS\images\hdfs读数据流程示意图.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/edit/master/Hadoop/HDFS/HDFS%E5%8E%9F%E7%90%86/HDFS%E5%8E%9F%E7%90%86.md)
 4.3.3 详细步骤解析
 1、跟namenode通信查询元数据，找到文件块所在的datanode服务器
 2、挑选一台datanode（就近原则，然后随机）服务器，请求建立socket流
