@@ -18,7 +18,7 @@ a)	Source：采集源，用于跟数据源对接，以获取数据
 b)	Sink：下沉地，采集数据的传送目的，用于往下一级agent传递数据或者往最终存储系统传递数据
 c)	Channel：angent内部的数据传输通道，用于从source将数据传递到sink
 
-![image](Bigdata-learn/Flume/images/Flume架构.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Flume/images/Flume%E6%9E%B6%E6%9E%84.png)
 
 
 
@@ -27,10 +27,10 @@ c)	Channel：angent内部的数据传输通道，用于从source将数据传递�
 1. 简单结构
 
 单个agent采集数据
-![image](Flume/images/Flume采集复杂模式.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Flume/images/Flume%E9%87%87%E9%9B%86%E7%AE%80%E5%8D%95%E6%A8%A1%E5%BC%8F.png)
 
 2. 复杂结构
 
 多级agent之间串联
-![image](Flume/images/Flume采集复杂模式.png)
+![image](https://github.com/tang-engineer/Bigdata-learn/blob/master/Flume/images/Flume%E9%87%87%E9%9B%86%E5%A4%8D%E6%9D%82%E6%A8%A1%E5%BC%8F.png)
  
