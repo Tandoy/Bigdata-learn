@@ -1,6 +1,7 @@
 ##dag.py 放在AIRFLOW_HOME/dags/目录下
 
 ##测试DAG.py
+
 python $AIRFLOW_HOME/dags/xxx.py
 
 ##如果你的脚本没有抛出异常，这意味着你代码中没有错误，并且你的Airflow环境是健全的。
