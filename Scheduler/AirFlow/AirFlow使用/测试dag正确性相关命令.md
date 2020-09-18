@@ -1,15 +1,20 @@
 ##dag.py 放在AIRFLOW_HOME/dags/目录下
 
 ##测试DAG.py
+
 python $AIRFLOW_HOME/dags/xxx.py
+
 ##如果你的脚本没有抛出异常，这意味着你代码中没有错误，并且你的Airflow环境是健全的。
 
 ##查看某个DAG下具体的Task
+
 airflow list_tasks 'dag_id'
 
 ##测试DAG中单个task
+
 airflow test 'dag_id' 'task_id' data_date
 
 ##启动AirFlow调度程序
 ##调度程序将发送任务进行执行。默认Airflow设置依赖于一个名为`SequentialExecutor`的执行器，它由调度程序自动启动。在生产中，你可以使用更强大的执行器，如`CeleryExecutor`。
+
 airflow scheduler
