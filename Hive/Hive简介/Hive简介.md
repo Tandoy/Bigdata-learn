@@ -59,12 +59,17 @@ Hive利用HDFS存储数据，利用MapReduce查询数据
 
 总结：hive具有sql数据库的外表，但应用场景完全不同，hive只适合用来做批量数据统计分析
 1.5	Hive的数据存储
+
 1、Hive中所有的数据都存储在 HDFS 中，没有专门的数据存储格式（可支持Text，SequenceFile，ParquetFile，RCFILE等）
+
 2、只需要在创建表的时候告诉 Hive 数据中的列分隔符和行分隔符，Hive 就可以解析数据。
+
 3、Hive 中包含以下数据模型：DB、Table，External Table，Partition，Bucket。
+
 	db：在hdfs中表现为${hive.metastore.warehouse.dir}目录下一个文件夹
 	table：在hdfs中表现所属db目录下一个文件夹
 	external table：外部表, 与table类似，不过其数据存放位置可以在任意指定路径
+
 普通表: 删除表后, hdfs上的文件都删了
 External外部表删除后, hdfs上的文件没有删除, 只是把文件删除了
 	partition：在hdfs中表现为table目录下的子目录
