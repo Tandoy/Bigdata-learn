@@ -24,4 +24,14 @@
       exit() 
   
 3.设置Executor
-  executor = LocalExecutor  ##生产上大多为分布式调度
+  executor = LocalExecutor: 生产上大多为分布式调度
+  
+  SequentialExecutor：表示单进程顺序执行，通常只用于测试
+  
+  LocalExecutor：表示多进程本地执行，它用python的多进程库从而达到多进程跑任务的效果。
+  
+  CeleryExecutor：表示使用celery作为执行器，只要配置了celery，就可以分布式地多机跑任务，一般用于生产环境。
+  
+  DaskExecutor ：动态任务调度，主要用于数据分析
+  
+  KubernetesExecutor：airflow 1.10.0引入，为每个任务实例创建一个pod，结合k8s使用。
