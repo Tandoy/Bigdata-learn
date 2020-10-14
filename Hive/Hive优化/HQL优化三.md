@@ -58,29 +58,87 @@ user表中的register_ip字段，如果获取不到这个信息，我们默认�
 
 我们从业务逻辑的层面上来优化数据倾斜，比如上面的两个城市做推广活动导致那两个城市数据量激增的例子，我们可以单独对这两个城市来做count，单独做时可用两次MR，第一次打散计算，第二次再最终聚合计算。完成后和其它城市做整合。
 
-2）程序层面
-
-比如说在Hive中，经常遇到count(distinct)操作，这样会导致最终只有一个Reduce任务。
-
-我们可以先group by，再在外面包一层count，就可以了。比如计算按用户名去重后的总用户量：
-
-（1）优化前 只有一个reduce，先去重再count负担比较大：
-
-select name,count(distinct name)from user;
-
-（2）优化后
-
-// 设置该任务的每个job的reducer个数为3个。Hive默认-1，自动推断。
-
-set mapred.reduce.tasks=3;
-
-// 启动两个job，一个负责子查询(可以有多个reduce)，另一个负责count(1)：
-
-select count(1) from (select name from user group by name) tmp;
+2）SQL语句优化
+  1.大小表Join
+  
+  使用map join让小的维度表（1000条以下的记录条数） 先进内存，在map端完成reduce。如下：
+  
+  select /*+ mapjoin(a) */ 
+  a.c1, b.c1 ,b.c2
+  from a join b 
+  where a.c1 = b.c1;
+  2.大表Join大表
+  
+  把空值的key变成一个字符串加上随机数，把倾斜的数据分到不同的reduce上，由于null值关联不上，处理后并不影响最终结果。如下：
+  
+  select * from log a 
+  left outer join users b 
+  on 
+  case when a.user_id is null 
+  then concat('hive',rand()) 
+  else a.user_id end = b.user_id;
+  3.count distinct大量相同特殊值
+  
+  count distinct时，将值为null的情况单独处理，如果是计算count distinct，可以不用处理，直接过滤，在最后结果中加1。如果还有其他计算，需要进行group by，可以先将值为空的记录单独处理，再和其他计算结果进行union。
+  
+  执行如
+  
+  select a,count(distinct b) from t group by a;
+  类型的SQL时，会出现数据倾斜的问题
+  
+  可替换成
+  
+  select a,sum(1) from (select a, b from t group by a,b) group by a;
+  4.group by维度过小
+  
+  采用sum() group by的方式来替换count(distinct)完成计算。
+  
+  5.不同数据类型关联产生数据倾斜
+  
+  用户表中user_id字段为int，log表中user_id字段既有string类型也有int类型。当按照user_id进行两个表的Join操作时，默认的Hash操作会按int型的id来进行分配，这样会导致所有string类型id的记录都分配到一个Reducer中。
+  
+  select * from users a
+  left outer join logs b
+  on a.usr_id = cast(b.user_id as string)
+  6.小表不小不大，怎么用 map join 解决倾斜问题
+  
+  使用 map join 解决小表(记录数少)关联大表的数据倾斜问题，这个方法使用的频率非常高，但如果小表很大，大到map join会出现bug或异常，这时就需要特别的处理。 以下例子:
+  
+  select * from log a
+  left outer join users b
+  on a.user_id = b.user_id;
+  users 表有 600w+ 的记录，把 users 分发到所有的 map 上也是个不小的开销，而且 map join 不支持这么大的小表。如果用普通的 join，又会碰到数据倾斜的问题。
+  解决方法：
+  
+  select /*+mapjoin(x)*/* from log a
+    left outer join (
+      select  /*+mapjoin(c)*/d.*
+        from ( select distinct user_id from log ) c
+        join users d
+        on c.user_id = d.user_id
+      ) x
+    on a.user_id = b.user_id;
 
 3）调参方面
 
 Hadoop和Spark都自带了很多的参数和机制来调节数据倾斜，合理利用它们就能解决大部分问题。
+set hive.map.aggr = true
+在map中会做部分聚集操作，效率更高但需要更多的内存。
+
+set hive.groupby.skewindata = true
+数据倾斜的时候进行负载均衡，查询计划生成两个MR job，第一个job先进行key随机分配处理，随机分布到Reduce中，每个Reduce做部分聚合操作，先缩小数据量。第二个job再进行真正的group by key处理，根据预处理的数据结果按照Group By Key分布到Reduce中（这个过程可以保证相同的Key被分布到同一个Reduce中），完成最终的聚合操作。
+
+set hive.merge.mapfiles=true
+当出现小文件过多，需要合并小文件
+
+set hive.exec.reducers.bytes.per.reducer=1000000000 （单位是字节）
+每个reduce能够处理的数据量大小，默认是1G。
+
+hive.exec.reducers.max=999
+最大可以开启的reduce个数，默认是999个。在只配了hive.exec.reducers.bytes.per.reducer以及hive.exec.reducers.max的情况下，实际的reduce个数会根据实际的数据总量/每个reduce处理的数据量来决定。
+
+set mapred.reduce.tasks=-1
+实际运行的reduce个数，默认是-1，可以认为指定，但是如果认为在此指定了，那么就不会通过实际的总数据量hive.exec.reducers.bytes.per.reducer来决定reduce的个数了。
 
 4）从业务和数据上解决数据倾斜
 
@@ -94,68 +152,3 @@ l 先对key做一层hash，先将数据随机打散让它的并行度变大，�
 
 l 数据预处理
 
-定位导致数据倾斜代码
-Spark数据倾斜只会发生在shuffle过程中。
-
-这里给大家罗列一些常用的并且可能会触发shuffle操作的算子：distinct、groupByKey、reduceByKey、aggregateByKey、join、cogroup、repartition等。
-
-出现数据倾斜时，可能就是你的代码中使用了这些算子中的某一个所导致的。
-
-4.1 某个task执行特别慢的情况
-首先要看的，就是数据倾斜发生在第几个stage中：
-
-如果是用yarn-client模式提交，那么在提交的机器本地是直接可以看到log，可以在log中找到当前运行到了第几个stage；
-
-如果是用yarn-cluster模式提交，则可以通过Spark Web UI来查看当前运行到了第几个stage。
-
-此外，无论是使用yarn-client模式还是yarn-cluster模式，我们都可以在Spark Web UI上深入看一下当前这个stage各个task分配的数据量，从而进一步确定是不是task分配的数据不均匀导致了数据倾斜。
-
-看task运行时间和数据量
-
-task运行时间
-
-比如下图中，倒数第三列显示了每个task的运行时间。明显可以看到，有的task运行特别快，只需要几秒钟就可以运行完；而有的task运行特别慢，需要几分钟才能运行完，此时单从运行时间上看就已经能够确定发生数据倾斜了。
-
-task数据量
-
-此外，倒数第一列显示了每个task处理的数据量，明显可以看到，运行时间特别短的task只需要处理几百KB的数据即可，而运行时间特别长的task需要处理几千KB的数据，处理的数据量差了10倍。此时更加能够确定是发生了数据倾斜。
-
-推断倾斜代码
-
-知道数据倾斜发生在哪一个stage之后，接着我们就需要根据stage划分原理，推算出来发生倾斜的那个stage对应代码中的哪一部分，这部分代码中肯定会有一个shuffle类算子。
-
-精准推算stage与代码的对应关系，需要对Spark的源码有深入的理解，这里我们可以介绍一个相对简单实用的推算方法：只要看到Spark代码中出现了一个shuffle类算子或者是Spark SQL的SQL语句中出现了会导致shuffle的语句（比如group by语句），那么就可以判定，以那个地方为界限划分出了前后两个stage。
-
-这里我们就以如下单词计数来举例。
-
-val conf = new SparkConf()val sc = new SparkContext(conf)val lines = sc.textFile(“hdfs://…”)val words = lines.flatMap(_.split(” “))val pairs = words.map((_, 1))val wordCounts = pairs.reduceByKey(_ + _)wordCounts.collect().foreach(println(_))
-
-在整个代码中只有一个reduceByKey是会发生shuffle的算子，也就是说这个算子为界限划分出了前后两个stage：
-
-stage0，主要是执行从textFile到map操作，以及shuffle write操作（对pairs RDD中的数据进行分区操作，每个task处理的数据中，相同的key会写入同一个磁盘文件内）。
-
-stage1，主要是执行从reduceByKey到collect操作，以及stage1的各个task一开始运行，就会首先执行shuffle read操作（会从stage0的各个task所在节点拉取属于自己处理的那些key，然后对同一个key进行全局性的聚合或join等操作，在这里就是对key的value值进行累加）
-
-stage1在执行完reduceByKey算子之后，就计算出了最终的wordCounts RDD，然后会执行collect算子，将所有数据拉取到Driver上，供我们遍历和打印输出。
-
-123456789
-
-通过对单词计数程序的分析，希望能够让大家了解最基本的stage划分的原理，以及stage划分后shuffle操作是如何在两个stage的边界处执行的。然后我们就知道如何快速定位出发生数据倾斜的stage对应代码的哪一个部分了。
-
-比如我们在Spark Web UI或者本地log中发现，stage1的某几个task执行得特别慢，判定stage1出现了数据倾斜，那么就可以回到代码中，定位出stage1主要包括了reduceByKey这个shuffle类算子，此时基本就可以确定是是该算子导致了数据倾斜问题。
-
-此时，如果某个单词出现了100万次，其他单词才出现10次，那么stage1的某个task就要处理100万数据，整个stage的速度就会被这个task拖慢。
-
-4.2 某个task莫名其妙内存溢出的情况
-这种情况下去定位出问题的代码就比较容易了。我们建议直接看yarn-client模式下本地log的异常栈，或者是通过YARN查看yarn-cluster模式下的log中的异常栈。一般来说，通过异常栈信息就可以定位到你的代码中哪一行发生了内存溢出。然后在那行代码附近找找，一般也会有shuffle类算子，此时很可能就是这个算子导致了数据倾斜。
-
-但是大家要注意的是，不能单纯靠偶然的内存溢出就判定发生了数据倾斜。因为自己编写的代码的bug，以及偶然出现的数据异常，也可能会导致内存溢出。因此还是要按照上面所讲的方法，通过Spark Web UI查看报错的那个stage的各个task的运行时间以及分配的数据量，才能确定是否是由于数据倾斜才导致了这次内存溢出。
-
-5 查看导致数据倾斜的key分布情况
-先对pairs采样10%的样本数据，然后使用countByKey算子统计出每个key出现的次数，最后在客户端遍历和打印样本数据中各个key的出现次数。
-
-val sampledPairs = pairs.sample(false, 0.1)
-
-val sampledWordCounts = sampledPairs.countByKey()
-
-sampledWordCounts.foreach(println(_))
