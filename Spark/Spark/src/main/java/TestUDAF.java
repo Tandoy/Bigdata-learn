@@ -87,7 +87,7 @@ public class TestUDAF extends UserDefinedAggregateFunction {
         //注册UDAF函数
         spark.udf().register("my_avg",new TestUDAF());
         //读取文件数据
-        JavaRDD<String> lines = sc.textFile( "D:\\java\\spark\\src\\main\\resources\\udftest.txt" );
+        JavaRDD<String> lines = sc.textFile( "D:\\Downloads\\github\\Bigdata-learn\\Spark\\Spark\\src\\main\\resources\\udftest.txt" );
         JavaRDD<Row> rows = lines.map(line-> RowFactory.create(line.split("\\^")));
         List<StructField> structFields = new ArrayList<StructField>();
         structFields.add(DataTypes.createStructField( "a", DataTypes.StringType, true ));
