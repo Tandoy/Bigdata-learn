@@ -1,0 +1,5 @@
+dee	kia,1	ali,2
+ali	dee,2	bob,1	joe,3
+joe	bob,2	ali,3
+kia	bob,1	dee,1
+bob	kia,1	ali,1	joe,2
