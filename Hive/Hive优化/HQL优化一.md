@@ -296,3 +296,17 @@ hive.exec.reducers.max    ＃这个参数控制最大的reducer的数量， 如�
 mapred.reduce.tasks ＃这个参数如果指定了，hive就不会用它的estimation函数来自动计算reduce的个数，而是用这个参数来启动reducer。默认是-1。
 7.1参数设置的影响
 　　如果reduce太少：如果数据量很大，会导致这个reduce异常的慢，从而导致这个任务不能结束，也有可能会OOM 2、如果reduce太多：  产生的小文件太多，合并起来代价太高，namenode的内存占用也会增大。如果我们不指定mapred.reduce.tasks， hive会自动计算需要多少个reducer.
+
+8.hive实战
+
+  8.1在实际工作中hive往往与hue进行搭配
+  hive执行sql异常：java.lang.ArrayIndexOutOfBoundsException
+  
+  解决方案：
+  执行sql前，加上如下参数，禁用hive矢量执行：
+ 
+    set hive.vectorized.execution.enabled=false;
+  
+    set hive.vectorized.execution.reduce.enabled=false;
+  
+    set hive.vectorized.execution.reduce.groupby.enabled=false;
