@@ -310,3 +310,14 @@ mapred.reduce.tasks ＃这个参数如果指定了，hive就不会用它的estim
     set hive.vectorized.execution.reduce.enabled=false;
   
     set hive.vectorized.execution.reduce.groupby.enabled=false;
+    
+  8.2
+  在多个列上进行的去重操作与hive环境变量hive.groupby.skewindata存在关系。
+  
+  当hive.groupby.skewindata=true时，hive不支持多列上的去重操作，因此执行以上SQL时出现异常， #如下：
+  
+  DISTINCT on different columns not supported with skew in data 
+  
+  默认该参数的值为false，表示不启用，要启用时，可以set hive.groupby.skewindata=ture;进行启用。
+  
+  当启用时，能够解决数据倾斜的问题，但如果要在查询语句中对多个字段进行去重统计时会报错。
