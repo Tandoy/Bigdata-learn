@@ -207,6 +207,7 @@ ON a.auction_id=b.auction_id
 　　所以商品表的 HDFS 读取只会是一次。
 
 5.5解决Hive对UNION ALL优化的短板
+
 　　Hive 对 union all 的优化的特性：对 union all 优化只局限于非嵌套查询。
 
 消灭子查询内的 group by
@@ -253,6 +254,7 @@ SELECT * FROM (t1 UNION ALL t4 UNION ALL t5);
 　　调优结果显示：针对千万级别的广告位表，由原先 5 个 Job 共 15 分钟，分解为 2 个 job 一个 8-10 分钟，一个3分钟。
 
 5.6GROUP BY替代COUNT(DISTINCT)达到优化效果
+
 　　计算 uv 的时候，经常会用到 COUNT(DISTINCT)，但在数据比较倾斜的时候 COUNT(DISTINCT) 会比较慢。这时可以尝试用 GROUP BY 改写代码计算 uv。
 
 原有代码
@@ -271,6 +273,7 @@ CREATE TABLE ip_2014_12_29 AS SELECT COUNT(1) AS IP FROM (SELECT DISTINCT ip fro
 　　测试结果表名：明显改造后的语句比之前耗时，这是因为改造后的语句有2个SELECT，多了一个job，这样在数据量小的时候，数据不会存在倾斜问题。
 
 6.优化总结
+
 　　优化时，把hive sql当做mapreduce程序来读，会有意想不到的惊喜。理解hadoop的核心能力，是hive优化的根本。这是这一年来，项目组所有成员宝贵的经验总结。
 
 长期观察hadoop处理数据的过程，有几个显著的特征:
@@ -289,6 +292,7 @@ CREATE TABLE ip_2014_12_29 AS SELECT COUNT(1) AS IP FROM (SELECT DISTINCT ip fro
 　　优化时把握整体，单个作业最优不如整体最优。
 
 7.优化的常用手段
+
 　　主要由三个属性来决定：
 
 hive.exec.reducers.bytes.per.reducer   ＃这个参数控制一个job会有多少个reducer来处理，依据的是输入文件的总大小。默认1GB。
