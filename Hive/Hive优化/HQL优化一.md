@@ -39,7 +39,8 @@ COUNT(DISTINCT)在数据量大的情况下，效率较低，如果多COUNT(DISTI
 4.1列裁剪
 　　Hive 在读数据的时候，可以只读取查询中所需要用到的列，而忽略其它列。 例如，若有以下查询：
 
-SELECT a,b FROM q WHERE e<10;
+    SELECT a,b FROM q WHERE e<10;
+
 　　在实施此项查询中，Q 表有 5 列（a，b，c，d，e），Hive 只读取查询逻辑中真实需要 的 3 列 a、b、e，而忽略列 c，d；这样做节省了读取开销，中间表存储开销和数据整合开销。
 
 　　裁剪所对应的参数项为：hive.optimize.cp=true（默认值为真）
@@ -59,10 +60,10 @@ SELECT * FROM T1 JOIN (SELECT * FROM T2) subq ON (T1.a1=subq.a2) WHERE subq.prtn
 4.3.1JOIN原则
 　　在使用写有 Join 操作的查询语句时有一条原则：应该将条目少的表/子查询放在 Join 操作符的左边。原因是在 Join 操作的 Reduce 阶段，位于 Join 操作符左边的表的内容会被加载进内存，将条目少的表放在左边，可以有效减少发生 OOM 错误的几率。对于一条语句中有多个 Join 的情况，如果 Join 的条件相同，比如查询：
 
-INSERT OVERWRITE TABLE pv_users 
- SELECT pv.pageid, u.age FROM page_view p 
- JOIN user u ON (pv.userid = u.userid) 
- JOIN newuser x ON (u.userid = x.userid);  
+    INSERT OVERWRITE TABLE pv_users 
+     SELECT pv.pageid, u.age FROM page_view p 
+     JOIN user u ON (pv.userid = u.userid) 
+     JOIN newuser x ON (u.userid = x.userid);  
 如果 Join 的 key 相同，不管有多少个表，都会则会合并为一个 Map-Reduce
 一个 Map-Reduce 任务，而不是 ‘n’ 个
 在做 OUTER JOIN 的时候也是一样
