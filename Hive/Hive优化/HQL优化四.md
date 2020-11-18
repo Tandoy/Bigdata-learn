@@ -51,3 +51,8 @@ Hive参数
     hive.merge.sparkfiles
      
 小文件是HDFS的天敌，所以Hive原生提供了合并小文件的选项，在on  MR时是hive.merge.mapredfiles，但是on Spark时会改成hive.merge.sparkfiles，注意要把这个参数设为true。至于小文件合并的阈值参数，即hive.merge.smallfiles.avgsize与hive.merge.size.per.task都没有变化。
+
+hive on spark 
+    
+    1.建表得使用textfile格式
+    2.row_number() over() 不能使用，要用row_number() over(order by 1)
