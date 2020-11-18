@@ -49,5 +49,5 @@ Hive参数
 但是Hive on MR下统计表的大小时，使用的是数据在磁盘上存储的近似大小，而Hive on Spark下则改用在内存中存储的近似大小。由于HDFS上的数据很有可能被压缩或序列化，使得大小减小，所以由MR迁移到Spark时要适当调高这个参数，以保证map join正常转换。一般会设为100~200MB左右，如果内存充裕，可以更大点。
 
     hive.merge.sparkfiles
-    
+     
 小文件是HDFS的天敌，所以Hive原生提供了合并小文件的选项，在on  MR时是hive.merge.mapredfiles，但是on Spark时会改成hive.merge.sparkfiles，注意要把这个参数设为true。至于小文件合并的阈值参数，即hive.merge.smallfiles.avgsize与hive.merge.size.per.task都没有变化。
