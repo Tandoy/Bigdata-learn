@@ -14,7 +14,7 @@ airflow：
 	
 二、web界面使用介绍
 
-UI界面包含9个圆圈，每个圆圈代表task的执行状态和次数
+UI界面包含8个圆圈，每个圆圈代表task的执行状态和次数
 
 	圈1 success：现实成功的task数，基本上就是该tag包含多少个task，这里基本上就显示几。
 	圈2 running：正在运行的task数
@@ -23,8 +23,7 @@ UI界面包含9个圆圈，每个圆圈代表task的执行状态和次数
 	圈5 skipped:跳过的task数
 	圈6 up_for_retry:执行失败的task，重新执行的task数
 	圈7 queued：队列，等待执行的task数
-	圈8 ：
-	圈9 scheduled:刚开始调度dag时，这一次执行总共调度了dag下面多少个task数，并且随着task的执行成功，数值逐渐减少。
+	圈8 scheduled:刚开始调度dag时，这一次执行总共调度了dag下面多少个task数，并且随着task的执行成功，数值逐渐减少。
 
 这里显示dag的执行信息，包括3个圆圈，每个圆圈代表dag的执行状态和次数
 
@@ -48,9 +47,9 @@ Links：
 
 
 当某dag执行失败，可以通过3个View视图去查看是哪个task执行失败。
-Ad Hoc Query：特殊查询
-通过UI界面对一些数据库,数据仓库的进行简单的SQL交互操作.
-Ad Hoc Query
+
+	Ad Hoc Query：特殊查询
+	通过UI界面对一些数据库,数据仓库的进行简单的SQL交互操作.
 
 Charts:
 
@@ -77,5 +76,7 @@ Variables
 
 	Variable 没有task_id/dag_id属性, 往往用来定义一些系统级的常量或变量, 我们可以在WebUI或代码中新建/更新/删除Variable. 也可以在WebUI上维护变量.
 	Variable 的另一个重要的用途是, 我们为Prod/Dev环境做不同的设置, 详见后面的开发小节.
+	
 XComs
-XCom和Variable类似, 用于Task之间共享一些信息. XCom 包含task_id/dag_id属性, 适合于Task之间传递数据, XCom使用方法比Variables复杂些. 比如有一个dag, 两个task组成(T1->T2), 可以在T1中使用xcom_push()来推送一个kv, 在T2中使用xcom_pull()来获取这个kv.
+
+	XCom和Variable类似, 用于Task之间共享一些信息. XCom 包含task_id/dag_id属性, 适合于Task之间传递数据, XCom使用方法比Variables复杂些. 比如有一个dag, 两个task组成(T1->T2), 可以在T1中使用xcom_push()来推送一个kv, 在T2中使用xcom_pull()来获取这个kv.
