@@ -1,26 +1,20 @@
 一、调度工具比较
-系统
-介绍
+
 Apache Oozie：
-使用XML配置, Oozie任务的资源文件都必须存放在HDFS上. 配置不方便同时也只能用于Hadoop.
+
+	使用XML配置, Oozie任务的资源文件都必须存放在HDFS上. 配置不方便同时也只能用于Hadoop.
+	
 Linkedin Azkaban：
-web界面尤其很赞, 使用java properties文件维护任务依赖关系, 任务资源文件需要打包成zip, 部署不是很方便.
+
+	web界面尤其很赞, 使用java properties文件维护任务依赖关系, 任务资源文件需要打包成zip, 部署不是很方便.
+	
 airflow：
-具有自己的web任务管理界面，dag任务创建通过python代码，可以保证其灵活性和适应性
+
+	具有自己的web任务管理界面，dag任务创建通过python代码，可以保证其灵活性和适应性
+	
 二、web界面使用介绍
 
-	* 
-DAG
-dag_id
-	* 
-Schedule
-调度时间
-	* 
-Owner
-dag拥有者
-	* 
-Recent Tasks
-这里包含9个圆圈，每个圆圈代表task的执行状态和次数
+UI界面包含9个圆圈，每个圆圈代表task的执行状态和次数
 圈1 success：现实成功的task数，基本上就是该tag包含多少个task，这里基本上就显示几。
 圈2 running：正在运行的task数
 圈3 failed：失败的task数
