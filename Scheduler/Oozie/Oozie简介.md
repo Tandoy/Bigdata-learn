@@ -1,6 +1,9 @@
 Oozie是一个管理 Apache Hadoop 作业的工作流调度系统。
+
 Oozie的 workflow jobs 是由 actions 组成的 有向无环图(DAG)。
+
 Oozie的 coordinator jobs 是由时间 (频率)和数据可用性触发的重复的 workflow jobs 。
+
 Oozie与Hadoop生态圈的其他部分集成在一起，支持多种类型的Hadoop作业（如Java map-reduce、流式map-reduce、Pig、Hive、Sqoop和Distcp）以及特定于系统的工作（如Java程序和shell脚本）。
 Oozie是一个可伸缩、可靠和可扩展的系统。
 
@@ -16,25 +19,25 @@ Oozie是一个可伸缩、可靠和可扩展的系统。
 
  1.2 Oozie的执行模型（Action原理）
  
-（1） Oozie提供了RESTful API接口来接受用户的提交请求(提交工作流作业)。当用户在客户端命令行使用oozie -job xxx命令提交作业，本质上也是发HTTP请求向OozieServer提交作业。
+    （1） Oozie提供了RESTful API接口来接受用户的提交请求(提交工作流作业)。当用户在客户端命令行使用oozie -job xxx命令提交作业，本质上也是发HTTP请求向OozieServer提交作业。
 
-（2）OozieServer收到提交的作业命令后，由工作流引擎负责workflow的执行以及状态的转换。比如，从一个Action执行到下一个Action，或者workflow状态由Suspend变成KILLED。Oozie以异步方式将作业(MR作业)提交给Hadoop。
+    （2）OozieServer收到提交的作业命令后，由工作流引擎负责workflow的执行以及状态的转换。比如，从一个Action执行到下一个Action，或者workflow状态由Suspend变成KILLED。Oozie以异步方式将作业(MR作业)提交给Hadoop。
 
-注：这也是为什么当调用Oozie 的RESTful接口提交作业之后能立即返回一个jobId的原因，用户程序不必等待作业执
- 
-行完成（因为有些大作业可能会执行很久(几个小时甚至几天)）。Oozie在后台以异步方式，再将workflow对应的
+注：这也是为什么当调用Oozie 的RESTful接口提交作业之后能立即返回一个jobId的原因，用户程序不必等待作业执行完成（因为有些大作业可能会执行很久(几个小时甚至几天)）。Oozie在后台以异步方式，再将workflow对应的
  
 Action提交给hadoop执行
-（3） Oozie通过 launcher job 运行某个具体的Action。launcher job是一个 map-only的MR作业，该作业在集群中的执行也是分布式的。这里的launcher需要向yarn集群申请AM运行，同时真正的任务运行也需要先申请AM。
+
+    （3） Oozie通过 launcher job 运行某个具体的Action。launcher job是一个 map-only的MR作业，该作业在集群中的执行也是分布式的。这里的launcher需要向yarn集群申请AM运行，同时真正的任务运行也需要先申请AM。
 
    launcher的作用：
 
-   1）监控和运行具体的action
-   2) 一个action对应一个launcher作业（一个action对应一个job，一个job启动一个oozie-launcher）
-   3）Launcher job 负责调用对应任务的资源，调用对应的 CLI API 启动 Hadoop、Hive 或者 Pig 作业等等。Launcher job启动的仅是Map的mr作业，这个 Map 作业知道其所对应的工作流中某一个 Action 应该执行的操作，然后实际上执行 Action 操作的 Hadoop 作业将会被启动，你可以认为这些随后启动的作业是 Launcher 作业的子作业。
- 4）Oozie launcher任务 的本质就是启动任务所需要的客户端，如hive任务，启动hive客户端，用于提交任务。
- 5）除了MR Action外，launcher作业的生命周期和具体任务的生命周期一致。（这点可以在yarn上进行观察）
- 由launcher任务监控运行具体任务的优势：减少了Oozie Server服务器的压力，使Oozie Server服务器稳定运行。
+    1）监控和运行具体的action
+    2) 一个action对应一个launcher作业（一个action对应一个job，一个job启动一个oozie-launcher）
+    3）Launcher job 负责调用对应任务的资源，调用对应的 CLI API 启动 Hadoop、Hive 或者 Pig 作业等等。Launcher job启动的仅是Map的mr作业，这个 Map 作业知道其所对应的工作流中某一个 Action 应该执行的操作，然后实际上执行 Action 操作的 Hadoop 作业将会被启动，你可以认为这些随后启动的作业是 Launcher 作业的子作业。
+    4）Oozie launcher任务 的本质就是启动任务所需要的客户端，如hive任务，启动hive客户端，用于提交任务。
+    5）除了MR Action外，launcher作业的生命周期和具体任务的生命周期一致。（这点可以在yarn上进行观察）
+    由launcher任务监控运行具体任务的优势：减少了Oozie Server服务器的压力，使Oozie Server服务器稳定运行。
 
-    整个过程源码简单分析如下：
+整个过程源码简单分析如下：
+
     Oozie执行Action时，即ActionExecutor（最主要的子类是JavaActionExecutor，hive、spark等action都是这个类的子类），JavaActionExecutor首先会提交一个LauncherMapper（map任务）到yarn，其中会执行LauncherMain（具体的action是其子类，比如JavaMain、SparkMain等），spark任务会执行SparkMain，在SparkMain中会调用org.apache.spark.deploy.SparkSubmit来提交任务。其实诉我的map任务就是识别你是什么样的任务（hive,shell,spark等），并通过该任务来启动任务所需要的环境来提交任务。提供了提交任务的接口（如hive任务，启动hive客户端或beeline等）。
