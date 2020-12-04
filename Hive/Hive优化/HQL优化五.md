@@ -1,8 +1,14 @@
 1.limit限制调整
 
     一般情况下，Limit语句还是需要执行整个查询语句，然后再返回部分结果。
-    有一个配置属性可以开启，避免这种情况---对数据源进行抽样。
-    hive.limit.optimize.enable=true --- 开启对数据源进行采样的功能 hive.limit.row.max.size --- 设置最小的采样容量 hive.limit.optimize.limit.file --- 设置最大的采样样本数
+    有一个配置属性可以开启，避免这种情况
+    ---对数据源进行抽样。
+    hive.limit.optimize.enable=true 
+    --- 开启对数据源进行采样的功能 
+    hive.limit.row.max.size 
+    --- 设置最小的采样容量 
+    hive.limit.optimize.limit.file 
+    --- 设置最大的采样样本数
     缺点：有可能部分数据永远不会被处理到
     
 2.JOIN优化
@@ -20,7 +26,10 @@
 
     有时hive的输入数据量是非常小的。在这种情况下，为查询出发执行任务的时间消耗可能会比实际job的执行时间要多的多。对于大多数这种情况，hive可以通过本地模式在单台机器上处理所有的任务。对于小数据集，执行时间会明显被缩短
     set hive.exec.mode.local.auto=true;
-    当一个job满足如下条件才能真正使用本地模式：　　- 1.job的输入数据大小必须小于参数：hive.exec.mode.local.auto.inputbytes.max(默认128MB) 　　- 2.job的map数必须小于参数：hive.exec.mode.local.auto.tasks.max(默认4) 　　- 3.job的reduce数必须为0或者1
+    当一个job满足如下条件才能真正使用本地模式：　　
+    - 1.job的输入数据大小必须小于参数：hive.exec.mode.local.auto.inputbytes.max(默认128MB) 　　
+    - 2.job的map数必须小于参数：hive.exec.mode.local.auto.tasks.max(默认4) 　　
+    - 3.job的reduce数必须为0或者1
     可用参数hive.mapred.local.mem(默认0)控制child jvm使用的最大内存数。
     
 4.并行执行
@@ -34,7 +43,10 @@
 
     对分区表进行查询，在where子句中没有加分区过滤的话，将禁止提交任务(默认：nonstrict)
     set hive.mapred.mode=strict;
-    注：使用严格模式可以禁止3种类型的查询：（1）对于分区表，不加分区字段过滤条件，不能执行 （2）对于order by语句，必须使用limit语句 （3）限制笛卡尔积的查询（join的时候不使用on，而使用where的）
+    注：使用严格模式可以禁止3种类型的查询：
+    （1）对于分区表，不加分区字段过滤条件，不能执行 
+    （2）对于order by语句，必须使用limit语句 
+    （3）限制笛卡尔积的查询（join的时候不使用on，而使用where的）
     
 6.调整mapper和reducer个数
 
