@@ -56,4 +56,4 @@ hive on spark
     
     1.建表得使用textfile格式
     2.row_number() over() 不能使用，要用row_number() over(order by 1)
-    3.存在多端业务逻辑sql时，最后一段sql不应以‘;’结尾
+    3.存在多端业务逻辑sql时，最后一段sql不应以';'结尾
