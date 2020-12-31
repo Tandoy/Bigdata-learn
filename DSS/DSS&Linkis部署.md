@@ -53,5 +53,6 @@
        4.5 进行安装
             sh bin/install.sh
        4.6 测试是否启动成功
-            http://dxbigdata102:20303/
+            --（1）linkis服务是否正常启动 http://dxbigdata102:20303/
+            --（2） 使用官方测试类进行测试 UJESClientImplTestJ.java
 ### DSS标准版安装
