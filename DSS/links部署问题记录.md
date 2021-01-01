@@ -37,5 +37,7 @@
 3.报错：用户已经连接，请先登出再登陆
 
     设置引擎时用户，例：EngineType$.MODULE$.HIVE()).setUser("appuser").build()
+    
+4.若存在conf/config.sh配置有误更改后，应重新初始化./install.sh
 
     
