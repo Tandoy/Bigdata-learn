@@ -1,0 +1,20 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: ResourceManager
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: locahost
+  instance:
+    metadata-map:
+      test: wedatasphere
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info

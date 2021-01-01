@@ -1,0 +1,25 @@
+server:
+  port: 9235   #The port that the module provides services (required)
+spring:
+  application:
+    name: pythonEngineManager  #Module name for high availability (required)
+
+#Specify the address of the eureka server for registration (required)
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: locahost
+  instance:
+    metadata-map:
+      test: enjoyyin
+#required
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info
+
+logging:
+  config: classpath:log4j2.xml
+#    register-with-eureka: false
+#    fetch-registry: false

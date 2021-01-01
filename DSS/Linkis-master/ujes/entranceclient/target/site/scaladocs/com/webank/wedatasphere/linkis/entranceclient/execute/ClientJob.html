@@ -1,0 +1,1947 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>ClientJob - linkis-ujes-entranceclient 0.9.4 API - com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob</title>
+          <meta name="description" content="ClientJob - linkis - ujes - entranceclient 0.9.4 API - com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob" />
+          <meta name="keywords" content="ClientJob linkis ujes entranceclient 0.9.4 API com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.webank">webank</a>.<a href="../../../package.html" class="extype" name="com.webank.wedatasphere">wedatasphere</a>.<a href="../../package.html" class="extype" name="com.webank.wedatasphere.linkis">linkis</a>.<a href="../package.html" class="extype" name="com.webank.wedatasphere.linkis.entranceclient">entranceclient</a>.<a href="package.html" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute">execute</a></p>
+        <h1>ClientJob</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="package.html" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute">package execute</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ClientJob</span><span class="result"> extends <span class="extype" name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob">EntranceJob</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Created by johnnwang on 2018/10/30.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob">EntranceJob</span>, <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.LockJob">LockJob</span>, <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.Job">Job</span>, <span class="extype" name="java.io.Closeable">Closeable</span>, <span class="extype" name="java.lang.AutoCloseable">AutoCloseable</span>, <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent">SchedulerEvent</span>, <span class="extype" name="com.webank.wedatasphere.linkis.common.utils.Logging">Logging</span>, <span class="extype" name="java.lang.Runnable">Runnable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob"><span>ClientJob</span></li><li class="in" name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob"><span>EntranceJob</span></li><li class="in" name="com.webank.wedatasphere.linkis.scheduler.queue.LockJob"><span>LockJob</span></li><li class="in" name="com.webank.wedatasphere.linkis.scheduler.queue.Job"><span>Job</span></li><li class="in" name="java.io.Closeable"><span>Closeable</span></li><li class="in" name="java.lang.AutoCloseable"><span>AutoCloseable</span></li><li class="in" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent"><span>SchedulerEvent</span></li><li class="in" name="com.webank.wedatasphere.linkis.common.utils.Logging"><span>Logging</span></li><li class="in" name="java.lang.Runnable"><span>Runnable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob"></a>
+      <a id="&lt;init&gt;:ClientJob"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ClientJob</span><span class="params">()</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@&lt;init&gt;():com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@##():Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#addResultSet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addResultSet(resultSet:String):Unit"></a>
+      <a id="addResultSet(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addResultSet</span><span class="params">(<span name="resultSet">resultSet: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@addResultSet(resultSet:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#afterStateChanged" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="afterStateChanged(fromState:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState,toState:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState):Unit"></a>
+      <a id="afterStateChanged(SchedulerEventState,SchedulerEventState):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">afterStateChanged</span><span class="params">(<span name="fromState">fromState: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState">SchedulerEventState</span></span>, <span name="toState">toState: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState">SchedulerEventState</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@afterStateChanged(fromState:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState,toState:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → EntranceJob → Job → SchedulerEvent</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#cancel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cancel():Unit"></a>
+      <a id="cancel():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cancel</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@cancel():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → SchedulerEvent</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#close" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="close():Unit"></a>
+      <a id="close():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">close</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@close():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → Closeable → AutoCloseable</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#createJobDaemon" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createJobDaemon:com.webank.wedatasphere.linkis.scheduler.queue.JobDaemon"></a>
+      <a id="createJobDaemon:JobDaemon"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createJobDaemon</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.JobDaemon">JobDaemon</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@createJobDaemon:com.webank.wedatasphere.linkis.scheduler.queue.JobDaemon" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#createTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createTime:Long"></a>
+      <a id="createTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@createTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#debug" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="debug(message:&lt;?&gt;):Unit"></a>
+      <a id="debug(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">debug</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@debug(message:=&gt;String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#endTime" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="endTime:Long"></a>
+      <a id="endTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">endTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@endTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#error" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="error(message:&lt;?&gt;):Unit"></a>
+      <a id="error(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@error(message:=&gt;String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#error" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="error(message:&lt;?&gt;,t:&lt;?&gt;):Unit"></a>
+      <a id="error(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">error</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="t">t: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@error(message:=&gt;String,t:Throwable):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#existsJobDaemon" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="existsJobDaemon:Boolean"></a>
+      <a id="existsJobDaemon:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">existsJobDaemon</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@existsJobDaemon:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getCreator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getCreator:String"></a>
+      <a id="getCreator:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getCreator</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getCreator:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#getEndTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getEndTime:Long"></a>
+      <a id="getEndTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEndTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getEndTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getEntraceCotnext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getEntraceCotnext:com.webank.wedatasphere.linkis.entrance.EntranceContext"></a>
+      <a id="getEntraceCotnext:EntranceContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntraceCotnext</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.entrance.EntranceContext">EntranceContext</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getEntraceCotnext:com.webank.wedatasphere.linkis.entrance.EntranceContext" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getEntranceListenerBus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getEntranceListenerBus:Option[com.webank.wedatasphere.linkis.entrance.event.EntranceEventListenerBus[com.webank.wedatasphere.linkis.entrance.event.EntranceEventListener,com.webank.wedatasphere.linkis.entrance.event.EntranceEvent]]"></a>
+      <a id="getEntranceListenerBus:Option[EntranceEventListenerBus[EntranceEventListener,EntranceEvent]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntranceListenerBus</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.webank.wedatasphere.linkis.entrance.event.EntranceEventListenerBus">EntranceEventListenerBus</span>[<span class="extype" name="com.webank.wedatasphere.linkis.entrance.event.EntranceEventListener">EntranceEventListener</span>, <span class="extype" name="com.webank.wedatasphere.linkis.entrance.event.EntranceEvent">EntranceEvent</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getEntranceListenerBus:Option[com.webank.wedatasphere.linkis.entrance.event.EntranceEventListenerBus[com.webank.wedatasphere.linkis.entrance.event.EntranceEventListener,com.webank.wedatasphere.linkis.entrance.event.EntranceEvent]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getErrorResponse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getErrorResponse:com.webank.wedatasphere.linkis.scheduler.executer.ErrorExecuteResponse"></a>
+      <a id="getErrorResponse:ErrorExecuteResponse"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getErrorResponse</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.ErrorExecuteResponse">ErrorExecuteResponse</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getErrorResponse:com.webank.wedatasphere.linkis.scheduler.executer.ErrorExecuteResponse" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getExecutor" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getExecutor:com.webank.wedatasphere.linkis.scheduler.executer.Executor"></a>
+      <a id="getExecutor:Executor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getExecutor</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.Executor">Executor</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getExecutor:com.webank.wedatasphere.linkis.scheduler.executer.Executor" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#getId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getId:String"></a>
+      <a id="getId:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getId</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getId:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#getJobInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getJobInfo:com.webank.wedatasphere.linkis.scheduler.queue.JobInfo"></a>
+      <a id="getJobInfo:JobInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getJobInfo</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.JobInfo">JobInfo</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getJobInfo:com.webank.wedatasphere.linkis.scheduler.queue.JobInfo" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.LockJob#getLock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLock:String"></a>
+      <a id="getLock:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLock</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getLock:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LockJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getLogListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLogListener:Option[com.webank.wedatasphere.linkis.scheduler.listener.LogListener]"></a>
+      <a id="getLogListener:Option[LogListener]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLogListener</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.webank.wedatasphere.linkis.scheduler.listener.LogListener">LogListener</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getLogListener:Option[com.webank.wedatasphere.linkis.scheduler.listener.LogListener]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getMaxRetryNum" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMaxRetryNum:Int"></a>
+      <a id="getMaxRetryNum:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMaxRetryNum</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getMaxRetryNum:Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#getName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getName:String"></a>
+      <a id="getName:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getName:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getParams" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getParams:java.util.Map[String,Any]"></a>
+      <a id="getParams:Map[String,Any]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getParams</span><span class="result">: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getParams:java.util.Map[String,Any]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getProgress" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getProgress:Float"></a>
+      <a id="getProgress:Float"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getProgress</span><span class="result">: <span class="extype" name="scala.Float">Float</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getProgress:Float" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getProgressInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getProgressInfo:Array[com.webank.wedatasphere.linkis.protocol.engine.JobProgressInfo]"></a>
+      <a id="getProgressInfo:Array[JobProgressInfo]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getProgressInfo</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.webank.wedatasphere.linkis.protocol.engine.JobProgressInfo">JobProgressInfo</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getProgressInfo:Array[com.webank.wedatasphere.linkis.protocol.engine.JobProgressInfo]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getProgressListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getProgressListener:Option[com.webank.wedatasphere.linkis.scheduler.listener.ProgressListener]"></a>
+      <a id="getProgressListener:Option[ProgressListener]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getProgressListener</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.webank.wedatasphere.linkis.scheduler.listener.ProgressListener">ProgressListener</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getProgressListener:Option[com.webank.wedatasphere.linkis.scheduler.listener.ProgressListener]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#getResultSets" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getResultSets:Array[String]"></a>
+      <a id="getResultSets:Array[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getResultSets</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getResultSets:Array[String]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#getRetryNum" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getRetryNum:Int"></a>
+      <a id="getRetryNum:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getRetryNum</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getRetryNum:Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#getScheduledTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getScheduledTime:Long"></a>
+      <a id="getScheduledTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getScheduledTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getScheduledTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#getStartTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStartTime:Long"></a>
+      <a id="getStartTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStartTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getStartTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#getState" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getState:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState"></a>
+      <a id="getState:SchedulerEventState"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getState</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState">SchedulerEventState</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getState:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getTask" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getTask:com.webank.wedatasphere.linkis.protocol.task.Task"></a>
+      <a id="getTask:Task"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getTask</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.protocol.task.Task">Task</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getTask:com.webank.wedatasphere.linkis.protocol.task.Task" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#getUser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getUser:String"></a>
+      <a id="getUser:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getUser</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@getUser:String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#incrementResultSetPersisted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="incrementResultSetPersisted():Unit"></a>
+      <a id="incrementResultSetPersisted():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">incrementResultSetPersisted</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@incrementResultSetPersisted():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="info(message:=&gt;String,t:Throwable):Unit"></a>
+      <a id="info(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="t">t: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@info(message:=&gt;String,t:Throwable):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#info" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="info(message:=&gt;String):Unit"></a>
+      <a id="info(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">info</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@info(message:=&gt;String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#init" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="init():Unit"></a>
+      <a id="init():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">init</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@init():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#isCompleted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isCompleted:Boolean"></a>
+      <a id="isCompleted:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isCompleted</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isCompleted:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → SchedulerEvent</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#isJobCanRetry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isJobCanRetry:Boolean"></a>
+      <a id="isJobCanRetry:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isJobCanRetry</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isJobCanRetry:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#isJobShouldRetry" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isJobShouldRetry(errorExecuteResponse:com.webank.wedatasphere.linkis.scheduler.executer.ErrorExecuteResponse):Boolean"></a>
+      <a id="isJobShouldRetry(ErrorExecuteResponse):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isJobShouldRetry</span><span class="params">(<span name="errorExecuteResponse">errorExecuteResponse: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.ErrorExecuteResponse">ErrorExecuteResponse</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isJobShouldRetry(errorExecuteResponse:com.webank.wedatasphere.linkis.scheduler.executer.ErrorExecuteResponse):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>EntranceJob → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#isJobSupportRetry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isJobSupportRetry:Boolean"></a>
+      <a id="isJobSupportRetry:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isJobSupportRetry</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isJobSupportRetry:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#isRunning" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isRunning:Boolean"></a>
+      <a id="isRunning:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRunning</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isRunning:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#isScheduled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isScheduled:Boolean"></a>
+      <a id="isScheduled:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isScheduled</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isScheduled:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#isSucceed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isSucceed:Boolean"></a>
+      <a id="isSucceed:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isSucceed</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isSucceed:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#isWaitForPersistedTimeout" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isWaitForPersistedTimeout(startWaitForPersistedTime:Long):Boolean"></a>
+      <a id="isWaitForPersistedTimeout(Long):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isWaitForPersistedTimeout</span><span class="params">(<span name="startWaitForPersistedTime">startWaitForPersistedTime: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isWaitForPersistedTimeout(startWaitForPersistedTime:Long):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#isWaitForRetry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isWaitForRetry:Boolean"></a>
+      <a id="isWaitForRetry:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isWaitForRetry</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isWaitForRetry:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#isWaiting" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isWaiting:Boolean"></a>
+      <a id="isWaiting:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isWaiting</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@isWaiting:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#jobDaemon" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jobDaemon:Option[com.webank.wedatasphere.linkis.scheduler.queue.JobDaemon]"></a>
+      <a id="jobDaemon:Option[JobDaemon]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jobDaemon</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.JobDaemon">JobDaemon</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@jobDaemon:Option[com.webank.wedatasphere.linkis.scheduler.queue.JobDaemon]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#jobDaemonUpdateInterval" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jobDaemonUpdateInterval:Long"></a>
+      <a id="jobDaemonUpdateInterval:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jobDaemonUpdateInterval</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@jobDaemonUpdateInterval:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#jobToExecuteRequest" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jobToExecuteRequest:com.webank.wedatasphere.linkis.scheduler.executer.ExecuteRequest"></a>
+      <a id="jobToExecuteRequest:ExecuteRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jobToExecuteRequest</span><span class="result">: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.ExecuteRequest">ExecuteRequest</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@jobToExecuteRequest:com.webank.wedatasphere.linkis.scheduler.executer.ExecuteRequest" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob">ClientJob</a> → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#kill" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="kill():Unit"></a>
+      <a id="kill():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">kill</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@kill():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#logger" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logger:org.slf4j.Logger"></a>
+      <a id="logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logger</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@logger:org.slf4j.Logger" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#onFailure" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onFailure(errorMsg:String,t:Throwable):Unit"></a>
+      <a id="onFailure(String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onFailure</span><span class="params">(<span name="errorMsg">errorMsg: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="t">t: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@onFailure(errorMsg:String,t:Throwable):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#pause" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pause():Unit"></a>
+      <a id="pause():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pause</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@pause():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#resume" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resume():Unit"></a>
+      <a id="resume():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resume</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@resume():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="run():Unit"></a>
+      <a id="run():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">run</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@run():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → Runnable</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#scheduledTime" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="scheduledTime:Long"></a>
+      <a id="scheduledTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">scheduledTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@scheduledTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setCreator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setCreator(creator:String):Unit"></a>
+      <a id="setCreator(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setCreator</span><span class="params">(<span name="creator">creator: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setCreator(creator:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setEntranceContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setEntranceContext(entranceContext:&lt;?&gt;):Unit"></a>
+      <a id="setEntranceContext(EntranceContext):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntranceContext</span><span class="params">(<span name="entranceContext">entranceContext: <span class="extype" name="com.webank.wedatasphere.linkis.entrance.EntranceContext">EntranceContext</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setEntranceContext(entranceContext:com.webank.wedatasphere.linkis.entrance.EntranceContext):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setEntranceListenerBus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setEntranceListenerBus(entranceListenerBus:&lt;?&gt;):Unit"></a>
+      <a id="setEntranceListenerBus(EntranceEventListenerBus[EntranceEventListener,EntranceEvent]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntranceListenerBus</span><span class="params">(<span name="entranceListenerBus">entranceListenerBus: <span class="extype" name="com.webank.wedatasphere.linkis.entrance.event.EntranceEventListenerBus">EntranceEventListenerBus</span>[<span class="extype" name="com.webank.wedatasphere.linkis.entrance.event.EntranceEventListener">EntranceEventListener</span>, <span class="extype" name="com.webank.wedatasphere.linkis.entrance.event.EntranceEvent">EntranceEvent</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setEntranceListenerBus(entranceListenerBus:com.webank.wedatasphere.linkis.entrance.event.EntranceEventListenerBus[com.webank.wedatasphere.linkis.entrance.event.EntranceEventListener,com.webank.wedatasphere.linkis.entrance.event.EntranceEvent]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#setExecutor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setExecutor(executor:&lt;?&gt;):Unit"></a>
+      <a id="setExecutor(Executor):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setExecutor</span><span class="params">(<span name="executor">executor: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.Executor">Executor</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setExecutor(executor:com.webank.wedatasphere.linkis.scheduler.executer.Executor):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#setId" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setId(id:&lt;?&gt;):Unit"></a>
+      <a id="setId(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setId</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setId(id:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#setJobListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setJobListener(jobListener:&lt;?&gt;):Unit"></a>
+      <a id="setJobListener(JobListener):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setJobListener</span><span class="params">(<span name="jobListener">jobListener: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.listener.JobListener">JobListener</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setJobListener(jobListener:com.webank.wedatasphere.linkis.scheduler.listener.JobListener):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#setListenerEventBus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setListenerEventBus(eventListenerBus:&lt;?&gt;):Unit"></a>
+      <a id="setListenerEventBus(ListenerEventBus[_&lt;:SchedulerListener,_&lt;:ScheduleEvent]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setListenerEventBus</span><span class="params">(<span name="eventListenerBus">eventListenerBus: <span class="extype" name="com.webank.wedatasphere.linkis.common.listener.ListenerEventBus">ListenerEventBus</span>[_ &lt;: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.listener.SchedulerListener">SchedulerListener</span>, _ &lt;: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.event.ScheduleEvent">ScheduleEvent</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setListenerEventBus(eventListenerBus:com.webank.wedatasphere.linkis.common.listener.ListenerEventBus[_&lt;:com.webank.wedatasphere.linkis.scheduler.listener.SchedulerListener,_&lt;:com.webank.wedatasphere.linkis.scheduler.event.ScheduleEvent]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.LockJob#setLock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setLock(lock:&lt;?&gt;):Unit"></a>
+      <a id="setLock(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setLock</span><span class="params">(<span name="lock">lock: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setLock(lock:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LockJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#setLogListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setLogListener(logListener:&lt;?&gt;):Unit"></a>
+      <a id="setLogListener(LogListener):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setLogListener</span><span class="params">(<span name="logListener">logListener: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.listener.LogListener">LogListener</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setLogListener(logListener:com.webank.wedatasphere.linkis.scheduler.listener.LogListener):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setParams" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setParams(params:java.util.Map[String,Any]):Unit"></a>
+      <a id="setParams(Map[String,Any]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setParams</span><span class="params">(<span name="params">params: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Any">Any</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setParams(params:java.util.Map[String,Any]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#setProgress" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setProgress(progress:&lt;?&gt;):Unit"></a>
+      <a id="setProgress(Float):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setProgress</span><span class="params">(<span name="progress">progress: <span class="extype" name="scala.Float">Float</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setProgress(progress:Float):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setProgressInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setProgressInfo(progressInfo:&lt;?&gt;):Unit"></a>
+      <a id="setProgressInfo(Array[JobProgressInfo]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setProgressInfo</span><span class="params">(<span name="progressInfo">progressInfo: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.webank.wedatasphere.linkis.protocol.engine.JobProgressInfo">JobProgressInfo</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setProgressInfo(progressInfo:Array[com.webank.wedatasphere.linkis.protocol.engine.JobProgressInfo]):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#setProgressListener" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setProgressListener(progressListener:&lt;?&gt;):Unit"></a>
+      <a id="setProgressListener(ProgressListener):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setProgressListener</span><span class="params">(<span name="progressListener">progressListener: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.listener.ProgressListener">ProgressListener</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setProgressListener(progressListener:com.webank.wedatasphere.linkis.scheduler.listener.ProgressListener):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setResultSize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setResultSize(resultSize:Int):Unit"></a>
+      <a id="setResultSize(Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setResultSize</span><span class="params">(<span name="resultSize">resultSize: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setResultSize(resultSize:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setTask" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setTask(task:com.webank.wedatasphere.linkis.protocol.task.Task):Unit"></a>
+      <a id="setTask(Task):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setTask</span><span class="params">(<span name="task">task: <span class="extype" name="com.webank.wedatasphere.linkis.protocol.task.Task">Task</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setTask(task:com.webank.wedatasphere.linkis.protocol.task.Task):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#setUser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setUser(user:String):Unit"></a>
+      <a id="setUser(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setUser</span><span class="params">(<span name="user">user: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@setUser(user:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#startTime" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="startTime:Long"></a>
+      <a id="startTime:Long"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">startTime</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@startTime:Long" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@toString():String" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job → AnyRef → Any</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#trace" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="trace(message:&lt;?&gt;):Unit"></a>
+      <a id="trace(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">trace</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@trace(message:=&gt;String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#transition" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transition(state:&lt;?&gt;):Unit"></a>
+      <a id="transition(SchedulerEventState):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transition</span><span class="params">(<span name="state">state: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState">SchedulerEventState</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@transition(state:com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEventState.SchedulerEventState):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#transitionCompleted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transitionCompleted(executeCompleted:com.webank.wedatasphere.linkis.scheduler.executer.CompletedExecuteResponse,reason:String):Unit"></a>
+      <a id="transitionCompleted(CompletedExecuteResponse,String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transitionCompleted</span><span class="params">(<span name="executeCompleted">executeCompleted: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.CompletedExecuteResponse">CompletedExecuteResponse</span></span>, <span name="reason">reason: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@transitionCompleted(executeCompleted:com.webank.wedatasphere.linkis.scheduler.executer.CompletedExecuteResponse,reason:String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EntranceJob</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob#transitionCompleted" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transitionCompleted(executeCompleted:com.webank.wedatasphere.linkis.scheduler.executer.CompletedExecuteResponse):Unit"></a>
+      <a id="transitionCompleted(CompletedExecuteResponse):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transitionCompleted</span><span class="params">(<span name="executeCompleted">executeCompleted: <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.executer.CompletedExecuteResponse">CompletedExecuteResponse</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@transitionCompleted(executeCompleted:com.webank.wedatasphere.linkis.scheduler.executer.CompletedExecuteResponse):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>EntranceJob → Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.Job#turnToRetry" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="turnToRetry():Boolean"></a>
+      <a id="turnToRetry():Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">turnToRetry</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@turnToRetry():Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Job</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent#turnToScheduled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="turnToScheduled():Boolean"></a>
+      <a id="turnToScheduled():Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">turnToScheduled</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@turnToScheduled():Boolean" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SchedulerEvent</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob#waitForComplete" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="waitForComplete():Unit"></a>
+      <a id="waitForComplete():Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">waitForComplete</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@waitForComplete():Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="warn(message:=&gt;String,t:Throwable):Unit"></a>
+      <a id="warn(⇒String,Throwable):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="t">t: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@warn(message:=&gt;String,t:Throwable):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.webank.wedatasphere.linkis.common.utils.Logging#warn" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="warn(message:=&gt;String):Unit"></a>
+      <a id="warn(⇒String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">warn</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.webank.wedatasphere.linkis.entranceclient.execute.ClientJob@warn(message:=&gt;String):Unit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob">
+              <h3>Inherited from <span class="extype" name="com.webank.wedatasphere.linkis.entrance.execute.EntranceJob">EntranceJob</span></h3>
+            </div><div class="parent" name="com.webank.wedatasphere.linkis.scheduler.queue.LockJob">
+              <h3>Inherited from <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.LockJob">LockJob</span></h3>
+            </div><div class="parent" name="com.webank.wedatasphere.linkis.scheduler.queue.Job">
+              <h3>Inherited from <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.Job">Job</span></h3>
+            </div><div class="parent" name="java.io.Closeable">
+              <h3>Inherited from <span class="extype" name="java.io.Closeable">Closeable</span></h3>
+            </div><div class="parent" name="java.lang.AutoCloseable">
+              <h3>Inherited from <span class="extype" name="java.lang.AutoCloseable">AutoCloseable</span></h3>
+            </div><div class="parent" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent">
+              <h3>Inherited from <span class="extype" name="com.webank.wedatasphere.linkis.scheduler.queue.SchedulerEvent">SchedulerEvent</span></h3>
+            </div><div class="parent" name="com.webank.wedatasphere.linkis.common.utils.Logging">
+              <h3>Inherited from <span class="extype" name="com.webank.wedatasphere.linkis.common.utils.Logging">Logging</span></h3>
+            </div><div class="parent" name="java.lang.Runnable">
+              <h3>Inherited from <span class="extype" name="java.lang.Runnable">Runnable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

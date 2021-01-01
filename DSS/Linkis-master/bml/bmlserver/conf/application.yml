@@ -1,0 +1,32 @@
+server:
+  port: 8056
+spring:
+  application:
+    name: bml-server
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${ip}:${port}/eureka/
+  instance:
+    metadata-map:
+      test: test-user
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info
+logging:
+  config: classpath:log4j2.xml
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
+
+
+#    register-with-eureka: false
+#    fetch-registry: false

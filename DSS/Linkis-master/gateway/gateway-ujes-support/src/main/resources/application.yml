@@ -1,0 +1,35 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: DataWorkCloud-Gateway
+  cloud:
+    gateway:
+      routes:
+        - id: dws
+          uri: http://localhost:port/
+          predicates:
+          - Path=/dws/
+        - id: dws/vg
+          uri: http://localhost:port/
+          predicates:
+          - Path=/dws/vg/
+        - id: dws/easyide
+          uri: http://localhost:port/
+          predicates:
+          - Path=/dws/easyide/
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:port/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    metadata-map:
+      test: wedatasphere
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info

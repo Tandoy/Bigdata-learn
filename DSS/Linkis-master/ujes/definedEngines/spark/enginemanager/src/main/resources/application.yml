@@ -1,0 +1,22 @@
+server:
+  port: 10008  #The port that the module provides services (required)
+spring:
+  application:
+    name: sparkEngineManager  #Module name for high availability (required)
+
+#Specify the address of the eureka server for registration (required)
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: locahost
+  instance:
+    metadata-map:
+      test: enjoyyin
+#required
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info
+#    register-with-eureka: false
+#    fetch-registry: false

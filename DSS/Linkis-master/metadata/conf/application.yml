@@ -1,0 +1,22 @@
+server:
+  port: 9022
+spring:
+  application:
+    name: cloud-datasource
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: locahost
+  instance:
+    metadata-map:
+      test: wedatasphere
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,info
+logging:
+  config: classpath:log4j2.xml
