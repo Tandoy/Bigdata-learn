@@ -2,7 +2,7 @@
 
 ### Linkis标准版安装（重新编译）
 #### 1.获取源码
-       1.1 在github上直接获取适配了CDH5.7.6的Links源码
+       1.1 在github上直接获取适配了CDH5.7.6的Linkis源码
 #### 2.根据现有CDH版本进行hadoop、hive、spark、相关网络通信组件等进行版本修改
        2.1 修改元数据模块（cdh集群采用了sentry做hive权限控制，源码采用的是hive自带的权限控制（只通过jdbc），不修改无法展示hive元数据）
        2.2 修改pom.xml
