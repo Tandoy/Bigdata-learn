@@ -30,5 +30,11 @@
               root   /data/DSSFront/dist; # 示例DSS前端静态文件目录
               index  index.html index.html;
               }     
-              
+4.dss集成azkaban后创建工作流报错：get azkaban session is null，Incorrect login.username/password not found。
+    
+    解决办法：
+    需保证DSS与Azkaban的用户同步。如：DSS登录用户为appuser，则需要azkaban的azkaban-users.xml里面添加该用户
+    vi /home/appuser/azkaban/azkaban-3.90.0/azkaban-web-server/build/install/azkaban-web-server/conf/azkaban-users.xml
+    <user username="hadoop" password="hadoop" />  
+    
 4. 其他问题详情见：https://github.com/WeBankFinTech/DataSphereStudio/blob/master/docs/zh_CN/ch1/DSS%E5%AE%89%E8%A3%85%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%88%97%E8%A1%A8.md

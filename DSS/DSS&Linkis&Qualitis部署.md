@@ -76,14 +76,34 @@
             (2) 解压
             (3) cd azkaban; ./gradlew build installDist -x test 
                 其中编译环境需要gradle与git，需提前yum进行安装
-            (4) 修改默认时区为Asia/Shanghai 配置文件目录：azkaban-3.90.0/azkaban-solo-server/build/install/azkaban-solo-server/conf
-            (5) cd azkaban-solo-server/build/install/azkaban-solo-server; 
-            (6) bin/start-solo.sh （一定在bin同级目录执行）
-            (7) bin/shutdown-solo.sh （一定在bin同级目录执行）
+            (4) 在对应mysql中创建库，并进行初始化操作
+            (4) 修改/home/appuser/azkaban/azkaban-3.90.0/azkaban-exec-server/build/install/azkaban-exec-server/conf/azkaban.properties文件
+            (5) 修改/home/appuser/azkaban/azkaban-3.90.0/azkaban-web-server/build/install/azkaban-exec-server/conf/azkaban.properties文件
+            (6) 启动exec端
+            (7) 设置状态curl http://dxbigdata102:34557/executor?action=activate，次步很重要，不然web端无法初始化启动成功
+            (8) 启动web端
             (8) 测试访问 http://dxbigdata102:8081/ 默认的账户和密码: azkaban/azkaban
-        Linkis-jobtype（失败）
+        Linkis-jobtype
             (1) 解压：unzip linkis-jobtype-0.9.0.zip -d /home/appuser/linkis-jobtype/
             (2) cd linkis/bin/ 对config.sh进行相关配置的修改
+                ##Linkis gateway url 
+                LINKIS_GATEWAY_URL=http://127.0.0.1:9001 ## linkis的GateWay地址
+                
+                ##Linkis gateway token defaultWS-AUTH 
+                LINKIS_GATEWAY_TOKEN=WS-AUTH  ## Linkis的代理Token，该参数可以用默认值
+                
+                ##Azkaban executor host 
+                AZKABAN_EXECUTOR_HOST=127.0.0.1 ## 如果Azkaban是单机安装则该IP就是机器IP，如果是分布式安装为Azkaban执行器机器IP，
+                
+                ### SSH Port 
+                SSH_PORT=22 ## SSH端口
+                
+                ##Azkaban executor  dir 
+                AZKABAN_EXECUTOR_DIR=/home/appuser/azkaban/azkaban-3.90.0/azkaban-exec-server/build/install/azkaban-exec-server
+                
+                ##Azkaban executor plugin reload url
+                AZKABAN_EXECUTOR_URL=http://172.16.0.124:44767/executor?action=reloadJobTypePlugins ##这里只需要修改IP和端口即可，该地址为Azkaban重载插件的地址。
+            (3) 注意azkaban每次重启后的executor.port会发生变化需更改Linkis-jobtype的conf.sh，然后重新初始化。
 #### 2. 后端环境配置准备
         2.1. 创建用户 
         注意:用户需要有sudo权限，且可免密登陆本机。如何配置SSH免密登陆
@@ -130,7 +150,7 @@
         3.2 解压 unzip /opt/softwares/wedatasphere-dss-web-0.9.0-dist.zip -d /home/appuser/dss-web/
         3.3 配置修改
             # Configuring front-end ports
-            dss_port="8088"
+            dss_port="443"
             # URL of the backend linkis gateway
             linkis_url="http://127.0.0.1:9001"
             # dss ip address
