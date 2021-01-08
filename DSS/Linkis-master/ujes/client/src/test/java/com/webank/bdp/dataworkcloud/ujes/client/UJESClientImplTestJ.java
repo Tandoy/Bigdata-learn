@@ -45,8 +45,8 @@ public class UJESClientImplTestJ{
         UJESClient client = new UJESClientImpl(clientConfig);
 
         JobExecuteResult jobExecuteResult = client.execute(JobExecuteAction.builder().setCreator("UJESClient-Test")
-                .addExecuteCode("show tables")
-                .setEngineType(JobExecuteAction.EngineType$.MODULE$.HIVE()).setUser("appuser").build());
+                .addExecuteCode("echo test_shell")
+                .setEngineType(JobExecuteAction.EngineType$.MODULE$.SHELL()).setUser("appuser").build());
         System.out.println("execId: " + jobExecuteResult.getExecID() + ", taskId: " + jobExecuteResult.taskID());
         JobStatusResult status = client.status(jobExecuteResult);
         while(!status.isCompleted()) {
