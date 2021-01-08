@@ -21,11 +21,13 @@
 
 
 **spark引擎部分**
+
 1.IDEA远程调用spark引擎报错：DWCException{errCode=60035, desc='资源不足，启动引擎失败', ip='null', port=0, serviceKind='null'}
 
   解决步骤：
     
   	1.1 linkis源码spark版本与集群版本冲突
+	
   		因为linkis源码编译是spark2.x,修改集群spark环境变量即可
 		
   		sudo vim /etc/profile
@@ -36,6 +38,6 @@
    
 2.liniks执行spark引擎，appuser没有hdfs:/user/spark写的权限
 
-	sudo -u hdfs hdfs dfs -chmod -R 777 /user/spark
+sudo -u hdfs hdfs dfs -chmod -R 777 /user/spark
 
 
