@@ -34,18 +34,18 @@ import org.apache.commons.io.IOUtils
   */
 object UJESClientImplTest extends App {
 
-  val clientConfig = DWSClientConfigBuilder.newBuilder().addUJESServerUrl("http://localhost:port")
+  val clientConfig = DWSClientConfigBuilder.newBuilder().addUJESServerUrl("http://dxbigdata102:9001")
     .connectionTimeout(30000).discoveryEnabled(true)
     .discoveryFrequency(1, TimeUnit.MINUTES)
     .loadbalancerEnabled(true).maxConnectionSize(5)
     .retryEnabled(false).readTimeout(30000)
-    .setAuthenticationStrategy(new StaticAuthenticationStrategy()).setAuthTokenKey("")
-    .setAuthTokenValue("").setDWSVersion("v1").build()
+    .setAuthenticationStrategy(new StaticAuthenticationStrategy()).setAuthTokenKey("appuser")
+    .setAuthTokenValue("appuser").setDWSVersion("v1").build()
   val client = UJESClient(clientConfig)
 
   val jobExecuteResult = client.execute(JobExecuteAction.builder().setCreator("UJESClient-Test")
     .addExecuteCode("show tables")
-    .setEngineType(EngineType.SPARK).setUser("").build())
+    .setEngineType(EngineType.SPARK).setUser("appuser").build())
   println("execId: " + jobExecuteResult.getExecID + ", taskId: " + jobExecuteResult.taskID)
   var status = client.status(jobExecuteResult)
   while(!status.isCompleted) {
