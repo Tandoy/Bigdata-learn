@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+# IntelliJ project files
+.idea
+*.iml
+*/target/
+/azkaban-jobtype/jobtypes/
+/.idea
+LICENSE
+!/az-intellij-style.xml
+!/assembly.xml
+!/LICENSE
