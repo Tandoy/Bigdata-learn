@@ -33,9 +33,11 @@ class ServerListenerEventBus(eventQueueCapacity: Int, name: String,
     * thread for all listeners.
     */
   override protected def doPostEvent(listener: ServerEventService, event: SocketServerEvent): Unit = {
+    // 此处创建的serverEvent实际上就是EntranceWebSocketService（继承于ServerEventService）
     val serverEvent = event.serverEvent
     if(StringUtils.isEmpty(serverEvent.getMethod)) info("ignore empty method with " + serverEvent.getData)
     else if(serverEvent.getMethod.startsWith(listener.serviceName)) {
+      // 调用EntranceWebSocketService.onEvent()
       val response = listener.onEvent(serverEvent)
       if(response != null) {
         response.setMethod(serverEvent.getMethod)

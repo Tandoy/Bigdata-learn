@@ -99,7 +99,9 @@ class EntranceWebSocketService extends ServerEventService with EntranceEventList
   override val serviceName: String = restfulURI + "entrance/"
 
   override def onEvent(event: ServerEvent): Message = event.getMethod match {
+      // 转发给提交执行逻辑
     case `executePattern` => dealExecute(event)
+      // 转发给执行日志逻辑
     case logUrlPattern(id) => dealLog(event, id)
     case statusUrlPattern(id) => dealStatus(event, id)
     case progressUrlPattern(id) => dealProgress(event, id)
@@ -114,9 +116,11 @@ class EntranceWebSocketService extends ServerEventService with EntranceEventList
 
 
   def dealExecute(event:ServerEvent):Message = {
+    // 1.获取用户请求相关参数
     val params = event.getData.map{case (k, v) => k -> v.asInstanceOf[Any]}  //TODO Convert to a suitable Map(转换成合适的Map)
     val websocketTag = event.getWebsocketTag
     params.put(TaskConstant.UMUSER, event.getUser)
+    // 2.调用entranceServer执行job
     val jobId = entranceServer.execute(params)
     jobIdToEventId synchronized jobIdToEventId.put(jobId, event.getId)
     websocketTagJobID synchronized websocketTagJobID.put(jobId, websocketTag)

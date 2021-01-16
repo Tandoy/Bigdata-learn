@@ -52,7 +52,7 @@ case class ServerSocket(request: HttpServletRequest, socketListener: SocketListe
     session = sess
     socketListener.onOpen(this)
   }
-
+  //这里会调用ControllerServer的onMessage方法
   override def onWebSocketText(message: String): Unit = socketListener.onMessage(this, message)
 
   def sendMessage(message: String): Unit ={

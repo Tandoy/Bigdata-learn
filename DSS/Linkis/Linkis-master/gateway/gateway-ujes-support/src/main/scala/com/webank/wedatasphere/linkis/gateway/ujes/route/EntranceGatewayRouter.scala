@@ -42,6 +42,7 @@ class EntranceGatewayRouter extends AbstractGatewayRouter {
     }
   })
   override def route(gatewayContext: GatewayContext): ServiceInstance = {
+    // 根据url 正则匹配分配至对应的entrance
     gatewayContext.getGatewayRoute.getRequestURI match {
       case EntranceGatewayRouter.ENTRANCE_REGEX(_) =>
         val creator = gatewayContext.getGatewayRoute.getParams.get(TaskConstant.REQUESTAPPLICATIONNAME)
