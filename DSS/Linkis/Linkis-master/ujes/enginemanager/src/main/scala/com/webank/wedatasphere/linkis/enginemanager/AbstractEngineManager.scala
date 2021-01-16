@@ -45,13 +45,16 @@ abstract class AbstractEngineManager extends EngineManager with Logging {
     info("User " + request.user + " wants to request a new engine, messages: " + request)
     val startTime = System.currentTimeMillis
     var realRequest = request
+    // 对请求信息进行hook处理
     getEngineManagerContext.getOrCreateEngineHook.foreach(hook => realRequest = hook.beforeCreateSession(realRequest))
+    // 计算请求所需资源：主要依据：默认参数配置/用户自定义
     val resource = Utils.tryThrow(getEngineManagerContext.getOrCreateEngineResourceFactory
       .createEngineResource(realRequest)){t =>
       warn(s"In the configuration of ${realRequest.creator}, there is a parameter configuration in the wrong format!(${realRequest.creator}的配置中，存在错误格式的参数配置！)", t)
       throw new EngineManagerErrorException(11011, s"In the configuration of ${realRequest.creator}, there is a parameter configuration in the wrong format!(${realRequest.creator}的配置中，存在错误格式的参数配置！)")
     }
     val nodeResourceInfo = this.registerResources()
+    // 资源的判断
     val usedResource = getEngineManagerContext.getOrCreateEngineFactory.getUsedResources.getOrElse(Resource.getZeroResource(resource.getResource))
     if(nodeResourceInfo.totalResource - nodeResourceInfo.protectedResource - usedResource <= resource.getResource) {
       warn("The remote server resource has been exhausted!(远程服务器资源已被用尽！)") //TODO event needed
@@ -61,8 +64,10 @@ abstract class AbstractEngineManager extends EngineManager with Logging {
       info("RequestResource: "+ resource.getResource.toString)
       throw new EngineManagerWarnException(31000, "远程服务器资源已被用光，请切换远程服务器再试！")
     }
+    // 向RM发起资源申请
     getEngineManagerContext.getOrCreateResourceRequester.request(resource) match {
       case NotEnoughResource(reason) =>
+        // 创建失败
         throw new EngineManagerWarnException(30001, LogUtils.generateWarn(reason))
       case AvailableResource(ticketId) =>
         //The first step: get the creation request(第一步：拿到创建请求)
@@ -74,9 +79,12 @@ abstract class AbstractEngineManager extends EngineManager with Logging {
         engineListener.foreach(_.onEngineCreated(realRequest, engine))
         getEngineManagerContext.getOrCreateEngineFactory.addEngine(engine)
         val future = Future {
+          // 引擎初始化
           engine.init()
+          // 调用引擎启动完成后的hook
           getEngineManagerContext.getOrCreateEngineHook.foreach(hook => hook.afterCreatedSession(engine, realRequest))
         }
+        // 判断引擎是否正常启动
         future onComplete  {
           case Failure(t) =>
             error(s"init ${engine.toString} failed, now stop and delete it.", t)
@@ -88,6 +96,7 @@ abstract class AbstractEngineManager extends EngineManager with Logging {
             removeInInitPort()
             engineListener.foreach(_.onEngineInited(engine))
         }
+        // 通过等待对应时间来判断引擎是否启动成功
         if(duration > 0 && System.currentTimeMillis - startTime < duration)
           Utils.tryQuietly(Await.result(future, Duration(System.currentTimeMillis - startTime, TimeUnit.MILLISECONDS)))
 //        if(duration > 0) {

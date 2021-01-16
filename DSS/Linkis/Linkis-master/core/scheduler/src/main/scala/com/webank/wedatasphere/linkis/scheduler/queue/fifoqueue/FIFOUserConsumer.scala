@@ -98,7 +98,9 @@ class FIFOUserConsumer(schedulerContext: SchedulerContext,
       }
     }
     while(event.isEmpty) {
+      // 去队列中拉取job
       val takeEvent = if(getRunningEvents.isEmpty) Option(queue.take()) else queue.take(3000)
+      // job状态的改变
       event = if(takeEvent.exists(e => Utils.tryCatch(e.turnToScheduled()) {t =>
           takeEvent.get.asInstanceOf[Job].onFailure("Job state flipped to Scheduled failed(Job状态翻转为Scheduled失败)！", t)
           false
@@ -110,6 +112,7 @@ class FIFOUserConsumer(schedulerContext: SchedulerContext,
         var executor: Option[Executor] = None
         job.consumerFuture = new BDPFutureTask(this.future)
         Utils.waitUntil(() => {
+          // 调用ExecutorManager请求一个执行引擎
           executor = Utils.tryCatch(schedulerContext.getOrCreateExecutorManager.askExecutor(job, askDuration)) {
             case warn: WarnException =>
               job.getLogListener.foreach(_.onLogUpdate(job, warn.getDesc))
@@ -125,7 +128,9 @@ class FIFOUserConsumer(schedulerContext: SchedulerContext,
         }, totalDuration)
         job.consumerFuture = null
         executor.foreach { executor =>
+          // 为job设置执行引擎
           job.setExecutor(executor)
+          // 提交此job，Runnable
           job.future = executeService.submit(job)
           job.getJobDaemon.foreach(jobDaemon => jobDaemon.future = executeService.submit(jobDaemon))
           if(!isRetryJob) putToRunningJobs(job)

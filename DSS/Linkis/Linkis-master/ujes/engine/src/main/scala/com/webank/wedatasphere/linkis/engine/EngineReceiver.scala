@@ -186,14 +186,17 @@ class EngineReceiver extends Receiver with JobListener with ProgressListener wit
     if(broadcastSender == null) initBroadcast(sender)
     message match {
       case request: RequestTask =>
+        // 判断engine状态
         if(ExecutorState.isCompleted(engine.state)) throw new DWCRPCRetryException(s"engine $engine completed with state ${engine.state}, please execute it in another engine.")
         if(!EngineConfiguration.CLEAR_LOG.getValue) info("received a new request " + request.getCode)
+        // job的engine锁验证
         if(!engineServer.getEngineContext.getOrCreateLockManager.isLockExist(request.getLock))
           throw new EngineErrorException(40015, "Verify lock failed, illegal engine lock!(验证锁失败，非法的引擎锁！)")
         val job = engineServer.getEngineContext.getOrCreateEngineParser.parseToJob(request)
         job.setJobListener(this)
         job.setLogListener(this)
         job.setProgressListener(this)
+        // 提交job执行
         engineServer.getEngineContext.getOrCreateScheduler.submit(job)
         job match {
           case senderContainer: SenderContainer => senderContainer.addSender(sender)

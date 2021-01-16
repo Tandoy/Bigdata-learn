@@ -38,8 +38,11 @@ abstract class AbstractScheduler extends Scheduler {
     (eventId.substring(index + 1).toInt, eventId.substring(0, index))
   }
   override def submit(event: SchedulerEvent): Unit = {
+    // 为job分生成groupName
     val groupName = getSchedulerContext.getOrCreateGroupFactory.getGroupNameByEvent(event)
+    // 通过groupName去ConsumerManager获取一个consumer
     val consumer = getSchedulerContext.getOrCreateConsumerManager.getOrCreateConsumer(groupName)
+    // 将此job提交给用户分组的消费器队列中
     val index = consumer.getConsumeQueue.offer(event)
     index.map(getEventId(_, groupName)).foreach(event.setId)
     if(index.isEmpty) throw  new SchedulerErrorException(12001,"The submission job failed and the queue is full!(提交作业失败，队列已满！)")

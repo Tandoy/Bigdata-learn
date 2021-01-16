@@ -97,16 +97,20 @@ class EngineManagerReceiver extends Receiver with EngineListener with Logging wi
   override def receiveAndReply(message: Any, sender: Sender): Any = receiveAndReply(message, null, sender)
 
   override def receiveAndReply(message: Any, duration: Duration, sender: Sender): Any = message match {
+    // 请求启动引擎
     case request: RequestEngine =>
       if(StringUtils.isBlank(request.creator)) throw new EngineManagerErrorException(20050, "creator cannot be empty.")
       else if(StringUtils.isBlank(request.user)) throw new EngineManagerErrorException(20050, "user cannot be empty.")
+      // 调用engineManager启动
       val engine = if(duration != null) engineManager.requestEngine(request, duration.toMillis)
       else engineManager.requestEngine(request)
+      // 返回已经启动的引擎信息
       engine.map {
         case p: ProcessEngine =>
           portToSenders.put(p.getPort, sender)
           getMsg(p.getState, ResponseEngineStatusCallback(p.getPort, p.getState.id, p.getInitErrorMsg))
       }.get
+      // kill用户引擎信息
     case request: RequestUserEngineKill =>
       engineManager.getEngineManagerContext.getOrCreateEngineFactory.list().find(_.getTicketId == request.ticketId)
         .foreach(engineManager.getEngineManagerContext.getOrCreateEngineFactory.delete)

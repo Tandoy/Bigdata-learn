@@ -128,6 +128,7 @@ abstract class EngineExecutor(outputPrintLimit: Int, isSupportParallelism: Boole
       info(s"hooked after code:$hookedCode")
       var response: ExecuteResponse = null
       val incomplete = new StringBuilder
+      // 类似repl一行行代码执行
       val codes = Utils.tryCatch(codeParser.map(_.parse(hookedCode, engineExecutorContext)).getOrElse(Array(hookedCode))){
         e => info("Your code will be submitted in overall mode")
           Array(hookedCode)
@@ -138,6 +139,7 @@ abstract class EngineExecutor(outputPrintLimit: Int, isSupportParallelism: Boole
         val code = codes(index)
         engineExecutorContext.setCurrentParagraph(index + 1)
         response = Utils.tryCatch(if(incomplete.nonEmpty) executeCompletely(engineExecutorContext, code, incomplete.toString)
+        // 具体的执行引擎进行execute
         else executeLine(engineExecutorContext, code)){ t =>
           ErrorExecuteResponse(ExceptionUtils.getRootCauseMessage(t), t)
         }
