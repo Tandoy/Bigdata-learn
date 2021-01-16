@@ -251,6 +251,7 @@ abstract class Job extends Runnable with SchedulerEvent with Closeable with Logg
       close()
       return
     }
+    // 提交到远程引擎执行
     val rs = Utils.tryCatch(executor.execute(jobToExecuteRequest)){
       case t: InterruptedException =>
         warn(s"job $toString is interrupted by user!", t)
