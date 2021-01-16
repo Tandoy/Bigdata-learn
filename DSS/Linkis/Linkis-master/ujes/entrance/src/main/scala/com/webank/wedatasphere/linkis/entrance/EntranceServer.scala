@@ -50,6 +50,7 @@ abstract class EntranceServer extends Logging {
     if(!params.containsKey(EntranceServer.DO_NOT_PRINT_PARAMS_LOG)) info("received a request: " + params)
     else params.remove(EntranceServer.DO_NOT_PRINT_PARAMS_LOG)
     var task = getEntranceContext.getOrCreateEntranceParser().parseToTask(params)
+    // 上层调用系统的判断
     task match {
       case t: RequestPersistTask => if(StringUtils.isBlank(t.getRequestApplicationName))
         throw new EntranceErrorException(20038, "requestApplicationName cannot be empty.")
@@ -57,8 +58,10 @@ abstract class EntranceServer extends Logging {
     }
     //After parse the map into a task, we need to store it in the database, and the task can get a unique taskID.
     //将map parse 成 task 之后，我们需要将它存储到数据库中，task可以获得唯一的taskID
+    // 将job进行持久化
     getEntranceContext.getOrCreatePersistenceManager().createPersistenceEngine().persist(task)
     val logAppender = new java.lang.StringBuilder()
+    // 预设置的拦截器会进行脚本的自定义变量替换，恶意代码检查等操作
     Utils.tryThrow(getEntranceContext.getOrCreateEntranceInterceptors().foreach(int => task = int.apply(task, logAppender))) { t =>
       val error = t match {
         case error: ErrorException => error
@@ -75,10 +78,12 @@ abstract class EntranceServer extends Logging {
           t.setProgress(1.0f)
         case _ =>
       }
+      // 如果一个任务的进度、状态、日志和结果集发生更新，由此方法进行更新
       getEntranceContext.getOrCreatePersistenceManager().createPersistenceEngine().updateIfNeeded(task)
       error
     }
     getEntranceContext.getOrCreatePersistenceManager().createPersistenceEngine().updateIfNeeded(task)
+    // 转换成entranceJob
     val job = getEntranceContext.getOrCreateEntranceParser().parseToJob(task)
     job.init()
     job.setLogListener(getEntranceContext.getOrCreateLogManager())
@@ -95,6 +100,7 @@ abstract class EntranceServer extends Logging {
     }
 
     Utils.tryThrow{
+      // 将job提交至调度器
       getEntranceContext.getOrCreateScheduler().submit(job)
     }{t =>
       job.onFailure("Submitting the query failed!(提交查询失败！)", t)
