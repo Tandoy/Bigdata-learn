@@ -29,3 +29,29 @@ export JAVA_TOOL_OPTIONS=agentlib:jdwp=transport=dt_socket,server=y,suspend=y,ad
 ![3](https://github.com/Tandoy/Bigdata-learn/blob/master/DSS/images/3.PNG)
 
 6.这个问题是因为0.9.0及以下的版本默认对接的是Azkaban，然后Azkaban和schedulis在登录的传参有区别导致，这个问题会在1.0的版本进行解决，支持默认对接AZ和schedulis，如果现在的版本需要将az替换为Schedulis需要将dss-azkaban-scheduler-appjoint jar 下载下来放入/dss-appjoints/schedulis/lib/ 并重启dss server
+
+
+
+##DSS前端无法跳转至其他组件(visualis、schedulis、qualitis)排查问题记录
+
+  1.经排查跳转至第三方组件请求中都没有带token信息，可能存在token配置问题
+  
+    1.1 修改linkis网关配置 vim /home/appuser/dss/linkis-gateway/conf/linkis.properties
+	    添加以下内容：
+				wds.linkis.gateway.conf.enable.token.auth=true
+				wds.linkis.gateway.conf.token.auth.config=token.properties
+	1.2 重启linkis-gateway服务
+	
+  2.nginx反代理解决跨域问题（https://segmentfault.com/a/1190000003710973）
+  
+	2.1 sudo vim /etc/nginx/nginx.conf 
+		添加以下内容：
+				add_header Access-Control-Allow-Origin *;
+				add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
+				add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+				if ($request_method = 'OPTIONS') {
+			return 204;
+		}
+	2.2 nginx -t -c /etc/nginx/nginx.conf 测试nginx配置文件是否存在问题
+	2.3 sudo service nginx restart 重启nginx
+	2.4 dss前端访问方式由hostname:443---->ip:443
