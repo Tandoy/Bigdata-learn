@@ -5,18 +5,18 @@ public class SensorReading {
     public String ch;
     public String appid;
     public String mid;
-    public String type2;
+    public String type;
     public String vs;
     public String ts;
 
-    public SensorReading(String area, String uid, String os, String ch, String appid, String mid, String type2, String vs, String ts) {
+    public SensorReading(String area, String uid, String os, String ch, String appid, String mid, String type, String vs, String ts) {
         this.area = area;
         this.uid = uid;
         this.os = os;
         this.ch = ch;
         this.appid = appid;
         this.mid = mid;
-        this.type2 = type2;
+        this.type = type;
         this.vs = vs;
         this.ts = ts;
     }
@@ -69,12 +69,12 @@ public class SensorReading {
         this.mid = mid;
     }
 
-    public String getType2() {
-        return type2;
+    public String getType() {
+        return type;
     }
 
-    public void setType2(String type2) {
-        this.type2 = type2;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getVs() {
