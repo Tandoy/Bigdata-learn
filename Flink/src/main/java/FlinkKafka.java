@@ -5,7 +5,7 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 
 import java.util.Properties;
 
-public class FlinkKafaka {
+public class FlinkKafka {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
         // kafka 配置项

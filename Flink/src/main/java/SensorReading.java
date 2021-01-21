@@ -1,4 +1,6 @@
-public class SensorReading {
+import java.io.Serializable;
+
+public class SensorReading implements Serializable{
     public String area;
     public String uid;
     public String os;
@@ -19,6 +21,9 @@ public class SensorReading {
         this.type = type;
         this.vs = vs;
         this.ts = ts;
+    }
+
+    public SensorReading() {
     }
 
     public String getArea() {
@@ -91,5 +96,20 @@ public class SensorReading {
 
     public void setTs(String ts) {
         this.ts = ts;
+    }
+
+    @Override
+    public String toString() {
+        return "SensorReading{" +
+                "area='" + area + '\'' +
+                ", uid='" + uid + '\'' +
+                ", os='" + os + '\'' +
+                ", ch='" + ch + '\'' +
+                ", appid='" + appid + '\'' +
+                ", mid='" + mid + '\'' +
+                ", type='" + type + '\'' +
+                ", vs='" + vs + '\'' +
+                ", ts='" + ts + '\'' +
+                '}';
     }
 }
