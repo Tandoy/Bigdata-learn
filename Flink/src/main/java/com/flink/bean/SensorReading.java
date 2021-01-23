@@ -1,3 +1,5 @@
+package com.flink.bean;
+
 import java.io.Serializable;
 
 public class SensorReading implements Serializable{
@@ -100,7 +102,7 @@ public class SensorReading implements Serializable{
 
     @Override
     public String toString() {
-        return "SensorReading{" +
+        return "sensorReading{" +
                 "area='" + area + '\'' +
                 ", uid='" + uid + '\'' +
                 ", os='" + os + '\'' +

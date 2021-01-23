@@ -1,5 +1,8 @@
+package com.flink.source;
+
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
+import com.flink.bean.SensorReading;
 
 import java.util.HashMap;
 import java.util.Random;

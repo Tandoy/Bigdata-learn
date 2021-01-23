@@ -1,3 +1,5 @@
+package com.flink.transform;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.flink.api.common.functions.FilterFunction;
@@ -12,6 +14,7 @@ import org.apache.flink.streaming.api.datastream.*;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.co.CoMapFunction;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
+import com.flink.bean.SensorReading;
 
 import java.util.Collections;
 import java.util.Properties;
