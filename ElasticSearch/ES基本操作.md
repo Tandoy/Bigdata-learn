@@ -1,6 +1,6 @@
 ####1.基本Rest风格命令说明
 
-![image]https://github.com/Tandoy/Bigdata-learn/blob/master/ElasticSearch/image/restFul.PNG
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/ElasticSearch/image/restFul.PNG)
 
 ####2.ES基于kibana的查询记录
 
