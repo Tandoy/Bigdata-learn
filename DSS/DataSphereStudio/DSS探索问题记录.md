@@ -55,3 +55,25 @@ export JAVA_TOOL_OPTIONS=agentlib:jdwp=transport=dt_socket,server=y,suspend=y,ad
 	2.2 nginx -t -c /etc/nginx/nginx.conf 测试nginx配置文件是否存在问题
 	2.3 sudo service nginx restart 重启nginx
 	2.4 dss前端访问方式由hostname:443---->ip:443
+	
+	
+##dss工作流发布至schedulis报错解决
+
+前提：调度工具由zakaban替换为微众开源schedulis
+
+1.由于在修复无法创建工程时将dss-azkaban-scheduler-appjoint的jar版本进行了降级，与dss-0.9.0版本不一致，导致LinkisAzkabanFlowTuning等一系列类无法加载
+
+	1.1 将dss-azkaban-scheduler-appjoint-0.9.0.jar下载放至/home/appuser/dss-dist/dss-appjoints/schedulis/lib
+	
+2.由于dss在对dss工作流转换成scheduler工程中需要第三方插件linkis-jobtype,还需对其配置进行修改
+
+	2.1 修改/home/appuser/linkis-jobtype/linkis/private.properties，将类加载以及jar地址替换成schedulis
+		jobtype.class=com.webank.wedatasphere.schedulis.jobtype.util.AzkabanDssJobType
+		jobtype.lib.dir=/appcom/Install/AzkabanInstall/wtss-exec/plugins/jobtypes/linkis/lib
+	2.2 修改/home/appuser/linkis-jobtype/linkis/bin/config.sh，修改调度工具的执行路径
+		##Azkaban executor  dir
+		AZKABAN_EXECUTOR_DIR=/appcom/Install/AzkabanInstall/wtss-exec
+		
+3.重启dss
+		
+		
