@@ -39,6 +39,15 @@ import java.util.Properties;
  * 小于 maxEventTime - t 的所有数据都已经到达，如果有窗口的停止时间等于
  * maxEventTime – t（实际上就是watermark），那么这个窗口被触发执行。
  */
+
+/**
+ * 使用watermark具体判断触发窗口计算方式如下：
+ * 1.当数据介入后时间窗口会调用getWindowStartWithOffset得到初始事件时间 timestamp - (timestamp - offset + windowSize) % windowSize
+ * 2.窗口为 [) 前闭后合开区间
+ * 3.watermark为特殊数据插入事件流标记位：通过当前窗口中最大的eventTime-延迟时间 = watermark
+ * 4.当某条数据的watermark大于窗口原始触发时间则进行窗口触发计算
+ * 5.后续根据窗口滚动时间持续触发计算
+ */
 public class Watermark {
     public static void main(String[] args) throws Exception {
         StreamExecutionEnvironment streamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment();
