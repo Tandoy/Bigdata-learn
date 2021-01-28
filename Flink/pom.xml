@@ -13,8 +13,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>7</source>
-                    <target>7</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -50,16 +50,38 @@
             <artifactId>flink-connector-redis_2.11</artifactId>
             <version>1.0</version>
         </dependency>
-        <!--sink to-->
+        <!--sink to elasticsearch-->
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-elasticsearch6_2.12</artifactId>
             <version>1.10.1</version>
         </dependency>
+        <!--tableApi 计划器-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner_2.12</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner-blink_2.12</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-api-java-bridge_2.12</artifactId>
+            <version>1.10.1</version>
+        </dependency>
+        <!--flink 外部文件系统-->
+        <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-csv -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-csv</artifactId>
+            <version>1.10.1</version>
+        </dependency>
 
 
-
-<!--        flink 1.12使用HiveCatalog读写hive数据所需依赖-->
+        <!--        flink 1.12使用HiveCatalog读写hive数据所需依赖-->
 <!--         &lt;!&ndash; Flink Dependency &ndash;&gt;-->
 <!--        <dependency>-->
 <!--            <groupId>org.apache.flink</groupId>-->

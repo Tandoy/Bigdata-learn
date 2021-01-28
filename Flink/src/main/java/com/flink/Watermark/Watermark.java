@@ -6,6 +6,7 @@ import com.flink.bean.SensorReading;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
+import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
@@ -53,6 +54,8 @@ public class Watermark {
         StreamExecutionEnvironment streamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment();
         // 生成watermark的周期间隔时长
         streamExecutionEnvironment.getConfig().setAutoWatermarkInterval(100);
+        // 设置为事件语义
+        streamExecutionEnvironment.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         // kafka 配置项
         Properties properties = new Properties();
         properties.setProperty("bootstrap.servers", "dxbigdata103:9092");
