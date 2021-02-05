@@ -42,6 +42,7 @@ sudo -u hdfs hdfs dfs -chmod -R 777 /user/spark
 
 **********************************************
 ##linkis&dss多用户租户实现
+
 ###ldap安装
 
     1.创建管理员 appuser wCGKxDMCxpNWpcMoNEBlV3ox7AYpA5bq
