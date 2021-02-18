@@ -1,6 +1,7 @@
 ##ClickHouse之语法
 
 ###1.建表
+
     1.常规建表
         create table tangzhi.tb_b(
             id Int32 default 0 comment '唯一标识',
@@ -16,6 +17,7 @@
         create table tb_d engine=Memory as select * from tangzhi.tb_a;
         
 ###2.建临时表
+
     create temporary table test_enum(
     id Int32,
     name Enum('RED' = 1, 'GREEN' = 2, 'BLUE' = 3)
@@ -27,9 +29,11 @@
     4.常用于数据迁移
         
 ###3.删除表
+
     drop table tangzhi.tb_a;
     
 ###4.视图
+
     4.1 普通试图
     
     create view tb_a_view as select name,age from tb_a;
@@ -44,6 +48,7 @@
     3.特殊的表，支持引擎&结构化
     
 ###5.分区表
+
     create table tangzhi.tb_par(data_date DateTime comment '数据日期'
     ,id Int32 default 0 comment '唯一标识'
     ,name String comment '姓名'
