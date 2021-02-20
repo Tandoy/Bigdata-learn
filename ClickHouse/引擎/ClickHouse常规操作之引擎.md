@@ -167,7 +167,13 @@
     
     2.Kafka
     
+    CREATE TABLE queue (
+        timestamp UInt64,
+        level String,
+        message String
+      ) ENGINE = Kafka('dxbigdata103:9092', 'GMALL_STARTUP', 'test_ch', 'JSONEachRow');
     
+      SELECT * FROM queue LIMIT 5;
     
     3.MYSQL 与数据库引擎大致相同,可向mysql插入数据，但不支持删除以及更新操作，实际上不存储mysql数据
     
