@@ -21,4 +21,4 @@
         
     5.optimize_throw_if_noop：如果OPTIMIZE查询未执行合并，则启用或禁用引发异常。默认0，可选0：禁用引发异常；1：启用引发异常
     
-    6.
+    6.allow_introspection_functions：启用禁用内省功能以进行查询概要分析。默认值：0，可选0(禁用)、1(启用)
