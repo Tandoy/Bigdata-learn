@@ -47,11 +47,12 @@
     server.3=slave3:2888:3888
 
 ###7.创建文件夹
-   cd /home/hadoop/zookeeper
-   mkdir data
-   mkdir log
-   chmod 755 data
-   chmod 755 log
+
+    cd /home/hadoop/zookeeper
+    mkdir data
+    mkdir log
+    chmod 755 data
+    chmod 755 log
    
 ###8.创建myid文件，并添加内容
      cd /home/hadoop/zookeeper/data
