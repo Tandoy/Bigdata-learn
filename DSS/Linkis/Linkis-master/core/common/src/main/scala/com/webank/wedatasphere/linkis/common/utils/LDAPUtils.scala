@@ -36,6 +36,7 @@ object LDAPUtils extends Logging {
   def login(userID: String, password: String): Unit = {
     val env = new Hashtable[String, String]()
     //    val bindDN = userID
+    // Linkis-0.9.4 bug已在0.11.0修复
     val bindDN = if (StringUtils.isBlank(userNameFormat)) userID else {
       userNameFormat.split("%s", -1).mkString(userID)
     }
