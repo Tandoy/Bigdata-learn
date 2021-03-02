@@ -27,19 +27,21 @@ object ProxyUserUtils extends Logging {
 
   private val props = new Properties
   if(ENABLE_PROXY_USER.getValue){
-    Utils.defaultScheduler.scheduleAtFixedRate(new Runnable {
-      override def run(): Unit = {
-        info("loading proxy users.")
-        val newProps = new Properties
-        newProps.load(this.getClass.getResourceAsStream(PROXY_USER_CONFIG.getValue))
-        props.clear()
-        props.putAll(newProps)
-      }
-    }, 0, PROXY_USER_SCAN_INTERVAL.getValue, TimeUnit.MILLISECONDS)
+    // TODO Debug shows ENABLE_PROXY_USER.getValue=true, but scheduleAtFixedRate() will not be executed. Why?
+      Utils.defaultScheduler.scheduleAtFixedRate(new Runnable {
+        override def run(): Unit = {
+          info("loading proxy users.")
+          val newProps = new Properties
+          newProps.load(this.getClass.getResourceAsStream(PROXY_USER_CONFIG.getValue))
+          props.clear()
+          props.putAll(newProps)
+        }
+      }, 0, PROXY_USER_SCAN_INTERVAL.getValue, TimeUnit.MILLISECONDS)
   }
 
   def getProxyUser(umUser: String): String = if(ENABLE_PROXY_USER.getValue) {
-    val proxyUser = props.getProperty(umUser)
+    // 配置正确，但无法加载代理用户，暂时写死appuser
+    val proxyUser = "appuser"
     if(StringUtils.isBlank(proxyUser)) umUser else {
       info(s"switched to proxy user $proxyUser for umUser $umUser.")
       proxyUser
