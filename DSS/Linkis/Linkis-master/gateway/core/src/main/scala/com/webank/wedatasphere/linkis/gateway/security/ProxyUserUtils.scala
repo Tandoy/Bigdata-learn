@@ -16,6 +16,7 @@
 
 package com.webank.wedatasphere.linkis.gateway.security
 
+import java.io.FileInputStream
 import java.util.Properties
 import java.util.concurrent.TimeUnit
 
@@ -28,20 +29,25 @@ object ProxyUserUtils extends Logging {
   private val props = new Properties
   if(ENABLE_PROXY_USER.getValue){
     // TODO Debug shows ENABLE_PROXY_USER.getValue=true, but scheduleAtFixedRate() will not be executed. Why?
-      Utils.defaultScheduler.scheduleAtFixedRate(new Runnable {
-        override def run(): Unit = {
-          info("loading proxy users.")
-          val newProps = new Properties
-          newProps.load(this.getClass.getResourceAsStream(PROXY_USER_CONFIG.getValue))
-          props.clear()
-          props.putAll(newProps)
-        }
-      }, 0, PROXY_USER_SCAN_INTERVAL.getValue, TimeUnit.MILLISECONDS)
+    Utils.defaultScheduler.scheduleAtFixedRate(new Runnable {
+      override def run(): Unit = {
+        info("loading proxy users.")
+        val newProps = new Properties
+        newProps.load(this.getClass.getResourceAsStream(PROXY_USER_CONFIG.getValue))
+        props.clear()
+        props.putAll(newProps)
+      }
+    }, 0, PROXY_USER_SCAN_INTERVAL.getValue, TimeUnit.MILLISECONDS)
   }
 
   def getProxyUser(umUser: String): String = if(ENABLE_PROXY_USER.getValue) {
-    // 配置正确，但无法加载代理用户，暂时写死appuser
-    val proxyUser = "appuser"
+    info("loading proxy users.")
+    val newProps = new Properties
+    val path = Thread.currentThread().getContextClassLoader.getResource(PROXY_USER_CONFIG.getValue).getPath
+    newProps.load(new FileInputStream(path))
+    props.clear()
+    props.putAll(newProps)
+    val proxyUser = props.getProperty(umUser)
     if(StringUtils.isBlank(proxyUser)) umUser else {
       info(s"switched to proxy user $proxyUser for umUser $umUser.")
       proxyUser
