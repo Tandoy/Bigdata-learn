@@ -8,4 +8,4 @@
         
     2.Hudi CLI测试
     
-![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hive/images/Hive%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93.png)
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/Hudi-cli%E6%B5%8B%E8%AF%95.PNG)
