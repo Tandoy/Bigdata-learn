@@ -5,6 +5,13 @@
     1.现在大多数大数据存储多依赖HDFS，但HDFS原本不支持插入更新以及增量提取。在数据仓库Hive处理方面，则需要开启事务或者分区分桶，处理效率不高。
     2.现有大数据存储不支持存储非结构化数据，例如：图片数据、音频数据等。
     3.在大多数Hadoop部署中，一般使用混合提取工具并以零散的方式解决该问题，Hudi提供一整套解决方案
+
+###二、什么是Hudi
+
+    摄取与管理处于DFS(HDFS 或云存储)之上的大型分析数据集并为查询访问提供三个逻辑视图。
+    读优化视图 - 在纯列式存储上提供出色的查询性能，非常像parquet表。
+    增量视图 - 在数据集之上提供一个变更流并提供给下游的作业或ETL任务。
+    准实时的表 - 使用基于列存储(例如 Parquet + Avro)和行存储以提供对实时数据的查询
     
 ###二、Hudi特色
 
@@ -19,7 +26,8 @@
     9.基于Spark来对HDFS上的数据进行更新、插入、删除等。
     10.可以对HDFS上的parquet格式数据进行插入/更新操作。
     11.通过Savepoint来实现数据恢复。
-    12.Hudi的Bundle整合进Hive、Spark、Presto等这类引擎中，使得这些引擎可以查询Hudi表数据，从而具备Hudi所提供的Snapshot Query、Incremental Query、Read Optimized Query的能力。
+    12.Hudi是一种针对分析型业务的、扫描优化的数据存储抽象，它能够使HDFS数据集在分钟级的时延内支持变更，也支持下游系统对这个数据集的增量处理。
+    13.Hudi数据集通过自定义的InputFormat兼容当前Hadoop生态系统，包括Apache Hive，Apache Parquet，Presto和Apache Spark，使得终端用户可以无缝的对接。
     
 ###三、使用场景
 
