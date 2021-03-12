@@ -7,7 +7,7 @@
           
     启动spark-shell无报错即hudi启动成功
     
-![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/Hudi-cli%E6%B5%8B%E8%AF%95.PNG)
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/spark-shell%E5%90%AF%E5%8A%A8Hudi.PNG)
     
 ###二、插入数据测试
 
