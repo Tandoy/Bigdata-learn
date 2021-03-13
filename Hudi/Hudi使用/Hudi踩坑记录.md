@@ -132,7 +132,7 @@
         at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:229)
         ... 68 elided
     
-    出现这种报错是因为在通过spark-shell操作hudi事指定的spark-avro版本过低，一般为spark-avro_2.11:2.4.4
+    出现这种报错是因为在通过spark-shell操作hudi时指定的spark-avro版本过低，一般为spark-avro_2.11:2.4.4
         
 
     
