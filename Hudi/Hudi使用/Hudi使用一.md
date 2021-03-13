@@ -3,7 +3,7 @@
 ###一、通过spark-shell启动hudi
     1.其实hudi是一个spark库，所以依赖于spark环境，第一步通过spark-shell启动hudi
     
-    spark-shell --packages org.apache.spark:spark-avro_2.11:2.4.0 --conf 'spark.serializer=org.apache.spark.serializer.KryoSerializer' --jars /opt/apps/hudi/packaging/hudi-spark-bundle/target/hudi-spark-bundle_2.11-0.7.0.jar 
+    spark-shell --packages org.apache.spark:spark-avro_2.11:2.4.0 --conf 'spark.serializer=org.apache.spark.serializer.KryoSerializer' --jars /opt/apps/hudi/packaging/hudi-spark-bundle/target/hudi-spark-bundle_2.11-0.5.2-incubating.jar 
           
     启动spark-shell无报错即hudi启动成功
     
