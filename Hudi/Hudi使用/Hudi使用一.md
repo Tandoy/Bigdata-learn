@@ -46,4 +46,49 @@
 
 ###四、更新数据测试
 
+    val updates = convertToStringList(dataGen.generateUpdates(10))
+    val df = spark.read.json(spark.sparkContext.parallelize(updates, 2));
+    df.write.format("org.apache.hudi").
+        options(getQuickstartWriteConfigs).
+        option(PRECOMBINE_FIELD_OPT_KEY, "ts").
+        option(RECORDKEY_FIELD_OPT_KEY, "uuid").
+        option(PARTITIONPATH_FIELD_OPT_KEY, "partitionpath").
+        option(TABLE_NAME, tableName).
+        mode(Append).
+        save(basePath);
+        
+    // reload data
+    spark.
+        read.
+        format("org.apache.hudi").
+        load(basePath + "/*/*/*/*").
+        createOrReplaceTempView("hudi_ro_table")
+    
+    val commits = spark.sql("select distinct(_hoodie_commit_time) as commitTime from  hudi_ro_table order by commitTime").map(k => k.getString(0)).take(50)
+    val beginTime = commits(commits.length - 2) // commit time we are interested in
+    
+    // 增量查询数据
+    val incViewDF = spark.
+        read.
+        format("org.apache.hudi").
+        option(VIEW_TYPE_OPT_KEY, VIEW_TYPE_INCREMENTAL_OPT_VAL).
+        option(BEGIN_INSTANTTIME_OPT_KEY, beginTime).
+        load(basePath);
+    incViewDF.registerTempTable("hudi_incr_table")
+    spark.sql("select `_hoodie_commit_time`, fare, begin_lon, begin_lat, ts from  hudi_incr_table where fare > 20.0").show()
+    
+###五、特定时间点查询
+
+    val beginTime = "000" // Represents all commits > this time.
+    val endTime = commits(commits.length - 2) // commit time we are interested in
+    
+    // 增量查询数据
+    val incViewDF = spark.read.format("org.apache.hudi").
+        option(VIEW_TYPE_OPT_KEY, VIEW_TYPE_INCREMENTAL_OPT_VAL).
+        option(BEGIN_INSTANTTIME_OPT_KEY, beginTime).
+        option(END_INSTANTTIME_OPT_KEY, endTime).
+        load(basePath);
+    incViewDF.registerTempTable("hudi_incr_table")
+    spark.sql("select `_hoodie_commit_time`, fare, begin_lon, begin_lat, ts from  hudi_incr_table where fare > 20.0").show()
+
     
