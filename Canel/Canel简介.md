@@ -1,6 +1,6 @@
 ##Canel简介
 
-![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/Hudi-cli%E6%B5%8B%E8%AF%95.PNG)
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Canel/images/Canel%E7%AE%80%E4%BB%8B.png)
 
     主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费
     
