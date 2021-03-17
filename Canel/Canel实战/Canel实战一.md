@@ -29,6 +29,10 @@
     --查看binlog日志文件列表：
     show BINARY logs;
     
+###二、kafka进行消费
+
+     kafka-console-consumer.sh --bootstrap-server dxbigdata103:9092 --topic test
+    
 
     
     
