@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="61ff7e84-aa17-4e64-a8fd-a8cb491d9898" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/.idea/gmall0919-parent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/dw-chart/dw-chart.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/dw-chart/src/main/main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/dw-chart/src/test/test2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-canal/gmall0919-canal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-canal/src/main/main4.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-common/gmall0919-common.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-common/src/main/main3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-logger/gmall0919-logger.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-logger/src/main/main5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-logger/src/test/test1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-mock/gmall0919-mock.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-parent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-publisher/gmall0919-publisher.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-publisher/src/main/main1.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-publisher/src/test/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-realtime/gmall0919-realtime.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-realtime/src/main/main2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flink-cdc.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tz/flink/datastream/MySqlBinlogSourceExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spark/Spark/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spark/Spark/.idea/jarRepositories.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Downloads\repository" />
+        <option name="mavenHome" value="D:\IDEA\IntelliJ IDEA 2020.2.3\IntelliJ IDEA Community Edition 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1psYlvPLVyDvPcDGNaCrxnQFkJg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="MySqlBinlogSourceExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tz.flink.datastream.MySqlBinlogSourceExample" />
+      <module name="flink-cdc" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tz.flink.datastream.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MySqlBinlogSourceExample" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61ff7e84-aa17-4e64-a8fd-a8cb491d9898" name="Default Changelist" comment="" />
+      <created>1615973421544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615973421544</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1493" height="421" key="GridCell.Tab.0.bottom" timestamp="1616034703314">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="421" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1616034703314" />
+    <state width="1493" height="421" key="GridCell.Tab.0.center" timestamp="1616034703314">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="421" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1616034703314" />
+    <state width="1493" height="421" key="GridCell.Tab.0.left" timestamp="1616034703314">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="421" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1616034703314" />
+    <state width="1493" height="421" key="GridCell.Tab.0.right" timestamp="1616034703314">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="421" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1616034703314" />
+    <state x="270" y="56" key="SettingsEditor" timestamp="1615974030866">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="270" y="56" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1615974030866" />
+  </component>
+</project>
