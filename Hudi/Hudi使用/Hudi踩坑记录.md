@@ -95,7 +95,7 @@
          at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
          ... 101 more
 
-    以上两种报错都是因为cdh-spark中parquet、avro版本过低导致，可使用hudi/hudi-cli/target/lib/ 下的相对应jar包替换即可
+    以上两种报错都是因为cdh-spark中parquet、avro相关jar包版本过低导致与hudi不适配导致，可使用hudi/hudi-cli/target/lib/ 下的相对应jar包替换cdh-spark即可
 
     java.lang.NoClassDefFoundError: Could not initialize class org.apache.hudi.avro.model.HoodieCleanerPlan
         at org.apache.hudi.table.HoodieCopyOnWriteTable.scheduleClean(HoodieCopyOnWriteTable.java:305)
