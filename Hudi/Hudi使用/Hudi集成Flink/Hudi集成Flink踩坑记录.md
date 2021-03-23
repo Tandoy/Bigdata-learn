@@ -21,6 +21,6 @@
         	at org.apache.flink.runtime.security.contexts.HadoopSecurityContext.runSecured(HadoopSecurityContext.java:41)
         	at org.apache.flink.client.cli.CliFrontend.main(CliFrontend.java:1132)
         	
-        目前Hudi-0.7.0是基于Flink-1.11版本进行编译，待Hudi-0.8.0发布后会升级到Flink 1.12可解决
+        当前集群Flink版本为1.12.2,而Hudi-0.7.0是基于Flink-1.11版本进行编译，待Hudi-0.8.0发布后会升级到Flink 1.12.2可解决
 
         
