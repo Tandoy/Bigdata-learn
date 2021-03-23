@@ -126,7 +126,7 @@
                 
     4. 启动任务
     
-        /opt/apps/flink-1.11.2/bin/flink run -c org.apache.hudi.HoodieFlinkStreamer \
+        /opt/apps/flink-1.12.2/bin/flink run -c org.apache.hudi.HoodieFlinkStreamer \
         -m yarn-cluster -d -yjm 1024 -ytm 1024 -p 4 -ys 3 -ynm hudi_on_flink_test \
         /home/appuser/tangzhi/hudi-flink/hudi-flink-bundle_2.11-0.7.0.jar \
         --kafka-topic gmall_event \
