@@ -2,7 +2,7 @@
 
     Presto的体系结构几乎类似于经典的MPP（大规模并行处理）DBMS体系结构
     
-![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Canel/images/Canel%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86.jpg)
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Presto/images/Presto%E4%BD%93%E7%B3%BB%E6%9E%B6%E6%9E%84.jpg)
 
     Client
     客户端（Presto CLI）将SQL语句提交给协调器以获取结果。
