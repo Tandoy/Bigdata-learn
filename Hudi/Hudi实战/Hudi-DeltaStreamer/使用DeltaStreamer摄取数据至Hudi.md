@@ -2,8 +2,7 @@
 
     HoodieDeltaStreamer实用工具 (hudi-utilities-bundle中的一部分) 提供了从DFS或Kafka等不同来源进行摄取的方式。
     
-        ·从Kafka单次摄取新事件，从Sqoop、HiveIncrementalPuller输出或DFS文件夹中的多个文件
-        增量导入
+        ·从Kafka单次摄取新事件，从Sqoop、HiveIncrementalPuller输出或DFS文件夹中的多个文件增量导入
         ·支持json、avro或自定义记录类型的传入数据
         ·管理检查点，回滚和恢复
         ·利用DFS或Confluent schema注册表的Avro模式。
