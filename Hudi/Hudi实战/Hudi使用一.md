@@ -18,7 +18,7 @@
     import org.apache.hudi.DataSourceWriteOptions._
     import org.apache.hudi.config.HoodieWriteConfig._
     val tableName = "hudi_trips_cow"
-    val basePath = "val basePath = "hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_trips_cow""
+    val basePath = "hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_trips_cow"
     val dataGen = new DataGenerator
     val inserts = convertToStringList(dataGen.generateInserts(10))
     val df = spark.read.json(spark.sparkContext.parallelize(inserts, 2))
