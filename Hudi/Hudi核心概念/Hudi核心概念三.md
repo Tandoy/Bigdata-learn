@@ -13,3 +13,13 @@
     ·BULK_INSERT（批插入） ：插入更新和插入操作都将输入记录保存在内存中，以加快存储优化启发式计算的速度（以及其它未提及的方面）。
     所以对Hudi数据集进行初始加载/引导时这两种操作会很低效。批量插入提供与插入相同的语义，但同时实现了基于排序的数据写入算法，
     该算法可以很好地扩展数百TB的初始负载。但是，相比于插入和插入更新能保证文件大小，批插入在调整文件大小上只能尽力而为。
+    
+    
+###二、查询 Hudi 数据集（Hive/Spark/Presto/Flink）
+
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/%E6%9F%A5%E8%AF%A2Hudi%E6%95%B0%E6%8D%AE%E9%9B%86.PNG)
+
+
+
+
+    
