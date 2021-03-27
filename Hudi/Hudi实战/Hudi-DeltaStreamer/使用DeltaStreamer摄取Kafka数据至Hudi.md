@@ -19,7 +19,7 @@
         hoodie.datasource.write.partitionpath.field=area
         hoodie.deltastreamer.schemaprovider.source.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
         hoodie.deltastreamer.schemaprovider.target.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
-        hoodie.deltastreamer.source.kafka.topic=GMALL_EVENT
+        hoodie.deltastreamer.source.kafka.topic=hudi_test_kafka
         group.id=hudi_test_kafka
         bootstrap.servers=dxbigdata103:9092
         auto.offset.reset=latest
