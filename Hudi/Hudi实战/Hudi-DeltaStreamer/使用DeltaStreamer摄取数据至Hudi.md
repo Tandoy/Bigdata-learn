@@ -17,8 +17,8 @@
         hoodie.bulkinsert.shuffle.parallelism=2
         hoodie.datasource.write.recordkey.field=ts
         hoodie.datasource.write.partitionpath.field=area
-        hoodie.deltastreamer.schemaprovider.source.schema.file=//dxbigdata101:8020/user/hudi/test/data/schema.avsc
-        hoodie.deltastreamer.schemaprovider.target.schema.file=//dxbigdata101:8020/user/hudi/test/data/schema.avsc
+        hoodie.deltastreamer.schemaprovider.source.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
+        hoodie.deltastreamer.schemaprovider.target.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
         hoodie.deltastreamer.source.kafka.topic=GMALL_EVENT
         group.id=hudi_test_kafka
         bootstrap.servers=dxbigdata103:9092
