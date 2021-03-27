@@ -2,7 +2,7 @@
 
     1.前提条件
     
-    已经安装了Hadoop和Hive，并起了hive metastore五福
+    已经安装了Hadoop和Hive，并起了hive metastore服务
     
     2.Presto相关配置
     
