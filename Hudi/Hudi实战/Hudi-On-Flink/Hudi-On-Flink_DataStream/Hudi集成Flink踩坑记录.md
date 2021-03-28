@@ -51,11 +51,6 @@
           	... 17 more
 
     由于集群Flink/lib/没有flink-connector-kafka_2.11-1.12.2.jar，下载对应jar上传至Flink/lib/
-    
-    
-    3.Flink正常运行但Hudi一直是空表并且查询报错
-        
-      现在Flink-Sink只支持到COW（COPY_ON_WRITE）类型的Hudi表中，最初创建的是MOR表导致Flink sink异常以及查询报错。
         
           
 
