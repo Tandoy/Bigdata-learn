@@ -22,38 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="61ff7e84-aa17-4e64-a8fd-a8cb491d9898" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/.idea/gmall0919-parent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/dw-chart/dw-chart.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/dw-chart/src/main/main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/dw-chart/src/test/test2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-canal/gmall0919-canal.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-canal/src/main/main4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-common/gmall0919-common.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-common/src/main/main3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-logger/gmall0919-logger.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-logger/src/main/main5.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-logger/src/test/test1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-mock/gmall0919-mock.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-parent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-publisher/gmall0919-publisher.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-publisher/src/main/main1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-publisher/src/test/test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-realtime/gmall0919-realtime.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Data_reporting/gmall0919-parent/gmall0919-realtime/src/main/main2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/flink-cdc.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/tz/flink/datastream/MySqlBinlogSourceExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spark/Spark/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spark/Spark/.idea/jarRepositories.xml" afterDir="false" />
-    </list>
+    <list default="true" id="61ff7e84-aa17-4e64-a8fd-a8cb491d9898" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -135,6 +104,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1493" height="421" key="GridCell.Tab.0.bottom" timestamp="1616034703314">
