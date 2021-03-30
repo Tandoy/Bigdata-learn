@@ -27,5 +27,7 @@
       	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:355)
       	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
       	... 21 more
+      	
+    初步排查：CDH-HIVE 的hive-metastore jar包与Hudi官方版本存在冲突
     
     
