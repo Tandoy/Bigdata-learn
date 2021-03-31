@@ -16,7 +16,7 @@
 
 package com.webank.wedatasphere.linkis.gateway.security
 
-import java.io.File
+import java.io.{File, FileInputStream}
 import java.util.Properties
 import java.util.concurrent.TimeUnit
 
@@ -49,6 +49,13 @@ object ProxyUserUtils extends Logging {
   }
 
   def getProxyUser(umUser: String): String = if(ENABLE_PROXY_USER.getValue) {
+    // TODO Debug shows ENABLE_PROXY_USER.getValue=true, but scheduleAtFixedRate() will not be executed. Why?
+    info("loading proxy users.")
+    val newProps = new Properties
+    val path = Thread.currentThread().getContextClassLoader.getResource(PROXY_USER_CONFIG.getValue).getPath
+    newProps.load(new FileInputStream(path))
+    props.clear()
+    props.putAll(newProps)
     val proxyUser = props.getProperty(umUser)
     if(StringUtils.isBlank(proxyUser)) umUser else {
       info(s"switched to proxy user $proxyUser for umUser $umUser.")
