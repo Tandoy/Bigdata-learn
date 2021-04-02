@@ -55,3 +55,19 @@
 ###二、用户使用引擎测试（Hive、Spark、Shell、Scala、Python）
 
 	2.1 https://github.com/WeBankFinTech/Linkis/wiki/Linkis1.0%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3
+    	报错：DWCException{errCode=10905, desc='URL http://dxbigdata103:9001 request failed! ResponseBody is {"method":null,"status":1,"message":"wrong user name or password(用户名或密码错误)！","data":{}}.', ip='null', port=0, serviceKind='null'}
+    	
+    	--解决方案：
+    		1. vim /opt/apps/linkis/conf/linkis.properties  
+    		   添加 wds.linkis.admin.user=appuser  ##linkis-1.0-rc1 官方配置有错误
+    		   
+    	2.2 报错：DWCException{errCode=0, desc='请求引擎失败，可能是由于后台进程错误!请联系管理员', ip='null', port=0, serviceKind='null'}
+    					at com.webank.wedatasphere.linkis.ujes.client.response.JobInfoResult.getResultSetList(JobInfoResult.scala:67)
+    					at com.webank.wedatasphere.linkis.ujes.client.LinkisClientTest.main(LinkisClientTest.java:71)
+    					
+    	--解决方案：
+    		1.首先查看日志 /opt/apps/linkis/logs/linkis-computation-governance/linkis-cg-engineplugin/linkis.log
+    			Caused by: com.webank.wedatasphere.linkis.manager.engineplugin.common.loader.exception.EngineConnPluginNotFoundException: errCode: 70063 ,desc: No plugin found, please check your configuration ,ip: dxbigdata103 ,port: 9103 ,serviceKind: linkis-cg-engineplugin
+    				at com.webank.wedatasphere.linkis.manager.engineplugin.manager.loaders.DefaultEngineConnPluginLoader.loadEngineConnPluginInternal(DefaultEngineConnPluginLoader.java:141) ~[linkis-engineconn-plugin-loader-1.0.0-RC1.jar:?]
+	
+	
