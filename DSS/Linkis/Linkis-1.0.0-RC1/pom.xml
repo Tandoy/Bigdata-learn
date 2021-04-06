@@ -67,7 +67,7 @@
 
     <properties>
         <linkis.version>1.0.0-RC1</linkis.version>
-        <hadoop.version>2.6.0-cdh5.13.3</hadoop.version>
+        <hadoop.version>2.7.2</hadoop.version>
         <spring.eureka.version>2.2.6.RELEASE</spring.eureka.version>
         <spring.feign.version>2.2.6.RELEASE</spring.feign.version>
         <spring.boot.version>2.3.7.RELEASE</spring.boot.version>
@@ -79,7 +79,7 @@
         <jdk.compile.version>1.8</jdk.compile.version>
         <plugin.scala.version>2.15.2</plugin.scala.version>
         <scala.binary.version>2.11</scala.binary.version>
-        <netty.version>4.1.17.Final</netty.version>
+        <netty.version>4.1.44.Final</netty.version>
         <json4s.version>3.5.3</json4s.version>
         <jersey.version>2.16</jersey.version>
         <jersey.servlet.version>2.23.1</jersey.servlet.version>
@@ -253,72 +253,6 @@
                     </plugin>
                 </plugins>
             </build>
-        </profile>
-
-        <!--添加cloudera官网提供的maven源-->
-        <profile>
-            <id>boundlessgeo</id>
-            <repositories>
-                <repository>
-                    <id>boundlessgeo</id>
-                    <url>https://repo.boundlessgeo.com/main/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-        <profile>
-            <id>aliyun</id>
-            <repositories>
-                <repository>
-                    <id>aliyun</id>
-                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-        <profile>
-            <id>maven-central</id>
-            <repositories>
-                <repository>
-                    <id>maven-central</id>
-                    <url>http://central.maven.org/maven2/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-        <profile>
-            <id>cloudera</id>
-            <repositories>
-                <repository>
-                    <id>cloudera</id>
-                    <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
-                    <releases>
-                        <enabled>true</enabled>
-                    </releases>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
         </profile>
 
     </profiles>
