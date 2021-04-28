@@ -22,6 +22,7 @@
     </build>
     <modules>
         <module>HotItemsAnalysis</module>
+        <module>NetworkFlowAnalysis</module>
     </modules>
     <!--java版-->
     <dependencies>
