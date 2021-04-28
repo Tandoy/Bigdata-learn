@@ -6,6 +6,7 @@ import org.apache.commons.compress.utils.Lists;
 import org.apache.flink.api.common.functions.AggregateFunction;
 import org.apache.flink.api.common.functions.FilterFunction;
 import org.apache.flink.api.common.functions.MapFunction;
+import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.ListStateDescriptor;
 import org.apache.flink.api.java.tuple.Tuple;
@@ -20,11 +21,14 @@ import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExt
 import org.apache.flink.streaming.api.functions.windowing.WindowFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer;
 import org.apache.flink.util.Collector;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Properties;
+import java.util.regex.Pattern;
 
 
 /**
@@ -38,7 +42,16 @@ public class HotItems {
         environment.setParallelism(1); //并行度为1
         environment.setStreamTimeCharacteristic(TimeCharacteristic.EventTime); // flink默认为处理时间，这里设置为事件时间
         // 2.读取csv文件
-        DataStreamSource<String> streamSource = environment.readTextFile("..\\\\UserBehavior.csv");
+//        DataStreamSource<String> streamSource = environment.readTextFile("D:\\Downloads\\github\\Bigdata-learn\\Flink\\Flink-1.11.2\\HotItemsAnalysis\\src\\main\\resources\\UserBehavior.csv");
+        // 2.读取kafka数据源
+        Properties properties = new Properties();
+        properties.setProperty("bootstrap.servers", "dxbigdata103:9092");
+        properties.setProperty("auto.offset.reset", "earliest");
+        // topic 和 partition 动态发现
+        // 自动发现消费的partition变化
+//        properties.setProperty("flink.partition-discovery.interval-millis", String.valueOf((10 * 1000)));
+//        Pattern topicPattern = Pattern.compile("hotitems[0-9]");
+        DataStreamSource<String> streamSource = environment.addSource(new FlinkKafkaConsumer<String>("hotitems", new SimpleStringSchema(), properties));
         // 3.计算逻辑处理：
         UserBehavior userBehavior = new UserBehavior();
             // 3.1 csv数据封装成POJO类型
@@ -72,13 +85,13 @@ public class HotItems {
                 }
             }
         });
-            // 3.4 创建窗口1小时，固定步长为5min的滑动窗口
+             // 3.4 创建窗口1小时，固定步长为5min的滑动窗口
         SingleOutputStreamOperator<ItemViewCount> aggregateWindowOperator= filterOperator.keyBy("itemId")
-                .timeWindow(Time.minutes(60), Time.minutes(5))
+                .timeWindow(Time.hours(1), Time.minutes(5))
                 .aggregate(new CountAgg(), new WindowResultFunction());//使用增量聚合函数，缓解state的压力/apply
             // 3.5 按每个窗口聚合，输出每个窗口中点击量前 N 名的商品
         aggregateWindowOperator.keyBy("windowEnd")
-                .process(new TopNHotItems(3))
+                .process(new TopNHotItems(5))
                 .print();
         // 4.关闭执行环境
         environment.execute("hot items");
@@ -89,7 +102,7 @@ public class HotItems {
 
         @Override
         public Long createAccumulator() {
-            return null;
+            return 0L;
         }
 
         @Override
@@ -132,13 +145,13 @@ public class HotItems {
 
         @Override
         public void open(Configuration parameters) throws Exception {
-            ListState<ItemViewCount> itemViewCountListState = getRuntimeContext().getListState(new ListStateDescriptor<ItemViewCount>("item-count-list", ItemViewCount.class));
+           itemViewCountListState = getRuntimeContext().getListState(new ListStateDescriptor<ItemViewCount>("item-count-list", ItemViewCount.class));
         }
         @Override
         public void processElement(ItemViewCount itemViewCount, Context context, Collector<String> collector) throws Exception {
             // 将统计值放入状态后端
             itemViewCountListState.add(itemViewCount);
-            context.timerService().registerProcessingTimeTimer(itemViewCount.getWindowEnd() + 1L);
+            context.timerService().registerEventTimeTimer(itemViewCount.getWindowEnd() + 1);
         }
 
         // 定时器
@@ -158,7 +171,7 @@ public class HotItems {
             result.append("====================================\n");
             result.append(" 窗口结束时间: ").append(new Timestamp(timestamp - 1)).append("\n");
 
-            for (int i = 0; i < topSize ; i++) {
+            for (int i = 0; i < Math.min(topSize,itemViewCounts.size()) ; i++) {
                 ItemViewCount currentItemViewCount = itemViewCounts.get(i);
                 result.append("No").append(i+1).append(":")
                         .append(" 商品 ID=")

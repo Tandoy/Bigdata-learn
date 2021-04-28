@@ -1,7 +1,9 @@
 package com.tz.beans;
 
+import java.io.Serializable;
+
 // 用户行为
-public class UserBehavior {
+public class UserBehavior implements Serializable {
     // 定义私有属性
     private Long userId;
     private Long itemId;
