@@ -129,4 +129,4 @@
         AlertServer          ----- alert服务
         
     如果以上服务都正常启动且调度系统页面正常,在web系统的[监控中心]查看是否有扩容的Master或者Worker服务.如果存在,则扩容完成
-    注意：由于可能存在扩容节点的dolphinscheduler安装路径不一致，存在start-all失败的情况，最好是单独start心新增的worker节点
+    注意：由于可能存在扩容节点的dolphinscheduler安装路径不一致，存在start-all失败的情况，最好是单独start新增的worker节点
