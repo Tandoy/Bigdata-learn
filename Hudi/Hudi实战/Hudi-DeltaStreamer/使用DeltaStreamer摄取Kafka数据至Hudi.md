@@ -15,7 +15,7 @@
         hoodie.upsert.shuffle.parallelism=2
         hoodie.insert.shuffle.parallelism=2
         hoodie.bulkinsert.shuffle.parallelism=2
-        hoodie.datasource.write.recordkey.field=ts
+        hoodie.datasource.write.recordkey.field=
         hoodie.datasource.write.partitionpath.field=ts
         hoodie.deltastreamer.schemaprovider.source.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
         hoodie.deltastreamer.schemaprovider.target.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
@@ -26,7 +26,7 @@
         hoodie.parquet.max.file.size=134217728
         hoodie.datasource.write.keygenerator.class=org.apache.hudi.utilities.keygen.TimestampBasedKeyGenerator
         hoodie.deltastreamer.keygen.timebased.timestamp.type=DATE_STRING
-        hoodie.deltastreamer.keygen.timebased.input.dateformat=yyyy-MM-dd HH:mm:ss
+        hoodie.deltastreamer.keygen.timebased.input.dateformat=yyyy-MM-dd HH:mm:ssuid
         hoodie.deltastreamer.keygen.timebased.output.dateformat=yyyy/MM/dd
 
 
