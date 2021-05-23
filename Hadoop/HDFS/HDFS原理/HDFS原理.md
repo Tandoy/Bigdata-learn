@@ -155,8 +155,6 @@ namenode和secondary namenode的工作目录存储结构完全相同，所以，
 
 6.2 观察验证DATANODE功能
 
-上传一个文件，观察文件的block具体的物理存放情况：
-
-在每一台datanode机器上的这个目录中能找到文件的切块：
-
-/home/hadoop/app/hadoop-2.4.1/tmp/dfs/data/current/BP-193442119-192.168.2.120-1432457733977/current/finalized
+    上传一个文件，观察文件的block具体的物理存放情况：
+    在每一台datanode机器上的这个目录中能找到文件的切块：
+    /home/hadoop/app/hadoop-2.4.1/tmp/dfs/data/current/BP-193442119-192.168.2.120-1432457733977/current/finalized
