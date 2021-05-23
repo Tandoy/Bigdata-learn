@@ -1,4 +1,4 @@
-##Kafka核心组件
+##Kafka核心组件 
 
     Topic ：消息根据Topic进行归类
     Producer：发送消息者
