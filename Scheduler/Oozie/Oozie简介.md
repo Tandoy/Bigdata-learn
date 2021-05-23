@@ -1,9 +1,6 @@
 Oozie是一个管理 Apache Hadoop 作业的工作流调度系统。
-
 Oozie的 workflow jobs 是由 actions 组成的 有向无环图(DAG)。
-
 Oozie的 coordinator jobs 是由时间 (频率)和数据可用性触发的重复的 workflow jobs 。
-
 Oozie与Hadoop生态圈的其他部分集成在一起，支持多种类型的Hadoop作业（如Java map-reduce、流式map-reduce、Pig、Hive、Sqoop和Distcp）以及特定于系统的工作（如Java程序和shell脚本）。
 Oozie是一个可伸缩、可靠和可扩展的系统。
 
@@ -23,9 +20,7 @@ Oozie是一个可伸缩、可靠和可扩展的系统。
 
     （2）OozieServer收到提交的作业命令后，由工作流引擎负责workflow的执行以及状态的转换。比如，从一个Action执行到下一个Action，或者workflow状态由Suspend变成KILLED。Oozie以异步方式将作业(MR作业)提交给Hadoop。
 
-注：这也是为什么当调用Oozie 的RESTful接口提交作业之后能立即返回一个jobId的原因，用户程序不必等待作业执行完成（因为有些大作业可能会执行很久(几个小时甚至几天)）。Oozie在后台以异步方式，再将workflow对应的
- 
-Action提交给hadoop执行
+    注：这也是为什么当调用Oozie 的RESTful接口提交作业之后能立即返回一个jobId的原因，用户程序不必等待作业执行完成（因为有些大作业可能会执行很久(几个小时甚至几天)）。Oozie在后台以异步方式，再将workflow对应的Action提交给hadoop执行
 
     （3） Oozie通过 launcher job 运行某个具体的Action。launcher job是一个 map-only的MR作业，该作业在集群中的执行也是分布式的。这里的launcher需要向yarn集群申请AM运行，同时真正的任务运行也需要先申请AM。
 
