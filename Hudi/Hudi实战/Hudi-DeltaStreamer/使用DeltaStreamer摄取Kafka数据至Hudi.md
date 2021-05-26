@@ -15,7 +15,7 @@
         hoodie.upsert.shuffle.parallelism=2
         hoodie.insert.shuffle.parallelism=2
         hoodie.bulkinsert.shuffle.parallelism=2
-        hoodie.datasource.write.recordkey.field=
+        hoodie.datasource.write.recordkey.field=uid
         hoodie.datasource.write.partitionpath.field=ts
         hoodie.deltastreamer.schemaprovider.source.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
         hoodie.deltastreamer.schemaprovider.target.schema.file=hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
