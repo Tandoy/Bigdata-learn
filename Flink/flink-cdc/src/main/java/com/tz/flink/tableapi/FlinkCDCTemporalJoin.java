@@ -1,10 +1,10 @@
-package com.tz.flink.datastream;
+package com.tz.flink.tableapi;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 
 /**
- * 使用datastream api来实现：
+ * 使用flink sql来实现：
  * 1.flink-cdc捕获mysql upsert 订单表数据
  * 2.kafka-connectors捕获topic 产品维度版本表数据
  * 3.实现TemporalJoin
