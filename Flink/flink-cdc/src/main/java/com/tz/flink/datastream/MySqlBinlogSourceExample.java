@@ -1,9 +1,10 @@
 package com.tz.flink.datastream;
 
+import com.alibaba.ververica.cdc.debezium.StringDebeziumDeserializationSchema;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
-import com.alibaba.ververica.cdc.debezium.StringDebeziumDeserializationSchema;
 import com.alibaba.ververica.cdc.connectors.mysql.MySQLSource;
+
 /**
  * test flink mysql cdc
  */
@@ -16,14 +17,11 @@ public class MySqlBinlogSourceExample {
                 .username("root")
                 .password("xysh1234")
                 .deserializer(new StringDebeziumDeserializationSchema()) // converts SourceRecord to String
+                .tableList(new String[]{"davincidb.demo_orders"}) // 指定表需加上库名，不然监控不到
                 .build();
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-
-        env
-                .addSource(sourceFunction)
-                .print().setParallelism(1); // use parallelism 1 for sink to keep message ordering
-
+        env.addSource(sourceFunction).print().setParallelism(1); // use parallelism 1 for sink to keep message ordering
         env.execute();
     }
 }
