@@ -317,13 +317,11 @@ SOURCE(
 9.4 优化物化视图
 ```shell script
 --新增维度并添加到索引
-alter table dwm.mainpage_stat_mv_local add column if not exists gender String comment '性别' after item_id,modify order by 
-(day,hour,platform,ver,item_id,gender);
+alter table dwm.mainpage_stat_mv_local add column if not exists gender String comment '性别' after item_id,modify order by (day,hour,platform,ver,item_id,gender);
 alter table dwm.mainpage_stat_mv_local modify column if exists gender String default '未知' comment '性别' after item_id;
-
---新增指标
 alter table dwm.mainpage_stat_mv_local add column if not exists show_time_median AggregateFunction(medianExact,UInt32) comment '曝光时长中位数';
-
+```
+```shell script
 --修改物化视图计算逻辑
 drop TABLE dwm.mv_main_page_stat_mv_local;
 CREATE MATERIALIZED VIEW dwm.mv_main_page_stat_mv_local to dwm.mainpage_stat_mv_local (
@@ -360,7 +358,7 @@ group by
      ,platform
      ,ver
      ,item_id
-     ,gender
+     ,gender;
 ```
 
 ##10.物化视图再进阶使用
@@ -374,7 +372,6 @@ group by
 
 10.2 修改物化视图计算逻辑
 ```shell script
---物化视图存储表新增指标
 alter table dwm.mainpage_stat_mv_local add column if not exists acta_uv AggregateFunction(uniqCombined,UInt32) comment 'acta_uv';
 alter table dwm.mainpage_stat_mv_local add column if not exists acta_cnt SimpleAggregateFunction(sum,UInt64) comment 'acta_cnt';
 alter table dwm.mainpage_stat_mv_local add column if not exists actb_uv AggregateFunction(uniqCombined,UInt32) comment 'actb_uv';
@@ -387,7 +384,8 @@ alter table dwm.mainpage_stat_mv_local add column if not exists acta_bm Aggregat
 alter table dwm.mainpage_stat_mv_local add column if not exists actb_bm AggregateFunction(groupBitmap,UInt32) comment 'actb_bm';
 alter table dwm.mainpage_stat_mv_local add column if not exists actc_bm AggregateFunction(groupBitmap,UInt32) comment 'actc_bm';
 alter table dwm.mainpage_stat_mv_local add column if not exists actd_bm AggregateFunction(groupBitmap,UInt32) comment 'actd_bm';
-
+```
+```shell script
 CREATE MATERIALIZED VIEW dwm.mv_main_page_stat_mv_001_local to dwm.mainpage_stat_mv_local (
 day Date comment '数据分区-天'
 ,hour DateTime comment '数据时间-小时(DateTime)'
@@ -425,7 +423,8 @@ group by
      ,ver
      ,item_id
      ,gender;
-
+```
+```shell script
 CREATE MATERIALIZED VIEW dwm.mv_main_page_stat_mv_002_local to dwm.mainpage_stat_mv_local (
 day Date comment '数据分区-天'
 ,hour DateTime comment '数据时间-小时(DateTime)'
