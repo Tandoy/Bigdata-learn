@@ -10,7 +10,7 @@
     
 5.service clickhouse-server start 
     
-6.clickhouse-client
+6.clickhouse-client --host 172.16.0.222
 ```
     
 ##ClickHouse-docker安装
