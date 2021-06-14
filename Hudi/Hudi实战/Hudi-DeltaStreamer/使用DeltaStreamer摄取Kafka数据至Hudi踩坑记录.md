@@ -1,4 +1,4 @@
-##使用DeltaStreamer摄取数据至Hudi踩坑记录
+## 使用DeltaStreamer摄取数据至Hudi踩坑记录
 
     1.Caused by: java.io.FileNotFoundException: /tmp/spark-events/application_1609324396857_16643_2.inprogress (Permission denied)
       	at java.io.FileOutputStream.open0(Native Method)
