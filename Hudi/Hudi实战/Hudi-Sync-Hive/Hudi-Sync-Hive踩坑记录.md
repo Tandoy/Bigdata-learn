@@ -1,4 +1,4 @@
-##Hudi同步Hive数据踩坑记录
+## Hudi同步Hive数据踩坑记录
 
     1.Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/log4j/LogManager
       	at org.apache.hudi.hive.HiveSyncTool.<clinit>(HiveSyncTool.java:55)
