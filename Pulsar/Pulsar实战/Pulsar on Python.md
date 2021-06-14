@@ -1,6 +1,6 @@
-##Pulsar on Python
+## Pulsar on Python
 
-###前提Pulsar已经启动
+### 前提Pulsar已经启动
 
     1.直接从 PyPI 安装 Pulsar 的 Python 客户端库
     
