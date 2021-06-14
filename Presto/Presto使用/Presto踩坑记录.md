@@ -1,6 +1,6 @@
-##Presto踩坑记录
+## Presto踩坑记录
 
-###一、通过Presto Cli进行HQL查询报错
+### 一、通过Presto Cli进行HQL查询报错
     
     Qurey xxxx failed：No nodes available to run query
     
