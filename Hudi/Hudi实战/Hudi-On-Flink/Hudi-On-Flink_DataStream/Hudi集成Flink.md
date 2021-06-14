@@ -1,4 +1,4 @@
-##Hudi集成Flink
+## Hudi集成Flink
 
 前提：当前Flink版本(1.11.2)的Hudi((0.7.0))还只支持读取Kafka数据，Sink到COW（COPY_ON_WRITE）类型的Hudi表中
 
