@@ -1,4 +1,4 @@
-##使用Prometheus和Grafana监控DolphinScheduler
+## 使用Prometheus和Grafana监控DolphinScheduler
 
     1.通过 Prometheus 中 push gateway 的方式采集监控指标数据。
         需要借助 push gateway 一起，然后将数据发送到 push gateway 地址中，比如地址为 http://10.25x.xx.xx:8085，那么就可以写一个 shell 脚本，通过 crontab 调度或者 DolphinScheduler 调度，定期运行 shell 脚本，来发送指标数据到Prometheus中。
