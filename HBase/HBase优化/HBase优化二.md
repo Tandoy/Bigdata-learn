@@ -1,4 +1,4 @@
-##HBase性能优化方法总结（一）：表的设计
+## HBase性能优化方法总结（一）：表的设计
 
 1. 表的设计
 
@@ -94,7 +94,7 @@
 	hbase.hstore.compaction.max.size 表示文件大小大于该值的store file 一定会被minor compaction排除
 	hbase.hstore.compaction.ratio 将store file 按照文件年龄排序（older to younger），minor compaction总是从older store file开始选择
 	
-##HBase性能优化方法总结（二）：写表操作
+## HBase性能优化方法总结（二）：写表操作
 
 下面是本文总结的第二部分内容：写表操作相关的优化方法。
 
@@ -156,7 +156,7 @@
 	    th.start();
 	}
 	
-##HBase性能优化方法总结（三）：读表操作
+## HBase性能优化方法总结（三）：读表操作
 
 本文主要是从HBase应用程序设计与开发的角度，总结几种常用的性能优化方法。有关HBase系统配置级别的优化，可参考：淘宝Ken Wu同学的博客。
 下面是本文总结的第三部分内容：读表操作相关的优化方法。
