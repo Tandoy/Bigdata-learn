@@ -1,4 +1,4 @@
-##Hudi集成FlinkSql
+## Hudi集成FlinkSql
 
 前提：当前Flink版本(1.12.2)在hudi-master最新版，实现了新的Flink Streaming Writer、支持 Flink SQL API、支持 batch 和 streaming 的模式 Reader
 
@@ -10,7 +10,7 @@
     
         ./bin/sql-client.sh embedded -j /home/appuser/tangzhi/hudi-flink/hudi/packaging/hudi-flink-bundle/target/hudi-flink-bundle_2.11-0.9.0-SNAPSHOT.jar shell
         
-###一、Batch 模式的读写
+### 一、Batch 模式的读写
 
     1.建表
     
@@ -63,7 +63,7 @@
             
         再次查询即可看到 uuid 为 id1 和 id2 的数据 age 字段值发生了更新。
         
-###二、Streaming 读
+### 二、Streaming 读
 
     1.建表
     
