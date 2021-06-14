@@ -1,6 +1,6 @@
-##ClickHouse之语法
+## ClickHouse之语法
 
-###6.DDL
+### 6.DDL
 
     6.1.数据表DDL
     
@@ -20,7 +20,7 @@
     alter table tb_par detach partition 20201231 --卸载分区数据
     alter table tb_par attach partition 20201231 --装载分区数据
     
-###7.DML
+### 7.DML
 
     7.1 导入数据
     
