@@ -1,4 +1,4 @@
-## ElasticSearc安装
+## ElasticSearch安装
 
     1.官网下载对应系统gz
     https://www.elastic.co/cn/
