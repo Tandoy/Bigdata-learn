@@ -56,7 +56,9 @@
 根据需求，首先定义以下3大要素：
 
 ·采集源，即source——监控文件目录 :  spooldir
+
 ·下沉目标，即sink——HDFS文件系统  :  hdfs sink
+
 ·source和sink之间的传递通道——channel，可用file channel 也可以用内存channel
 
     配置文件编写：
@@ -108,7 +110,9 @@ keep-alive：event添加到通道中或者移出的允许时间
 根据需求，首先定义以下3大要素：
 
 ·采集源，即source——监控文件内容更新 :  exec  ‘tail -F file’
+
 ·下沉目标，即sink——HDFS文件系统  :  hdfs sink
+
 ·Source和sink之间的传递通道——channel，可用file channel 也可以用 内存channel
 
     配置文件编写：
