@@ -1,6 +1,6 @@
-##Linkis-1.0-rc1升级记录：
+## Linkis-1.0-rc1升级记录：
 
-###一、部署：
+### 一、部署：
 
    1.1 编译（Windows环境下）：
    
@@ -52,7 +52,7 @@
 	
    1.5 若http://dxbigdata103:20303/ 出现10个微服务即部署成功
 	
-###二、用户使用引擎测试（Hive、Spark、Shell、Scala、Python）
+### 二、用户使用引擎测试（Hive、Spark、Shell、Scala、Python）
 
 	2.1 https://github.com/WeBankFinTech/Linkis/wiki/Linkis1.0%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3
     	报错：DWCException{errCode=10905, desc='URL http://dxbigdata103:9001 request failed! ResponseBody is {"method":null,"status":1,"message":"wrong user name or password(用户名或密码错误)！","data":{}}.', ip='null', port=0, serviceKind='null'}
