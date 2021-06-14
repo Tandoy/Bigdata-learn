@@ -1,4 +1,4 @@
-##TiDB单节点Docker部署
+## TiDB单节点Docker部署
 
     1.拉取 TiDB 的 Docker 镜像
         1.1 docker pull pingcap/tidb:v4.0.9
