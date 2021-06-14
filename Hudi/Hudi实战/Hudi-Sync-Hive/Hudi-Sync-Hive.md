@@ -1,4 +1,4 @@
-##Hudi同步Hive数据
+## Hudi同步Hive数据
 
      此种方式会单独起jvm或者命令行
      to sync a hoodie HDFS table with a hive metastore table
