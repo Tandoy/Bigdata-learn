@@ -41,9 +41,9 @@
 sudo -u hdfs hdfs dfs -chmod -R 777 /user/spark
 
 **********************************************
-##linkis&dss多用户租户实现
+## linkis&dss多用户租户实现
 
-###ldap安装
+### ldap安装
 
     1.创建管理员 appuser wCGKxDMCxpNWpcMoNEBlV3ox7AYpA5bq
     2.vim passwd.ldif
@@ -100,7 +100,7 @@ sudo -u hdfs hdfs dfs -chmod -R 777 /user/spark
     	ldappasswd -s liurijia  -W -D "cn=Manager,dc=my-domain,dc=com" -x "uid=liurijia,ou=People,dc=my-domain,dc=com"
 
 **********************************************
-###为用户完善环境信息
+### 为用户完善环境信息
 
     1.在所有Linkis & DSS 服务器上创建对应Linux用户。
     
@@ -117,7 +117,7 @@ sudo -u hdfs hdfs dfs -chmod -R 777 /user/spark
     6.schedulis使用管理员账号创建对应用户名
 
 **********************************************
-###linkis相关修改
+### linkis相关修改
 
     1.linkis 0.9.4 源码更改并重新编译打包
        https://github.com/WeBankFinTech/Linkis/pull/349/files
