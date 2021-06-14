@@ -1,6 +1,6 @@
-##ClickHouse之引擎
+## ClickHouse之引擎
 
-###1.数据库引擎
+### 1.数据库引擎
     
     1.延时引擎Lazy，在距最近一次访问间隔expiration_time_in_seconds时间段内，将表保存在内存中，仅适用于 *Log引擎表，由于针对这类表的访问间隔较长，对保存大量小的 *Log引擎表进行了优化
     CREATE DATABASE testlazy ENGINE = Lazy(expiration_time_in_seconds);
@@ -19,7 +19,7 @@
     4.MaterializeMySQL引擎
     可通过binlog日志实时物化mysql数据
     
-###2.表引擎
+### 2.表引擎
 
     1.Log 家族 本地表、本地存储、测试使用
       1.1 StripeLog 会分块
@@ -155,7 +155,7 @@
         select key,sumState(value) cost,uniqState(key) cnt from summtt group by key;
         select key,uniqMerge(cnt),sumMerge(cost) from tangzhi.basic group by key;
   
-###3.外部存储引擎
+### 3.外部存储引擎
 
     1.HDFS clickhouse不存储数据，读取处理数据
     
