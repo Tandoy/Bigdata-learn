@@ -1,6 +1,6 @@
-##Hudi踩坑记录
+## Hudi踩坑记录
 
-###一、插入数据报错
+### 一、插入数据报错
 
     Caused by: java.lang.NoClassDefFoundError: org/apache/parquet/hadoop/metadata/CompressionCodecName
       at java.lang.Class.getDeclaredMethods0(Native Method)
