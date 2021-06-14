@@ -1,4 +1,4 @@
-##DolphinScheduler扩容记录
+## DolphinScheduler扩容记录
 
 1.1 扩容是针对现有的DolphinScheduler集群添加新的master或者worker节点的操作说明.
 
