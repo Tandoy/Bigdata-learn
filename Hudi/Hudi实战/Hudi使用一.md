@@ -1,6 +1,6 @@
-##Hudi使用一
+## Hudi使用一
 
-###一、通过spark-shell启动hudi
+### 一、通过spark-shell启动hudi
     1.其实hudi是一个spark库，所以依赖于spark环境，第一步通过spark-shell启动hudi
     
     spark-shell --packages org.apache.spark:spark-avro_2.11:2.4.4 --conf 'spark.serializer=org.apache.spark.serializer.KryoSerializer' --jars /opt/apps/hudi/packaging/hudi-spark-bundle/target/hudi-spark-bundle_2.11-0.5.2-incubating.jar 
@@ -9,7 +9,7 @@
     
 ![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/spark-shell%E5%90%AF%E5%8A%A8Hudi.PNG)
     
-###二、插入数据测试
+### 二、插入数据测试
 
     import org.apache.hudi.QuickstartUtils._
     import scala.collection.JavaConversions._
@@ -31,8 +31,7 @@
       mode(Overwrite).
       save(basePath)
     
-
-###三、查询数据测试
+### 三、查询数据测试
 
     val roViewDF = spark.
         read.
@@ -44,7 +43,7 @@
     spark.sql("select fare, begin_lon, begin_lat, ts from  hudi_trips_cow where fare > 20.0").show()
     spark.sql("select _hoodie_commit_time, _hoodie_record_key, _hoodie_partition_path, rider, driver, fare from  hudi_trips_cow").show()
 
-###四、更新数据测试
+### 四、更新数据测试
 
     val updates = convertToStringList(dataGen.generateUpdates(10))
     val df = spark.read.json(spark.sparkContext.parallelize(updates, 2));
@@ -77,7 +76,7 @@
     incViewDF.registerTempTable("hudi_incr_table")
     spark.sql("select `_hoodie_commit_time`, fare, begin_lon, begin_lat, ts from  hudi_incr_table where fare > 20.0").show()
     
-###五、特定时间点查询
+### 五、特定时间点查询
 
     val beginTime = "000" // Represents all commits > this time.
     val endTime = commits(commits.length - 2) // commit time we are interested in
