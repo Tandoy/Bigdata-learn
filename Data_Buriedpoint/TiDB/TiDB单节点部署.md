@@ -1,4 +1,4 @@
-##TiDB单节点部署
+## TiDB单节点部署
 
     1.下载压缩包
       wget http://download.pingcap.org/tidb-v4.0.8-linux-amd64.tar.gz
