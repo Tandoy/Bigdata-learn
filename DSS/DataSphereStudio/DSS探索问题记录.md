@@ -1,4 +1,4 @@
-##DSS创建工程失败排查问题记录
+## DSS创建工程失败排查问题记录
 
 前提：DSS换成官方看开源调度schedulis后无法创建工程
 
@@ -32,7 +32,7 @@ export JAVA_TOOL_OPTIONS=agentlib:jdwp=transport=dt_socket,server=y,suspend=y,ad
 
 
 
-##DSS前端无法跳转至其他组件(visualis、schedulis、qualitis)排查问题记录
+## DSS前端无法跳转至其他组件(visualis、schedulis、qualitis)排查问题记录
 
   1.经排查跳转至第三方组件请求中都没有带token信息，可能存在token配置问题
   
@@ -57,7 +57,7 @@ export JAVA_TOOL_OPTIONS=agentlib:jdwp=transport=dt_socket,server=y,suspend=y,ad
 	2.4 dss前端访问方式由hostname:443---->ip:443
 	
 	
-##dss工作流发布至schedulis报错解决
+## dss工作流发布至schedulis报错解决
 
 前提：调度工具由zakaban替换为微众开源schedulis
 
