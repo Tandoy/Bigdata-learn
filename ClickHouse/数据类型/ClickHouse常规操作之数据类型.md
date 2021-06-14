@@ -1,6 +1,6 @@
-##ClickHouse之数据类型
+## ClickHouse之数据类型
 
-###1.建库建表（建表必须指定引擎类型）
+### 1.建库建表（建表必须指定引擎类型）
 
     create database if not exists tangzhi;
     use tangzhi;
@@ -11,11 +11,11 @@
     gendrer String
     )engine=Memory();
     
-###2.插入数据
+### 2.插入数据
 
     insert into tb_a values(1,'tangzhi',23,'M');--字符串必须使用单引号
     
-###3.数据类型
+### 3.数据类型
 
     1.[数组]
         ck是强数据类型 array()/[];
