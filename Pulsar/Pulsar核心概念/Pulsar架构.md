@@ -1,4 +1,4 @@
-##Pulsar架构
+## Pulsar架构
 
     在最高级别，单个 Pulsar 实例由一个或多个 Pulsar 集群组成。实例中的集群之间可以相互复制数据。
     
@@ -11,13 +11,13 @@
 ![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Pulsar/images/pulsar-system-architecture.png)
 
 
-###一、Brokers
+### 一、Brokers
     
     Pulsar的broker是一个无状态组件, 主要负责运行另外的两个组件:
         ·An HTTP server
         ·一个调度分发器
         
-###二、持久化存储
+### 二、持久化存储
 
     Apache BookKeeper
     Pulsar用 Apache BookKeeper作为持久化存储。 BookKeeper是一个分布式的预写日志（WAL）系统，有如下几个特性特别适合Pulsar的应用场景：
