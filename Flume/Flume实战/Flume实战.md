@@ -54,8 +54,11 @@
 
 采集需求：某服务器的某特定目录下，会不断产生新的文件，每当有新文件出现，就需要把文件采集到HDFS中去
 根据需求，首先定义以下3大要素
+
 采集源，即source——监控文件目录 :  spooldir
+
 下沉目标，即sink——HDFS文件系统  :  hdfs sink
+
 source和sink之间的传递通道——channel，可用file channel 也可以用内存channel
 
     配置文件编写：
@@ -104,8 +107,11 @@ keep-alive：event添加到通道中或者移出的允许时间
 
 采集需求：比如业务系统使用log4j生成的日志，日志内容不断增加，需要把追加到日志文件中的数据实时采集到hdfs
 根据需求，首先定义以下3大要素
+
 采集源，即source——监控文件内容更新 :  exec  ‘tail -F file’
+
 下沉目标，即sink——HDFS文件系统  :  hdfs sink
+
 Source和sink之间的传递通道——channel，可用file channel 也可以用 内存channel
 
     配置文件编写：
