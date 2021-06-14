@@ -1,6 +1,6 @@
-##Hudi核心概念三
+## Hudi核心概念三
 
-###一、写入 Hudi 数据集（DeltaStreamer/Spark/Flink）
+### 一、写入 Hudi 数据集（DeltaStreamer/Spark/Flink）
 
     ·UPSERT（插入更新） ：这是默认操作，在该操作中，通过查找索引，首先将输入记录标记为插入或更新。
     在运行启发式方法以确定如何最好地将这些记录放到存储上，如优化文件大小之类后，这些记录最终会被写入。
@@ -15,14 +15,12 @@
     该算法可以很好地扩展数百TB的初始负载。但是，相比于插入和插入更新能保证文件大小，批插入在调整文件大小上只能尽力而为。
     
     
-###二、查询 Hudi 数据集（Hive/Spark/Presto/Flink）
+### 二、查询 Hudi 数据集（Hive/Spark/Presto/Flink）
 
 ![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Hudi/images/%E6%9F%A5%E8%AF%A2Hudi%E6%95%B0%E6%8D%AE%E9%9B%86.PNG)
 
 
-
-
-###三、如何选择存储类型
+### 三、如何选择存储类型
 
     写时复制（COW）存储：
     
