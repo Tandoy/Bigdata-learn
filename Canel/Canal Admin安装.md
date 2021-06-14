@@ -1,4 +1,4 @@
-##Canal Admin安装
+## Canal Admin安装
 
 1.下载 canal-admin, 访问 release 页面 , 选择需要的包下载, 如以 1.1.4 版本为例
 
