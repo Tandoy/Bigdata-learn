@@ -1,4 +1,4 @@
-## Pulsar on Python
+## Pulsar on Java
 
     import org.apache.pulsar.client.api.Message;
     import org.apache.pulsar.client.api.MessageId;
