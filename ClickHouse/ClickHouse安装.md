@@ -1,4 +1,4 @@
-##ClickHouse-rpm安装
+## ClickHouse-rpm安装
 ```shell script
 1.sudo yum install curl
     
@@ -13,7 +13,7 @@
 6.clickhouse-client --host 172.16.0.222
 ```
     
-##ClickHouse-docker安装
+## ClickHouse-docker安装
 ```shell script
 1.sudo docker run -d --name ch-server --ulimit nofile=262144:262144 -p 9000:9000 yandex/clickhouse-serve
 
