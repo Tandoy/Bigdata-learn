@@ -12,7 +12,7 @@ Phoenix二级索引特点：
     缺点：但是Coprocessor的方案入侵性比较强， 增加了在Regionserver内部需要运行和维护二级索引关系表的代码逻辑等，对Regionserver的性能会有一定影响。
 
 
-##配置HBase支持Phoenix二级索引过程
+## 配置HBase支持Phoenix二级索引过程
 
 1.修改配置文件
 
@@ -194,14 +194,14 @@ select /*+ index(user,USER_COOKIE_ID_AGE_INDEX) */ "age","sex" from user where "
 
 ![img](https://pic4.zhimg.com/80/v2-215ee8ef3cab13534b2e63cb0cef6feb_720w.png)
 
-##Phoenix索引重建
+## Phoenix索引重建
 
 ```text
 Phoenix的索引重建是把索引表清空后重新装配数据。
 alter index USER_COOKIE_ID_INDEX on user rebuild;
 ```
 
-##Phoenix删除索引
+## Phoenix删除索引
 
 ```text
 删除某个表的某张索引：
@@ -211,7 +211,7 @@ alter index USER_COOKIE_ID_INDEX on user rebuild;
 覆盖索引上的列，则此列将从覆盖索引中被自动删除。
 ```
 
-##Phoenix索引性能调优
+## Phoenix索引性能调优
 
 一般来说，索引已经很快了，不需要特别的优化。这里也提供了一些方法，让你在面对特定的环境和负载的时候可以进行一些调优。下面的这些需要在hbase-site.xml文件中设置，针对所有的服务器。
 ```text
@@ -250,9 +250,9 @@ alter index USER_COOKIE_ID_INDEX on user rebuild;
 处理全局索引写请求时，可以使用的线程数。 
 默认值: 30
 ```
-##直白话：
-##全局索引是表，适合重读轻写的场景         
-##本地索引是列族，适合重写轻读的场景
+## 直白话：
+## 全局索引是表，适合重读轻写的场景         
+## 本地索引是列族，适合重写轻读的场景
 
 
 9.Phoenix global index 测试
