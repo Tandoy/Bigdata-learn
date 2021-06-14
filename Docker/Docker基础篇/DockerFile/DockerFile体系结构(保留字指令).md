@@ -1,4 +1,4 @@
-##DockerFile体系结构(保留字指令)
+## DockerFile体系结构(保留字指令)
 
     DockerFile体系结构(保留字指令)
     	FROM
