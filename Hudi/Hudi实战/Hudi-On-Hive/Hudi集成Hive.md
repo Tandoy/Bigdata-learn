@@ -1,4 +1,4 @@
-##Hudi集成Hive
+## Hudi集成Hive
 
     1. 将 /opt/apps/hudi/packaging/hudi-hadoop-mr-bundle/target/hudi-hadoop-mr-bundle-0.5.2-incubating.jar 复制到 Hive lib目录下
     
