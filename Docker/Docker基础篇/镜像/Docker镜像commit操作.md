@@ -1,4 +1,4 @@
-##Docker镜像commit操作
+## Docker镜像commit操作
 
     docker commit提交容器副本使之成为一个新的镜像
     docker commit -m=“提交的描述信息” -a=“作者” 容器ID 要创建的目标镜像名:[标签名]
