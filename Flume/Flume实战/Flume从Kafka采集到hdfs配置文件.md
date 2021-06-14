@@ -1,4 +1,4 @@
-##fume的采集配置
+## flume的采集配置
 
     a1.sources = r1
     a1.channels = c1
