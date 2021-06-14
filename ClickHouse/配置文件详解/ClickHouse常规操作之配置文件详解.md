@@ -1,4 +1,4 @@
-##ClickHouse之配置文件
+## ClickHouse之配置文件
 
     1.总配置文件分为：config.xml users.xml
     
