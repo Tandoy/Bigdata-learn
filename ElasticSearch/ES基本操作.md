@@ -1,8 +1,8 @@
-####1.基本Rest风格命令说明
+#### 1.基本Rest风格命令说明
 
 ![image](https://github.com/Tandoy/Bigdata-learn/blob/master/ElasticSearch/image/restFul.PNG)
 
-####2.ES给予kibana的请求记录
+#### 2.ES给予kibana的请求记录
 
     1.更新数据 PUT，更新时是覆盖更新，没有更新的字段会被覆盖为空
     2.Post _update,==推荐使用这种更新方式!==
