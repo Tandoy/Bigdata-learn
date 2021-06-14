@@ -1,6 +1,6 @@
-##HDFS—核心参数
+## HDFS—核心参数
 
-###1.NameNode内存生产配置
+### 1.NameNode内存生产配置
 
 1）NameNode 内存计算
 ```text
@@ -39,7 +39,7 @@ NN、DN内存配置经验参考：
 https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_hardware_requirements.html#concept_fzz_dq4_gbb
 ```
 
-###2.NameNode心跳并发配置
+### 2.NameNode心跳并发配置
 
 1）hdfs-site.xml
 ```text

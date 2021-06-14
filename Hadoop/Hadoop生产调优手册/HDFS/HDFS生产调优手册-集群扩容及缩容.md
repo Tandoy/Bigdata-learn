@@ -1,6 +1,6 @@
-##HDFS—集群扩容及缩容
+## HDFS—集群扩容及缩容
 
-###1.磁盘间数据均衡
+### 1.磁盘间数据均衡
 ```text
 生产环境，由于硬盘空间不足，往往需要增加一块硬盘。刚加载的硬盘没有数据时，可以执行磁盘数据均衡命令。（Hadoop3.x 新特性）
 
@@ -14,7 +14,7 @@ hdfs diskbalancer -query hadoop103
 hdfs diskbalancer -cancel hadoop103.plan.json
 ```
 
-###2.服役新服务器
+### 2.服役新服务器
 
 ```text
 1）环境准备
@@ -40,7 +40,7 @@ hdfs diskbalancer -cancel hadoop103.plan.json
         yarn --daemon start nodemanager
 ```
 
-###3.服务器间数据均衡
+### 3.服务器间数据均衡
 
 ```text
 命令：
@@ -50,7 +50,7 @@ sbin/start-balancer.sh -threshold 10
 由于 HDFS 需要启动单独的 Rebalance Server 来执行 Rebalance 操作，所以尽量不要在 NameNode 上执行 start-balancer.sh，而是找一台比较空闲的机器。
 ```
 
-###4.黑名单退役服务器
+### 4.黑名单退役服务器
 
 ```text
 黑名单：表示在黑名单的主机 IP 地址不可以，用来存储数据。
