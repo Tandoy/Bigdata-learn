@@ -1,6 +1,6 @@
-##Canel实战一
+## Canel实战一
 
-###一、Mysql服务器配置
+### 一、Mysql服务器配置
     
     -- 创建用户 用户名：canal 密码：Canal@123456
     create user 'canal'@'%' identified by 'Canal@123456';
@@ -29,7 +29,7 @@
     --查看binlog日志文件列表：
     show BINARY logs;
     
-###二、kafka进行消费
+### 二、kafka进行消费
 
      kafka-console-consumer.sh --bootstrap-server dxbigdata103:9092 --topic test
     
