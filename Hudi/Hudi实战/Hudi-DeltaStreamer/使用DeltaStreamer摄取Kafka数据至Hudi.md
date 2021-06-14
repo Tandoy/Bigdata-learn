@@ -1,4 +1,4 @@
-##使用DeltaStreamer摄取数据至Hudi
+## 使用DeltaStreamer摄取数据至Hudi
 
     HoodieDeltaStreamer实用工具 (hudi-utilities-bundle中的一部分) 提供了从DFS或Kafka等不同来源进行摄取的方式。
     
@@ -8,7 +8,7 @@
         ·利用DFS或Confluent schema注册表的Avro模式。
         ·支持自定义转换操作
         
-###一、使用DeltaStreamer同步kafka数据至Hudi
+### 一、使用DeltaStreamer同步kafka数据至Hudi
 
     kafka.properties
         
