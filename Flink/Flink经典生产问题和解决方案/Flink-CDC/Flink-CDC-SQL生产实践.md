@@ -133,15 +133,15 @@ CREATE TABLE reslut (
 INSERT INTO reslut
 select 
 t1.cust_id
-,sum(case when t1.event_key = 6 then 1 else 0 end) as setquery_cnt
-,sum(case when t1.event_key = 7 then 1 else 0 end) as cipher_cnt
-,count(DISTINCT case when t1.event_key = 2 then t1.record_date else null end) as openapp_day
-,sum(case when t1.event_key = 2 then 1 else 0 end) as openapp_cnt
-,count(DISTINCT case when t1.event_key = 3 then t1.record_date else null end) as thumbsup_day
-,sum(case when t1.event_key = 3 then 1 else 0 end) as thumbsup_cnt
-,sum(case when t1.event_key = 4 then 1 else 0 end) as save_cnt
-,count(DISTINCT case when t1.event_key = 4 then t1.record_date else null end) as save_day
-,sum(case when t1.event_key = 5 then 1 else 0 end) as setup_cnt
+,sum(case when t1.event_key = '6' then 1 else 0 end) as setquery_cnt
+,sum(case when t1.event_key = '7' then 1 else 0 end) as cipher_cnt
+,count(DISTINCT case when t1.event_key = '2' then t1.record_date else null end) as openapp_day
+,sum(case when t1.event_key = '2' then 1 else 0 end) as openapp_cnt
+,count(DISTINCT case when t1.event_key = '3' then t1.record_date else null end) as thumbsup_day
+,sum(case when t1.event_key = '3' then 1 else 0 end) as thumbsup_cnt
+,sum(case when t1.event_key = '4' then 1 else 0 end) as save_cnt
+,count(DISTINCT case when t1.event_key = '4' then t1.record_date else null end) as save_day
+,sum(case when t1.event_key = '5' then 1 else 0 end) as setup_cnt
 ,COALESCE(max(t2.novicedone_cnt),0) as novicedone_cnt
 ,COALESCE(max(t2.dailydone_cnt),0) as dailydone_cnt
 ,COALESCE(max(t2.flashdone_cnt),0) as flashdone_cnt
@@ -153,11 +153,11 @@ from interactive_events t1
 left join (
 SELECT
 tmp.cust_id
-,sum(case when tmp.attribute=0 and (tmp.status=3 or tmp.status=2) then 1 else 0 end) as novicedone_cnt
-,sum(case when tmp.attribute=1 and (tmp.status=3 or tmp.status=2) then 1 else 0 end) as dailydone_cnt
-,sum(case when tmp.attribute=2 and (tmp.status=3 or tmp.status=2) then 1 else 0 end) as flashdone_cnt
-,sum(case when tmp.attribute=3 and (tmp.status=3 or tmp.status=2) then 1 else 0 end) as passivedone_cnt
-,sum(case when tmp.attribute=4 and (tmp.status=3 or tmp.status=2) then 1 else 0 end) as elsedone_cnt
+,sum(case when tmp.attribute='0' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as novicedone_cnt
+,sum(case when tmp.attribute='1' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as dailydone_cnt
+,sum(case when tmp.attribute='2' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as flashdone_cnt
+,sum(case when tmp.attribute='3' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as passivedone_cnt
+,sum(case when tmp.attribute='4' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as elsedone_cnt
 ,sum(case when tmp.status in ('1','2') then 1 else 0 end) as done_cnt
 from activity_records tmp
 group by tmp.cust_id
@@ -180,5 +180,5 @@ org.apache.flink.table.planner.codegen.CodeGenException: Unable to find common t
 ```
 1.解决过程
 ```shell script
-
+因为在创建表时attribute、status、event_key等字段是STRING类型，但代码中=1(INT)导致报错，改为字符串类型即可
 ```
