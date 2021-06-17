@@ -35,6 +35,6 @@ LogicalTableModify(table=[[TMP_NODE]], operation=[INSERT], flattened=[false])
             LogicalTableScan(table=[[SOURCE2]])
 ```
 ```shell script
-4.Execute
+3.Execute
 Hive与Flink都在在此阶段将物理执行计划CodeGen生成相应的可执行代码
 ```
