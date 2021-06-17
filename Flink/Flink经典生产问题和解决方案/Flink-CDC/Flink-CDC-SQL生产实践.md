@@ -32,7 +32,14 @@
 ```text
 show variables like 'log_bin';
 ```
-2.创建对应的source表以及sink表
+2.sql-client.sh embedded 启动SQL CLI客户端提交SQL任务
+```shell script
+--切换为默认catalog
+use catalog default_catalog;
+--切换为默认方言
+SET table.sql-dialect=default;
+```
+3.创建对应的source表以及sink表
 ```shell script
 --任务参与记录表
 CREATE TABLE activity_records (
@@ -128,7 +135,7 @@ CREATE TABLE reslut (
   'lookup.max-retries' = '3'
 );
 ```
-3.进行聚合操作并插入聚合结果表
+4.进行聚合操作并插入聚合结果表
 ```shell script
 INSERT INTO reslut
 select 
@@ -165,20 +172,71 @@ group by tmp.cust_id
 on t2.cust_id = t1.cust_id
 group by t1.cust_id;
 ```
-4.sql-client.sh embedded 启动SQL CLI客户端提交SQL任务
-```shell script
---切换为默认catalog
-use catalog default_catalog;
---切换为默认方言
-SET table.sql-dialect=default;
-```
 ### 踩过的坑和学到的经验
 1.执行聚合sql报错：
 ```shell script
 [ERROR] Could not execute SQL statement. Reason:
 org.apache.flink.table.planner.codegen.CodeGenException: Unable to find common type of GeneratedExpression(field$206,isNull$205,,STRING,None) and ArrayBuffer(GeneratedExpression(((int) 0),false,,INT NOT NULL,Some(0))).
 ```
-1.解决过程
+1.解决方案
 ```shell script
 因为在创建表时attribute、status、event_key等字段是STRING类型，但代码中=1(INT)导致报错，改为字符串类型即可
+```
+2.Flink-CDC在全表扫描阶段慢
+```text
+扫描全表阶段慢不一定是cdc source的问题，可能是下游聚合节点处理太慢导致反压。
+```
+2.解决方案
+```yaml
+##修改sql-client-defaults.yaml文件配上MiniBatch相关参数和开启distinct优化
+configuration:
+  table.exec.mini-batch.enabled: true
+  table.exec.mini-batch.allow-latency: 2s
+  table.exec.mini-batch.size: 5000
+  table.optimizer.distinct-agg.split.enabled: true
+```
+```shell script
+##优化SQL: 在distinct聚合上使用FILTER修饰符 
+INSERT INTO reslut
+select 
+t1.cust_id
+,sum(case when t1.event_key = '6' then 1 else 0 end) as setquery_cnt
+,sum(case when t1.event_key = '7' then 1 else 0 end) as cipher_cnt
+,count(DISTINCT t1.record_date) FILTER(where t1.event_key = '2') AS openapp_day
+,sum(case when t1.event_key = '2' then 1 else 0 end) as openapp_cnt
+,count(DISTINCT t1.record_date) FILTER(where t1.event_key = '3') AS thumbsup_day
+,sum(case when t1.event_key = '3' then 1 else 0 end) as thumbsup_cnt
+,sum(case when t1.event_key = '4' then 1 else 0 end) as save_cnt
+,count(DISTINCT t1.record_date) FILTER(where t1.event_key = '4') AS save_day
+,sum(case when t1.event_key = '5' then 1 else 0 end) as setup_cnt
+,COALESCE(max(t2.novicedone_cnt),0) as novicedone_cnt
+,COALESCE(max(t2.dailydone_cnt),0) as dailydone_cnt
+,COALESCE(max(t2.flashdone_cnt),0) as flashdone_cnt
+,COALESCE(max(t2.passivedone_cnt),0) as passivedone_cnt
+,COALESCE(max(t2.elsedone_cnt),0) as elsedone_cnt
+,COALESCE(max(t2.done_cnt),0) as done_cnt
+,sum(case when t1.event_key = 0 then 1 else 0 end) as app_cnt
+from interactive_events t1
+left join (
+SELECT
+tmp.cust_id
+,sum(case when tmp.attribute='0' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as novicedone_cnt
+,sum(case when tmp.attribute='1' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as dailydone_cnt
+,sum(case when tmp.attribute='2' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as flashdone_cnt
+,sum(case when tmp.attribute='3' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as passivedone_cnt
+,sum(case when tmp.attribute='4' and (tmp.status='3' or tmp.status='2') then 1 else 0 end) as elsedone_cnt
+,sum(case when tmp.status in ('1','2') then 1 else 0 end) as done_cnt
+from activity_records tmp
+group by tmp.cust_id
+) t2
+on t2.cust_id = t1.cust_id
+group by t1.cust_id;
+```
+3.Flink-CDC source扫描MySQL表期间，发现无法往该表insert数据
+```text
+由于使用的MySQL用户未授权RELOAD权限，导致无法获取全局读锁（FLUSH TABLES WITH READ LOCK），CDC source就会退化成表级读锁，而使用表级读锁需要等到全表scan完，才能释放锁，所以会发现持锁时间过长的现象，影响其他业务写入数据。
+```
+3.解决方案
+```text
+给使用的MySQL用户授予RELOAD权限即可。所需的权限列表详见文档：https://github.com/ververica/flink-cdc-connectors/wiki/mysql-cdc-connector#setup-mysql-server。如果出于某些原因无法授予RELOAD权限，也可以显式配上 'debezium.snapshot.locking.mode' = 'none'来避免所有锁的获取，但要注意只有当快照期间表的schema不会变更才安全。
 ```
