@@ -155,7 +155,7 @@ t1.cust_id
 ,COALESCE(max(t2.passivedone_cnt),0) as passivedone_cnt
 ,COALESCE(max(t2.elsedone_cnt),0) as elsedone_cnt
 ,COALESCE(max(t2.done_cnt),0) as done_cnt
-,sum(case when t1.event_key = 0 then 1 else 0 end) as app_cnt
+,sum(case when t1.event_key = '0' then 1 else 0 end) as app_cnt
 from interactive_events t1
 left join (
 SELECT
