@@ -2,7 +2,7 @@
 
 ### 一、使用Hudi-Clustering
 ```text
-Clustering可重新组织数据以提高查询性能，也不会影响摄取速度
+Clustering可重新组织数据以提高查询性能，也不会影响摄取速度。
 ```
 ```shell script
 spark-submit \
