@@ -89,5 +89,3 @@
         load(basePath);
     incViewDF.registerTempTable("hudi_incr_table")
     spark.sql("select `_hoodie_commit_time`, fare, begin_lon, begin_lat, ts from  hudi_incr_table where fare > 20.0").show()
-
-    
