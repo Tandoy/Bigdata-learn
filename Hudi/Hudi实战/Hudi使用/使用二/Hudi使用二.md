@@ -29,21 +29,33 @@ df.write.format("org.apache.hudi").
         save("hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_kafka");
 ```
 ```shell script
-异步模式：
+异步模式：分为两步(1.doSchedule,生成.replacecommit.requested; 2.doCluster,拿到doCluster相关信息进行真正的Clustering)
 spark-submit \
+spark2-submit \
 --master yarn \
---deploy-mode cluster \
+--deploy-mode client \
 --conf spark.task.cpus=1 \
 --conf spark.executor.cores=1 \
 --class org.apache.hudi.utilities.HoodieClusteringJob `ls /home/appuser/tangzhi/hudi-spark/hudi-sparkSql/packaging/hudi-utilities-bundle/target/hudi-utilities-bundle_2.11-0.9.0-SNAPSHOT.jar` \
 --schedule \
---base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_kafka \
---table-name hudi_test_kafka \
+--base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_on_flink \
+--table-name hudi_on_flink \
+--spark-memory 1G
+
+spark2-submit \
+--master yarn \
+--deploy-mode client \
+--conf spark.task.cpus=1 \
+--conf spark.executor.cores=1 \
+--class org.apache.hudi.utilities.HoodieClusteringJob `ls /home/appuser/tangzhi/hudi-spark/hudi-sparkSql/packaging/hudi-utilities-bundle/target/hudi-utilities-bundle_2.11-0.9.0-SNAPSHOT.jar` \
+--instant-time 20210706101201 \
+--base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_on_flink \
+--table-name hudi_on_flink \
 --spark-memory 1G
 ```
 ### 二、Debug HoodieClusteringJob
 ```shell script
-spark-submit \
+spark2-submit \
 --master spark://dxbigdata101:7077 \
 --driver-java-options \
 "-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8023" \
@@ -51,7 +63,7 @@ spark-submit \
 --conf spark.executor.cores=1 \
 --class org.apache.hudi.utilities.HoodieClusteringJob `ls /home/appuser/tangzhi/hudi-spark/hudi-sparkSql/packaging/hudi-utilities-bundle/target/hudi-utilities-bundle_2.11-0.9.0-SNAPSHOT.jar` \
 --schedule \
---base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_kafka \
---table-name hudi_test_kafka \
+--base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_on_flink \
+--table-name hudi_on_flink \
 --spark-memory 1G
 ```
