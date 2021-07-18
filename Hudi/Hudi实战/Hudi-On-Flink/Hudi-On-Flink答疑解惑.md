@@ -67,3 +67,5 @@ env.setStateBackend(new HashMapStateBackend());
     2.3 关注TM分配给每个write task的内存，保证每个write task能够分配到write.task.max.size所配置的⼤⼩，⽐如TM的内存是4GB跑了2个StreamWriteFunction那每个write function能分到 2GB，尽量预留⼀些 buffer，因为⽹络buffer，TM上其他类型task(⽐如Bucket AssignFunction也会吃些内存)
         Note: write.task.max.size-write.merge.max_memory是预留给每个write task的内存buffer
 ```
+
+[Hudi-On-Flink答疑解惑](https://www.yuque.com/docs/share/01c98494-a980-414c-9c45-152023bf3c17?)
