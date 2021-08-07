@@ -68,7 +68,7 @@ spark2-submit \
 --spark-memory 1G
 ```
 
-### 二、使用Hudi-OCC
+### 三、使用Hudi-OCC
 ```text
 从Hudi-0.8.0版本开始，支持单表乐观锁并发写特性。Hudi支持文件级OCC，即对于发生在同一个表上的任何2个提交（或写入者），如果它们没有写入正在更改的重叠文件，则允许两个写入者成功。此功能目前处于实验阶段，需要Zookeeper或HiveMetastore来获取锁。
 ```
