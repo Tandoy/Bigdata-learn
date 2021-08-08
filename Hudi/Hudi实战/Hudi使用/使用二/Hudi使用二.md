@@ -120,3 +120,14 @@ spark2-submit \
           --source-ordering-field uid \
           --source-limit 5000000
 ```
+```shell script
+1.设置正确的本机锁提供程序客户端重试
+    hoodie.write.lock.wait_time_ms
+    hoodie.write.lock.num_retries
+2.为Zookeeper和HiveMetastore设置正确的hudi客户端重试
+    hoodie.write.lock.client.wait_time_ms
+    hoodie.write.lock.client.num_retries
+3.禁用多重写入
+    hoodie.write.concurrency.mode=single_writer
+    hoodie.cleaner.policy.failed.writes=EAGER
+```
