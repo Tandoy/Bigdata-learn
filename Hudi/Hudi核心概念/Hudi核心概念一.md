@@ -36,3 +36,5 @@
     1.摄取失败可能在日志文件中生成包含部分数据的avro块 - 这个问题通过在commit元数据中存储对应数据块的起始偏移量和日志文件版本来解决。当读取日志文件时，偶尔发生的部分写入的数据块会被跳过，且会从正确的位置开始读取avro文件。
     
     2.Compaction过程失败会生产包含部分数据的parquet文件 - 这个问题在查询阶段被解决，通过commit元数据进行文件版本的过滤。查询阶段只会读取最新的完成的compaction后的文件。这些失败的compaction文件会在下一个compaction周期被回滚。
+    
+[Hudi 的一些设计](https://docs.google.com/document/d/1qljGvoleFQmSfzlDgxAftDLhRUrKFS1i7Ey-x4M4iK8/edit#heading=h.uyowjyqxxwv8)
