@@ -73,60 +73,83 @@ spark2-submit \
 从Hudi-0.8.0版本开始，支持单表乐观锁并发写特性。Hudi支持文件级OCC，即对于发生在同一个表上的任何2个提交（或写入者），如果它们没有写入正在更改的重叠文件，则允许两个写入者成功。此功能目前处于实验阶段，需要Zookeeper或HiveMetastore来获取锁。
 ```
 ```shell script
-1.Datasource Writer
-        import org.apache.hudi.QuickstartUtils._
-        import scala.collection.JavaConversions._
-        import org.apache.spark.sql.SaveMode._
-        import org.apache.hudi.DataSourceReadOptions._
-        import org.apache.hudi.DataSourceWriteOptions._
-         import org.apache.hudi.config.HoodieWriteConfig._
-        val tableName = "hudi_test_occ"
-        val basePath = "hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_occ"
-        val inserts = Seq("""{"area":"hunan","uid":"185","itemid":"11","npgid":"43","evid":"addComment","os":"andriod","pgid":"30","appid":"gmall2019","mid":"mid_117","type":"event","ts":"2021-08-14 12:23:34"}""")
-        import spark.implicits._
-        val ds = spark.createDataset(inserts)
-        val df = spark.read.json(ds)
-        df.write.format("hudi")
-        .options(getQuickstartWriteConfigs)
-        .option("hoodie.cleaner.policy.failed.writes", "LAZY")
-        .option("hoodie.write.concurrency.mode", "optimistic_concurrency_control")
-        .option("hoodie.write.lock.zookeeper.url", "dxbigdata103")
-        .option("hoodie.write.lock.zookeeper.port", "2181")
-        .option("hoodie.write.lock.zookeeper.lock_key", "occ")
-        .option("hoodie.write.lock.zookeeper.base_path", "/hudi/occ")
-        .option("hoodie.datasource.write.keygenerator.class", "org.apache.hudi.keygen.TimestampBasedKeyGenerator")
-        .option("hoodie.deltastreamer.keygen.timebased.timestamp.type", "DATE_STRING")
-        .option("hoodie.deltastreamer.keygen.timebased.input.dateformat", "yyyy-MM-dd HH:mm:ss")
-        .option("hoodie.deltastreamer.keygen.timebased.output.dateformat", "yyyy/MM/dd")
-        .option("hoodie.deltastreamer.keygen.timebased.timezone", "GMT+8:00")
-        .option(PRECOMBINE_FIELD_OPT_KEY, "ts")
-        .option(RECORDKEY_FIELD_OPT_KEY, "uid")
-        .option(PARTITIONPATH_FIELD_OPT_KEY, "ts")
-        .option(TABLE_NAME, tableName)
-        .mode(Overwrite)
-        .save(basePath)
+##start hudi
+spark-shell \
+--packages org.apache.spark:spark-avro_2.11:2.4.4 \
+--conf 'spark.serializer=org.apache.spark.serializer.KryoSerializer' \
+--jars /home/appuser/tangzhi/hudi-0.8/hudi-release-0.8.0/packaging/hudi-spark-bundle/target/hudi-spark-bundle_2.11-0.8.0.jar
 ```
 ```shell script
-2.DeltaStreamer
-        spark-submit --master yarn   \
-        --driver-memory 1G \
-        --num-executors 2 \
-        --executor-memory 1G \
-        --executor-cores 4 \
-        --deploy-mode cluster \
-        --conf spark.yarn.executor.memoryOverhead=512 \
-        --conf spark.yarn.driver.memoryOverhead=512 \
-        --class org.apache.hudi.utilities.deltastreamer.HoodieDeltaStreamer `ls /home/appuser/tangzhi/hudi-0.8/hudi-release-0.8.0/packaging/hudi-utilities-bundle/target/hudi-utilities-bundle_2.11-0.8.0.jar` \
-        --props file:///opt/apps/hudi/hudi-utilities/src/test/resources/delta-streamer-config/kafka.properties \
-        --schemaprovider-class org.apache.hudi.utilities.schema.FilebasedSchemaProvider \
-        --source-class org.apache.hudi.utilities.sources.JsonKafkaSource \
-        --target-base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_occ \
-        --op UPSERT \
-        --continuous \
-        --target-table hudi_test_occ \
-        --table-type COPY_ON_WRITE \
-        --source-ordering-field uid \
-        --source-limit 5000000
+##Datasource Writer
+import org.apache.hudi.QuickstartUtils._
+import scala.collection.JavaConversions._
+import org.apache.spark.sql.SaveMode._
+import org.apache.hudi.DataSourceReadOptions._
+import org.apache.hudi.DataSourceWriteOptions._
+import org.apache.hudi.config.HoodieWriteConfig._
+val tableName = "hudi_test_occ"
+val basePath = "hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_occ"
+val inserts = Seq("""{"area":"hunan","uid":"1","itemid":"11","npgid":"43","evid":"addComment","os":"andriod","pgid":"30","appid":"gmall2019","mid":"mid_117","type":"event","ts":"2021-08-14 12:23:34"}""")
+import spark.implicits._
+val ds = spark.createDataset(inserts)
+val df = spark.read.json(ds)
+df.write.format("hudi")
+.options(getQuickstartWriteConfigs)
+.option("hoodie.cleaner.policy.failed.writes", "LAZY")
+.option("hoodie.write.concurrency.mode", "optimistic_concurrency_control")
+.option("hoodie.write.lock.zookeeper.url", "dxbigdata103")
+.option("hoodie.write.lock.zookeeper.port", "2181")
+.option("hoodie.write.lock.zookeeper.lock_key", "occ")
+.option("hoodie.write.lock.zookeeper.base_path", "/hudi/occ")
+.option("hoodie.datasource.write.keygenerator.class", "org.apache.hudi.keygen.TimestampBasedKeyGenerator")
+.option("hoodie.deltastreamer.keygen.timebased.timestamp.type", "DATE_STRING")
+.option("hoodie.deltastreamer.keygen.timebased.input.dateformat", "yyyy-MM-dd HH:mm:ss")
+.option("hoodie.deltastreamer.keygen.timebased.output.dateformat", "yyyy/MM/dd")
+.option("hoodie.deltastreamer.keygen.timebased.timezone", "GMT+8:00")
+.option(PRECOMBINE_FIELD_OPT_KEY, "ts")
+.option(RECORDKEY_FIELD_OPT_KEY, "uid")
+.option(PARTITIONPATH_FIELD_OPT_KEY, "ts")
+.option(TABLE_NAME, tableName)
+.mode(Overwrite)
+.save(basePath)
+```
+```shell script
+##DeltaStreamer
+spark-submit \
+--master yarn \
+--driver-memory 1G \
+--num-executors 2 \
+--executor-memory 1G \
+--executor-cores 4 \
+--deploy-mode cluster \
+--conf spark.yarn.executor.memoryOverhead=512 \
+--conf spark.yarn.driver.memoryOverhead=512 \
+--class org.apache.hudi.utilities.deltastreamer.HoodieDeltaStreamer `ls /home/appuser/tangzhi/hudi-0.8/hudi-release-0.8.0/packaging/hudi-utilities-bundle/target/hudi-utilities-bundle_2.11-0.8.0.jar` \
+--props file:///opt/apps/hudi/hudi-utilities/src/test/resources/delta-streamer-config/kafka.properties \
+--schemaprovider-class org.apache.hudi.utilities.schema.FilebasedSchemaProvider \
+--source-class org.apache.hudi.utilities.sources.JsonKafkaSource \
+--target-base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_occ \
+--op UPSERT \
+--continuous \
+--target-table hudi_test_occ \
+--table-type COPY_ON_WRITE \
+--source-ordering-field uid \
+--source-limit 5000000
+```
+```shell script
+##read
+import org.apache.hudi.QuickstartUtils._
+import scala.collection.JavaConversions._
+import org.apache.spark.sql.SaveMode._
+import org.apache.hudi.DataSourceReadOptions._
+import org.apache.hudi.DataSourceWriteOptions._
+import org.apache.hudi.config.HoodieWriteConfig._
+val basePath = "hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_test_occ"
+val roViewDF = spark.read.
+format("org.apache.hudi").
+load(basePath + "/*/*/*/*")
+roViewDF.registerTempTable("hudi_test_occ")
+spark.sql("select count(1) from  hudi_test_occ").show()
 ```
 ```shell script
 1.设置正确的本机锁提供程序客户端重试
