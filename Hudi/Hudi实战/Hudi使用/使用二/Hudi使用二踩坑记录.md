@@ -58,3 +58,34 @@ Caused by: java.io.FileNotFoundException: /tmp/spark-events/application_16093243
 	at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:694)
 此问题主要是spark任务需要存放任务运行日志，创建/tmp/spark-events并chmod 777即可
 ```
+
+### 三、Hudi-OCC
+```text
+org.apache.hudi.exception.HoodieDeltaStreamerException: Unable to find previous checkpoint. Please double check if this table was indeed built via delta streamer. Last Commit :Option{val=[20210903233550__commit__COMPLETED]}, Instants :[[20210903233550__commit__COMPLETED]], CommitMetadata={
+  "partitionToWriteStats" : {
+    "2021/08/14" : [ {
+      "fileId" : "4cfbfc21-273d-4b79-b8c0-11269b3b3112-0",
+      "path" : "2021/08/14/4cfbfc21-273d-4b79-b8c0-11269b3b3112-0_0-22-22_20210903233550.parquet",
+      "prevCommit" : "null",
+      "numWrites" : 1,
+      "numDeletes" : 0,
+      "numUpdateWrites" : 0,
+      "numInserts" : 1,
+      "totalWriteBytes" : 436383,
+      "totalWriteErrors" : 0,
+      "tempPath" : null,
+      "partitionPath" : "2021/08/14",
+      "totalLogRecords" : 0,
+      "totalLogFilesCompacted" : 0,
+      "totalLogSizeCompacted" : 0,
+      "totalUpdatedRecordsCompacted" : 0,
+      "totalLogBlocks" : 0,
+      "totalCorruptLogBlock" : 0,
+      "totalRollbackBlocks" : 0,
+      "fileSizeInBytes" : 436383,
+      "minEventTime" : null,
+      "maxEventTime" : null
+    } ]
+此问题jira中已存在：https://issues.apache.org/jira/browse/HUDI-2275
+暂没解决
+```
