@@ -8,3 +8,9 @@
 4.SQL <-- Table <-- DataStream/DataSet <-- Process Function
 5.运行时架构：JM: 负责集群和作业管理等；TM: 负责任务的执行等
 ```
+#### 2.Flink应用
+```text
+数据流上的类型和操作
+```
+![image](https://github.com/Tandoy/Bigdata-learn/blob/master/Flink/image/%E6%B5%81%E8%BD%AC%E6%8D%A2.png)
+[数据流上的类型和操作](http://wuchong.me/blog/2016/05/20/flink-internals-streams-and-operations-on-streams/)
