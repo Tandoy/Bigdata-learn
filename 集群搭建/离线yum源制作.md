@@ -51,7 +51,7 @@ vi /etc/yum.repos.d/packages.repo
 name=CentOS-7 - Plus
 baseurl=file:///home/appuser/tangzhi/packages
 gpgcheck=0
-enabled=0
+enabled=1
 #gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 ```
 ```shell script
