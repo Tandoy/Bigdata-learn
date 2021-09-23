@@ -39,5 +39,21 @@
     4.3 数据处理
 
 五、函数体系
-    5.1 
+    5.1 SourceFunction、一般Function（双流输入、单流输入）、SinkFunction
+    5.2 函数层级：
+        5.2.1 无状态函数：UDF接口 如MapFunction等
+        5.2.2 RichFunction：状态管理+生命周期+UDF接口 如RichMapFunction等
+        5.2.3 ProcessFunction：状态管理+生命周期+UDF接口+触发器 如JoinFunction等
+
+六、数据分区
+    6.1 用户自定义分区器
+    6.2 ForwardPartitioner：在同一个操作链中直接将数据传递至下游
+    6.3 SbuftlePartitioner：随机将元素进行分区，确保下游task均匀接收数据
+    6.4 ReblancePartitioner：也轮询的方式进行分区分配
+    6.5 RescalingPartitioner：根据下游task并行度进行分区，且不会向未分配给自己的分区写入数据
+    6.6 BroadcastPartitioner：将记录广播之所有分区，即复制N份
+    6.7 KeyGroupSteamPartitioner：根据KeyGroup索引进行分区，该分区不提供给用户使用
+
+七、分布式IP
+    Flink的作业管理、资源管理、TM等都需要分布式ID。
 ```
