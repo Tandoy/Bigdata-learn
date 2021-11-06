@@ -47,3 +47,5 @@
     HBASE Client使用HBASE的RPC机制与HMaster和RegionServer进行通信
     管理类操作：Client与HMaster进行RPC；
     数据读写类操作：Client与HRegionServer进行RPC。
+    
+[HBase的系统架构全视角解读](https://mp.weixin.qq.com/s?__biz=MzU3MzgwNTU2Mg==&mid=2247492822&idx=1&sn=175f6febc758a56c7aa680f5b953de08&scene=21#wechat_redirect)
