@@ -88,3 +88,5 @@
         hbase.regionserver.global.memstore.upperLimit：0.4
         hbase.regionserver.global.memstore.lowerLimit：0.38
         即：当MemStore使用内存总量达到hbase.regionserver.global.memstore.upperLimit指定值时，将会有多个MemStores flush到文件中，MemStore flush 顺序是按照大小降序执行的，直到刷新到MemStore使用内存略小于lowerLimit
+        
+[RowKey与索引设计](https://mp.weixin.qq.com/s/1IdjfVrJiXhVMg_5X-LnAw)
