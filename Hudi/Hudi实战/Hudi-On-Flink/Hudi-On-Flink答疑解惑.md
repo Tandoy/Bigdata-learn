@@ -69,3 +69,5 @@ env.setStateBackend(new HashMapStateBackend());
 ```
 
 [Hudi-On-Flink答疑解惑](https://www.yuque.com/docs/share/01c98494-a980-414c-9c45-152023bf3c17?)
+
+[整合Apache Hudi + Flink + CDH](https://mp.weixin.qq.com/s/FYPdx3y0nJDA7ErFMqJVZA)
