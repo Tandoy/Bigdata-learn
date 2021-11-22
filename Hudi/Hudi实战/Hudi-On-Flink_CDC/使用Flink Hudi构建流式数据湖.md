@@ -84,3 +84,5 @@ Streaming读模式下计算count(*)
 select count (*) from hoodie_table/*+OPTIONS('read.streaming.enabled'='true')*/;
 ```
 batch和streaming模式下的计算结果是一致的。
+
+[Flink CDC + Hudi + Hive + Presto构建实时数据湖最佳实践](https://mp.weixin.qq.com/s/evHkDPlw9UQ0PFxQnZpZ3g)
