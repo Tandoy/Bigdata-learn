@@ -1,0 +1,1 @@
+[Elasticsearch写入原理](https://mp.weixin.qq.com/s/Qgoaw86_aFABjenWc5ESEQ)
