@@ -1,0 +1,1 @@
+[ElasticSearch 索引设计指南](https://mp.weixin.qq.com/s/__cOvjaj_Dl17-jI0h6AFw)
