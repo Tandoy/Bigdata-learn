@@ -128,3 +128,5 @@
     4. 启动任务
     
         ./flink run -c org.apache.hudi.streamer.HoodieFlinkStreamer -m yarn-cluster -d -yjm 1024 -ytm 1024 -p 4 -ys 3 -ynm hudi_on_flink /home/appuser/tangzhi/hudi-flink/hudi/packaging/hudi-flink-bundle/target/hudi-flink-bundle_2.11-0.9.0-SNAPSHOT.jar --kafka-topic hudi-on-flink --kafka-group-id hudi_on_flink --kafka-bootstrap-servers dxbigdata103:9092 --table-type COPY_ON_WRITE --target-base-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_on_flink --target-table hudi_on_flink  --props hdfs://dxbigdata101:8020/user/hudi/test/data/hudi-conf.properties --checkpoint-interval 3000 --flink-checkpoint-path hdfs://dxbigdata101:8020/user/hudi/test/data/hudi_on_flink_cp --read-schema-path hdfs://dxbigdata101:8020/user/hudi/test/data/schema.avsc
+
+[一种Hudi on Flink动态同步元数据变化的方法](https://mp.weixin.qq.com/s/hf6WeuqFOrRVTYvSeq9z0Q)
