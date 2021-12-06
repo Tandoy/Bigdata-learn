@@ -49,3 +49,5 @@
         4.2 全量表：进行更新操作时会对历史数据进行合并，生成另外一份全量最新数据，查询时返回全量最新的数据
         
     5. 当前可使用Hive对Hudi数据进行简单查询，复杂查询还是存在jar报错问题。建议使用spark on hive模式对Hudi进行访问。
+ 
+[Apache Hudi与Hive集成手册](https://mp.weixin.qq.com/s/TksSvRC1Hof1Io1iuEpJzQ)
