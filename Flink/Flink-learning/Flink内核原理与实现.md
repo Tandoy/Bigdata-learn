@@ -80,4 +80,12 @@
 
 四、WaterMark
     4.1 水位线：
+        4.1.1 WaterMark主要用来解决事件时间语义下的数据乱序问题
+        4.1.2 WaterMark本身也是数据元素随着record在拓扑中流动（时间戳）
+        4.1.3 WaterMark可以在拓扑中任意位置进行定义
+        4.1.4 WaterMark在多流多分区情况取最小值，这里常见现象是Kafka多分区出现某一分区空闲输入导致WaterMark不会变化不触发窗口计算。解决方式：Flink 1.11之后：WatermarkStrategy.withIdleness(Duration.ofMinutes(1)); Flink 1.11之前：https://mp.weixin.qq.com/s/108o9iwEZaHyMoRBGUKX8g
+        4.1.5 WaterMark触发窗口计算前闭后开，不包括结束时间。例：watermark = eventTime 5s滚动窗口 [0,5),[5,10),[10,15) 进行时间窗口触发计算
+    4.2 WaterMark产生方式：
+        4.2.1 Punctuated 数据流中每一个递增的EventTime都会产生一个Watermark。在实际的生产中Punctuated方式在TPS很高的场景下会产生大量的Watermark在一定程度上对下游算子造成压力，所以只有在实时性要求非常高的场景才会选择Punctuated的方式进行Watermark的生成。
+        4.2.2 Periodic 周期性的（一定时间间隔或者达到一定的记录条数）产生一个Watermark。在实际的生产中Periodic的方式必须结合时间和积累条数两个维度继续周期性产生Watermark，否则在极端情况下会有很大的延时。
 ```
