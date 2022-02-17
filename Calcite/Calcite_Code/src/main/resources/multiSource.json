@@ -1,0 +1,28 @@
+{
+  "defaultSchema": "gbasedbt",
+  "schemas": [
+    {
+      "factory": "org.apache.calcite.adapter.jdbc.JdbcSchema$Factory",
+      "name": "mysql",
+      "operand": {
+        "jdbcDriver": "com.mysql.cj.jdbc.Driver",
+        "jdbcUrl": "jdbc:mysql://localhost:3306/test",
+        "jdbcUser": "root",
+        "jdbcPassword": "dafei1288"
+      },
+      "type": "custom"
+    },
+    {
+      "factory": "org.apache.calcite.adapter.jdbc.JdbcSchema$Factory",
+      "name": "gbasedbt",
+      "operand": {
+        "jdbcDriver": "com.gbasedbt.jdbc.Driver",
+        "jdbcUrl": "jdbc:gbasedbt-sqli://localhost:19088/testdb:GBASEDBTSERVER=gbase01;DB_LOCALE=zh_CN.utf8;CLIENT_LOCALE=zh_CN.utf8;IFX_LOCK_MODE_WAIT=30;",
+        "jdbcUser": "gbasedbt",
+        "jdbcPassword": "GBase123"
+      },
+      "type": "custom"
+    }
+  ],
+  "version": "1.0"
+}
