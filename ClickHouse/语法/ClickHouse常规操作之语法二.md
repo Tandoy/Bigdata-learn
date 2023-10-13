@@ -39,4 +39,5 @@
     
     alter table tb_b update name = 'zss' where data_date = 20201231;
     
+    7.4 ClickHouse支持使用 DISTINCT 和 ORDER BY 在一个查询中的不同的列。 DISTINCT 子句在 ORDER BY 子句前被执行。
     

@@ -1,6 +1,6 @@
 ## ClickHouse之引擎
 
-### 1.数据库引擎
+### 1.数据库引擎（其实生产上不推荐使用数据库引擎 对业务库造成入侵）
     
     1.延时引擎Lazy，在距最近一次访问间隔expiration_time_in_seconds时间段内，将表保存在内存中，仅适用于 *Log引擎表，由于针对这类表的访问间隔较长，对保存大量小的 *Log引擎表进行了优化
     CREATE DATABASE testlazy ENGINE = Lazy(expiration_time_in_seconds);
