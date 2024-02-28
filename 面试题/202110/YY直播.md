@@ -39,6 +39,7 @@
     
 6.生产上Flink SQL任务怎么提交的？
 7.Flink SQL转换成Flink任务的流程
+    sql解析生成AST语法树 --> 进行校验生成RelNode --> 优化 --> 生成flink逻辑graph --> 基于规则CBO或者成本进行优化并生成执行graph --> 物理graph --> exec
 8.Calcite解析SQL步骤
 9.二叉树层级遍历
 10.参与开源
